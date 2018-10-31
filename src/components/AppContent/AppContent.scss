@@ -1,0 +1,15 @@
+@import "../../styles/main.scss";
+
+.container {
+  display: flex;
+  flex-grow: 1;
+  margin-left: $sidebar-width;
+  min-height: calc(100vh - #{$appBar-height});
+}
+
+.inner {
+  flex-grow: 1;
+  max-width: px-to-rem(1200px);
+  margin: $spacer-md auto;
+  padding: 0 $spacer-md;
+}

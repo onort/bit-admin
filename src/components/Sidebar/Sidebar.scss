@@ -1,0 +1,13 @@
+@import "../../styles/main.scss";
+
+.container {
+  position: fixed;
+  top: $appBar-height;
+  left: 0;
+  width: $sidebar-width;
+  padding: $spacer-lg;
+  background-color: $dark-bg;
+  color: $white;
+  min-height: calc(100vh - #{$appBar-height});
+  overflow-y: hidden;
+}

@@ -1,0 +1,31 @@
+@import "./functions";
+
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+
+// Colors
+$white: #fff;
+$text-color: #333;
+$dark-bg: #383838;
+
+// Fonts
+$font-family-sans: "Open Sans", sans-serif;
+$base-font-size: 16px;
+
+$font-size-sm: px-to-rem($base-font-size - 4px);
+$font-size-md: $base-font-size;
+$font-size-lg: px-to-rem($base-font-size + 4px);
+
+// Spacing
+$spacer-xsm: px-to-rem($base-font-size * 0.5);
+$spacer-sm: px-to-rem($base-font-size * 0.75);
+$spacer-md: 1rem;
+$spacer-lg: px-to-rem($base-font-size * 1.5);
+$spacer-xlg: px-to-rem($base-font-size * 2);
+$spacer-xxlg: px-to-rem($base-font-size * 3);
+
+// Element Sizes
+
+$brand-font-size: $font-size-lg;
+$appBar-height: calc(#{$brand-font-size} * 1.5 + (2 * #{$spacer-sm}));
+
+$sidebar-width: px-to-rem(200px);
