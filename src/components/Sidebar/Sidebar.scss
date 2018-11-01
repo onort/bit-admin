@@ -5,16 +5,45 @@
   top: $appBar-height;
   left: 0;
   width: $sidebar-width;
-  padding: $spacer-lg;
+  padding: $spacer-xxlg 0 $spacer-md;
   background-color: $dark-bg;
   color: $white;
   min-height: calc(100vh - #{$appBar-height});
-  overflow-y: hidden;
+  overflow: hidden;
   transition: all 0.3s;
 
   &.closed {
-    left: -$sidebar-width;
-    width: 0;
-    padding: 0;
+    left: calc(#{-$sidebar-width} - #{$font-size-md});
   }
+}
+
+.item {
+  display: flex;
+  padding: $spacer-xsm $spacer-md;
+  border-bottom: 1px solid $light-grey;
+  cursor: pointer;
+  background-color: $dark-bg;
+  line-height: 2;
+  transition: all 0.1s;
+
+  &:hover {
+    background-color: lighten($dark-bg, 10);
+    border-color: lighten($light-grey, 10);
+    transform: scale(1.025);
+  }
+  &:first-of-type {
+    border-top: 1px solid $light-grey;
+  }
+}
+
+.itemIcon {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xlg;
+  margin-right: $spacer-sm;
+}
+
+.itemTitle {
+  font-weight: 600;
+  letter-spacing: px-to-rem(0.75px);
 }

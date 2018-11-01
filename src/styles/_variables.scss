@@ -6,6 +6,7 @@
 $white: #fff;
 $text-color: #333;
 $dark-bg: #383838;
+$light-grey: #848484;
 
 // Fonts
 $font-family-sans: "Open Sans", sans-serif;
@@ -15,6 +16,7 @@ $font-size-sm: px-to-rem($base-font-size - 4px);
 $font-size-md: $base-font-size;
 $font-size-lg: px-to-rem($base-font-size + 4px);
 $font-size-xlg: px-to-rem($base-font-size + 8px);
+$font-size-xxlg: px-to-rem($base-font-size + 12px);
 
 // Spacing
 $spacer-xsm: px-to-rem($base-font-size * 0.5);

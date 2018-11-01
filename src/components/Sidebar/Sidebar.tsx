@@ -1,7 +1,9 @@
 import React from "react"
 import cx from "classnames"
+import { MdAdd as AddIcon, MdViewList as ListIcon } from "react-icons/md"
 
 import styles from "./Sidebar.scss"
+import SidebarItem from "./Item"
 
 interface Props {
   className?: string
@@ -16,7 +18,8 @@ const Sidebar: React.SFC<Props> = props => {
   )
   return (
     <nav className={className}>
-      <h3>Hello</h3>
+      <SidebarItem icon={<AddIcon />} title="Add" />
+      <SidebarItem icon={<ListIcon />} title="View" />
     </nav>
   )
 }
