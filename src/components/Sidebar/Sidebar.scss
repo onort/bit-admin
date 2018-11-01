@@ -24,6 +24,8 @@
   cursor: pointer;
   background-color: $dark-bg;
   line-height: 2;
+  color: $white;
+  text-decoration: none;
   transition: all 0.1s;
 
   &:hover {
@@ -33,6 +35,19 @@
   }
   &:first-of-type {
     border-top: 1px solid $light-grey;
+  }
+}
+
+.active {
+  border-left: px-to-rem(8px) solid $orange;
+  cursor: default;
+  color: darken($white, 30);
+
+  &:hover {
+    background-color: $dark-bg;
+    border-color: $light-grey;
+    border-left-color: $orange;
+    transform: none;
   }
 }
 
