@@ -13,7 +13,21 @@
   align-self: center;
 }
 
+.menuIcon {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xlg;
+  margin-right: $spacer-xlg;
+  cursor: pointer;
+  transition: color 0.5s;
+
+  &:hover {
+    color: lighten($text-color, 15);
+  }
+}
+
 .brandContainer {
+  display: flex;
   margin: 0 $spacer-sm;
 }
 

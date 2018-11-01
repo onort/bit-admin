@@ -10,4 +10,11 @@
   color: $white;
   min-height: calc(100vh - #{$appBar-height});
   overflow-y: hidden;
+  transition: all 0.3s;
+
+  &.closed {
+    left: -$sidebar-width;
+    width: 0;
+    padding: 0;
+  }
 }

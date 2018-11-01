@@ -14,6 +14,7 @@ $base-font-size: 16px;
 $font-size-sm: px-to-rem($base-font-size - 4px);
 $font-size-md: $base-font-size;
 $font-size-lg: px-to-rem($base-font-size + 4px);
+$font-size-xlg: px-to-rem($base-font-size + 8px);
 
 // Spacing
 $spacer-xsm: px-to-rem($base-font-size * 0.5);
