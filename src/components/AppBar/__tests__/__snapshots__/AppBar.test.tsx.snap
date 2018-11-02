@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppBar /> should match snapshot 1`] = `
+<header
+  className="container"
+>
+  <div
+    className="appBar"
+  >
+    <div
+      className="brandContainer"
+    >
+      <span
+        className="menuIcon"
+        onClick={[MockFunction]}
+      >
+        <MdMenu />
+      </span>
+      <span
+        className="brand"
+      >
+        Bmat Bit Admin
+      </span>
+    </div>
+  </div>
+</header>
+`;
