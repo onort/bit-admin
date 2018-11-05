@@ -1,6 +1,6 @@
 import React from "react"
 import { mount, shallow } from "enzyme"
-import { MemoryRouter as Router, NavLink } from "react-router-dom"
+import { MemoryRouter as Router } from "react-router-dom"
 import { MdAdd as AddIcon } from "react-icons/md"
 
 import SidebarItem from "../Item"

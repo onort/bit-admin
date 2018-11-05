@@ -19,13 +19,15 @@
   "dependencies": {
     "@material-ui/icons": "^3.0.1",
     "classnames": "^2.2.6",
+    "formik": "^1.3.1",
     "minireset.css": "0.0.3",
     "normalize.css": "^8.0.0",
     "parcel-bundler": "^1.10.3",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-icons": "^3.2.2",
-    "react-router-dom": "^4.3.1"
+    "react-router-dom": "^4.3.1",
+    "yup": "^0.26.6"
   },
   "devDependencies": {
     "@types/classnames": "^2.2.6",
@@ -36,6 +38,7 @@
     "@types/react-dom": "^16.0.9",
     "@types/react-icons": "^2.2.6",
     "@types/react-router-dom": "^4.3.1",
+    "@types/yup": "^0.26.1",
     "autoprefixer": "^9.3.1",
     "babel-core": "^6.26.3",
     "babel-plugin-dynamic-import-node": "^2.2.0",

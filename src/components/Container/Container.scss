@@ -1,0 +1,12 @@
+@import "../../styles/main.scss";
+
+.container {
+  flex-grow: 1;
+  max-width: px-to-rem(1200px);
+  margin: $spacer-md auto;
+  padding: 0 $spacer-md;
+}
+
+.narrow {
+  max-width: px-to-rem(800px);
+}

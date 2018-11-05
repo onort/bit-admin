@@ -1,0 +1,30 @@
+@import "../../styles/main.scss";
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: px-to-rem(8px) px-to-rem(12px);
+  margin-right: $spacer-md;
+  font-size: $font-size-md;
+  color: $text-color;
+  border: 0;
+  border-radius: px-to-rem(3px);
+  background-color: $light-bg;
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  &:hover {
+    background-color: darken($light-bg, 5);
+  }
+}
+
+.text {
+  display: block;
+}
+
+.icon {
+  display: flex;
+  font-size: $font-size-lg;
+  margin-right: $spacer-xsm;
+}

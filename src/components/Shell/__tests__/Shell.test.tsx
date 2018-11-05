@@ -2,7 +2,7 @@ import React from "react"
 import { mount, shallow } from "enzyme"
 import { MemoryRouter as Router } from "react-router-dom"
 
-import { AppBar, AppContent, Shell, Sidebar } from "../../"
+import { AppBar, AppMain, Shell, Sidebar } from "../../"
 
 describe("<Shell />", () => {
   it("should match snapshot", () => {
@@ -24,13 +24,13 @@ describe("<Shell />", () => {
     wrapper.unmount()
   })
 
-  it("should have AppContent component", () => {
+  it("should have AppMain component", () => {
     const wrapper = mount(
       <Router>
         <Shell />
       </Router>
     )
-    expect(wrapper.find(AppContent).exists()).toBe(true)
+    expect(wrapper.find(AppMain).exists()).toBe(true)
     wrapper.unmount()
   })
 

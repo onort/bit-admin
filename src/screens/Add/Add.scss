@@ -1,0 +1,7 @@
+@import "../../styles/main.scss";
+
+.formTitle {
+  font-size: $font-size-xxlg;
+  font-weight: 600;
+  border-bottom: 4px solid lighten($text-color, 50);
+}

@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 
 import styles from "./Shell.scss"
-import { AppBar, AppContent, Sidebar } from "../"
+import { AppBar, AppMain, Sidebar } from "../"
 
 interface State {
   sidebarOpen: boolean
@@ -16,11 +16,9 @@ class Shell extends Component<{}, State> {
     return (
       <div className={styles.container}>
         <AppBar toggleSidebar={this.toggleSidebar} />
-        <div className={styles.applicationMain}>
+        <div className={styles.applicationContainer}>
           <Sidebar sidebarOpen={sidebarOpen} />
-          <AppContent sidebarOpen={sidebarOpen}>
-            {this.props.children}
-          </AppContent>
+          <AppMain sidebarOpen={sidebarOpen}>{this.props.children}</AppMain>
         </div>
       </div>
     )

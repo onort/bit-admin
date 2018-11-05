@@ -1,0 +1,63 @@
+@import "../../styles/main.scss";
+
+.container {
+  width: 100%;
+  margin: $spacer-sm 0;
+}
+
+.label {
+  display: block;
+  font-size: $font-size-md;
+  font-weight: 600;
+  letter-spacing: 0.66px;
+  margin-bottom: $spacer-xxsm;
+}
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  background-color: $white;
+  border-radius: px-to-rem(4px);
+  padding: $spacer-sm;
+  margin-bottom: $spacer-xxsm;
+}
+
+.error {
+  display: block;
+  font-size: $font-size-sm;
+  color: $red;
+}
+
+.tags {
+  margin: $font-size-sm 0;
+  display: flex;
+}
+
+.tagContainer {
+  display: flex;
+  margin-right: $spacer-sm;
+  padding: $spacer-xxsm $spacer-xsm;
+  border-radius: px-to-rem(4px);
+  background-color: $light-bg;
+  color: $text-color;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: darken($light-bg, 5);
+  }
+}
+
+.name {
+  margin-right: $spacer-xsm;
+}
+
+.remove {
+  display: flex;
+  align-self: center;
+  cursor: pointer;
+}
+
+.removeIcon {
+  stroke-width: 2;
+}

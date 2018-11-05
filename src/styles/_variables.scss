@@ -6,8 +6,10 @@
 $white: #fff;
 $text-color: #333;
 $dark-bg: #383838;
+$light-bg: #eff0f1;
 $light-grey: #848484;
 $orange: #d96459;
+$red: #f3363e;
 $green: #588c7e;
 $yellow: #f2e394;
 
@@ -22,6 +24,7 @@ $font-size-xlg: px-to-rem($base-font-size + 8px);
 $font-size-xxlg: px-to-rem($base-font-size + 12px);
 
 // Spacing
+$spacer-xxsm: px-to-rem($base-font-size * 0.25);
 $spacer-xsm: px-to-rem($base-font-size * 0.5);
 $spacer-sm: px-to-rem($base-font-size * 0.75);
 $spacer-md: 1rem;
