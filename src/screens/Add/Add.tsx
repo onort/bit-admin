@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { withFormik, FormikProps, Form, Field } from "formik"
+import { EditorState } from "draft-js"
 import { MdArchive as SaveIcon } from "react-icons/md"
 import * as yup from "yup"
 
@@ -9,22 +10,23 @@ import {
   Container,
   FormInput,
   FormTagField,
+  FormTextEditor,
   Shell
 } from "../../components"
 import { TagType } from "../../components/FormTagField"
 
 interface FormValues {
-  content: string
-  summary: string
-  longText: string
+  editorState: EditorState
+  description: string
+  title: string
   tagToAdd: string
   tags: TagType[]
 }
 
 const initialValues: FormValues = {
-  content: "",
-  summary: "",
-  longText: "",
+  editorState: EditorState.createEmpty(),
+  description: "",
+  title: "",
   tagToAdd: "",
   tags: [
     { name: "example", id: "123", count: 0 },
@@ -33,7 +35,7 @@ const initialValues: FormValues = {
 }
 
 class Add extends Component<FormikProps<FormValues>> {
-  public handleSubmit = () => console.log("Hello")
+  public handleEditorChange = () => console.log("Editor change.")
   public render() {
     return (
       <Shell>
@@ -55,11 +57,9 @@ class Add extends Component<FormikProps<FormValues>> {
               component={FormInput}
             />
             <Field
-              type="text"
-              name="content"
-              placeholder="Content"
+              name="editorState"
               label="Content"
-              component={FormInput}
+              component={FormTextEditor}
             />
             <Field
               type="text"
@@ -86,11 +86,13 @@ const MyForm = withFormik<undefined, FormValues>({
     title: yup
       .string()
       .min(5)
-      .required(),
-    content: yup
-      .string()
-      .min(20)
       .required()
+    // editor text content check breaks yup
+    // editorState: yup
+    //   .object()
+    //   .test("Editor should have text", "Content are can't be empty", (value: EditorState) =>
+    //     value.getCurrentContent().hasText()
+    //   )
   })
 })(Add)
 

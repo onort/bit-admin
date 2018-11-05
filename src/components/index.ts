@@ -4,6 +4,7 @@ import Button from "./Button"
 import Container from "./Container"
 import FormInput from "./FormInput"
 import FormTagField from "./FormTagField"
+import FormTextEditor from './FormTextEditor'
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
 
@@ -14,6 +15,7 @@ export {
   Container,
   FormInput,
   FormTagField,
+  FormTextEditor,
   Shell,
   Sidebar
 }

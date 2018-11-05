@@ -16,7 +16,7 @@
 .input {
   display: block;
   width: 100%;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid $light-border;
   background-color: $white;
   border-radius: px-to-rem(4px);
   padding: $spacer-sm;
