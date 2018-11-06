@@ -23,6 +23,16 @@ describe("<Button />", () => {
     expect(wrapper.find(AddIcon).exists()).toBe(true)
   })
 
+  it("should render success button", () => {
+    const wrapper = shallow(<Button text={testText} success={true} />)
+    expect(wrapper.find("button").hasClass("success")).toBe(true)
+  })
+
+  it("should render danger button", () => {
+    const wrapper = shallow(<Button text={testText} danger={true} />)
+    expect(wrapper.find("button").hasClass("danger")).toBe(true)
+  })
+
   it("should be able to have a custom className", () => {
     const wrapper = shallow(
       <Button text={testText} className={testClassName} />

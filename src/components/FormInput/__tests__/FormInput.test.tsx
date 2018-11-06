@@ -3,7 +3,7 @@ import { mount, shallow } from "enzyme"
 import { Formik, Form, Field } from "formik"
 import * as yup from "yup"
 
-import FormInput from ".."
+import FormInput from "../"
 
 describe("<FormInput />", () => {
   it("should match snapshot", () => {
@@ -38,7 +38,7 @@ describe("<FormInput />", () => {
     wrapper.unmount()
   })
 
-  it.skip("should should render a label element with correct text", () => {
+  it.skip("should should error text when there's an error", () => {
     // Test fails, need to handle async validation?
     const fakeSubmit = jest.fn()
     const failValidate = () => ({ test: "Error" })

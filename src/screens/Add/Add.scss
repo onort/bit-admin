@@ -5,3 +5,7 @@
   font-weight: 600;
   border-bottom: 4px solid lighten($text-color, 50);
 }
+
+.submitButton {
+  margin: $spacer-md 0 $spacer-md auto;
+}

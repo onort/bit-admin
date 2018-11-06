@@ -1,0 +1,62 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormTagField /> should match snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialValues": Object {
+        "test": "",
+        "testArray": Array [],
+      },
+      "isSubmitting": false,
+      "isValid": false,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setError": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validate": undefined,
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validationSchema": undefined,
+      "values": Object {
+        "test": "",
+        "testArray": Array [],
+      },
+    }
+  }
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <C
+      component={[Function]}
+      label="Tag Test"
+      name="test"
+      tagsarrayname="testArray"
+    />
+  </form>
+</ContextProvider>
+`;
+
+exports[`<FormTagField /> should match snapshot 2`] = `"<form><div class=\\"container\\"><label class=\\"label\\" for=\\"test\\">Tag Test</label><input class=\\"input\\" value=\\"\\" name=\\"test\\" label=\\"Tag Test\\"/></div></form>"`;

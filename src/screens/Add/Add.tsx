@@ -13,7 +13,7 @@ import {
 } from "../../components"
 import formEnhancer, { FormValues } from "./formEnhancer"
 
-class Add extends Component<FormikProps<FormValues>> {
+export class Add extends Component<FormikProps<FormValues>> {
   public render() {
     return (
       <Shell>
@@ -48,6 +48,7 @@ class Add extends Component<FormikProps<FormValues>> {
               component={FormTagField}
             />
             <Button
+              className={styles.submitButton}
               text="Submit"
               type="submit"
               success={true}

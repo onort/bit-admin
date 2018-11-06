@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormTextEditor /> should match snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "dirty": false,
+      "errors": Object {},
+      "handleBlur": [Function],
+      "handleChange": [Function],
+      "handleReset": [Function],
+      "handleSubmit": [Function],
+      "initialValues": Object {
+        "testEditorState": EditorState {
+          "_immutable": Immutable.Record {
+            "allowUndo": true,
+            "currentContent": Immutable.Record {
+              "entityMap": Object {
+                "__add": [Function],
+                "__create": [Function],
+                "__get": [Function],
+                "__getLastCreatedEntityKey": [Function],
+                "__mergeData": [Function],
+                "__replaceData": [Function],
+                "add": [Function],
+                "create": [Function],
+                "get": [Function],
+                "getLastCreatedEntityKey": [Function],
+                "mergeData": [Function],
+                "replaceData": [Function],
+              },
+              "blockMap": Immutable.OrderedMap {
+                "1kbu8": Immutable.Record {
+                  "key": "1kbu8",
+                  "type": "unstyled",
+                  "text": "",
+                  "characterList": Immutable.List [],
+                  "depth": 0,
+                  "data": Immutable.Map {},
+                },
+              },
+              "selectionBefore": Immutable.Record {
+                "anchorKey": "1kbu8",
+                "anchorOffset": 0,
+                "focusKey": "1kbu8",
+                "focusOffset": 0,
+                "isBackward": false,
+                "hasFocus": false,
+              },
+              "selectionAfter": Immutable.Record {
+                "anchorKey": "1kbu8",
+                "anchorOffset": 0,
+                "focusKey": "1kbu8",
+                "focusOffset": 0,
+                "isBackward": false,
+                "hasFocus": false,
+              },
+            },
+            "decorator": null,
+            "directionMap": Immutable.OrderedMap {
+              "1kbu8": "LTR",
+            },
+            "forceSelection": false,
+            "inCompositionMode": false,
+            "inlineStyleOverride": null,
+            "lastChangeType": null,
+            "nativelyRenderedContent": null,
+            "redoStack": Immutable.Stack [],
+            "selection": Immutable.Record {
+              "anchorKey": "1kbu8",
+              "anchorOffset": 0,
+              "focusKey": "1kbu8",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+            "treeMap": Immutable.OrderedMap {
+              "1kbu8": Immutable.List [
+                Immutable.Record {
+                  "start": 0,
+                  "end": 0,
+                  "decoratorKey": null,
+                  "leaves": Immutable.List [
+                    Immutable.Record {
+                      "start": 0,
+                      "end": 0,
+                    },
+                  ],
+                },
+              ],
+            },
+            "undoStack": Immutable.Stack [],
+          },
+        },
+      },
+      "isSubmitting": false,
+      "isValid": false,
+      "isValidating": false,
+      "registerField": [Function],
+      "resetForm": [Function],
+      "setError": [Function],
+      "setErrors": [Function],
+      "setFieldError": [Function],
+      "setFieldTouched": [Function],
+      "setFieldValue": [Function],
+      "setFormikState": [Function],
+      "setStatus": [Function],
+      "setSubmitting": [Function],
+      "setTouched": [Function],
+      "setValues": [Function],
+      "submitCount": 0,
+      "submitForm": [Function],
+      "touched": Object {},
+      "unregisterField": [Function],
+      "validate": undefined,
+      "validateField": [Function],
+      "validateForm": [Function],
+      "validateOnBlur": true,
+      "validateOnChange": true,
+      "validationSchema": undefined,
+      "values": Object {
+        "testEditorState": EditorState {
+          "_immutable": Immutable.Record {
+            "allowUndo": true,
+            "currentContent": Immutable.Record {
+              "entityMap": Object {
+                "__add": [Function],
+                "__create": [Function],
+                "__get": [Function],
+                "__getLastCreatedEntityKey": [Function],
+                "__mergeData": [Function],
+                "__replaceData": [Function],
+                "add": [Function],
+                "create": [Function],
+                "get": [Function],
+                "getLastCreatedEntityKey": [Function],
+                "mergeData": [Function],
+                "replaceData": [Function],
+              },
+              "blockMap": Immutable.OrderedMap {
+                "1kbu8": Immutable.Record {
+                  "key": "1kbu8",
+                  "type": "unstyled",
+                  "text": "",
+                  "characterList": Immutable.List [],
+                  "depth": 0,
+                  "data": Immutable.Map {},
+                },
+              },
+              "selectionBefore": Immutable.Record {
+                "anchorKey": "1kbu8",
+                "anchorOffset": 0,
+                "focusKey": "1kbu8",
+                "focusOffset": 0,
+                "isBackward": false,
+                "hasFocus": false,
+              },
+              "selectionAfter": Immutable.Record {
+                "anchorKey": "1kbu8",
+                "anchorOffset": 0,
+                "focusKey": "1kbu8",
+                "focusOffset": 0,
+                "isBackward": false,
+                "hasFocus": false,
+              },
+            },
+            "decorator": null,
+            "directionMap": Immutable.OrderedMap {
+              "1kbu8": "LTR",
+            },
+            "forceSelection": false,
+            "inCompositionMode": false,
+            "inlineStyleOverride": null,
+            "lastChangeType": null,
+            "nativelyRenderedContent": null,
+            "redoStack": Immutable.Stack [],
+            "selection": Immutable.Record {
+              "anchorKey": "1kbu8",
+              "anchorOffset": 0,
+              "focusKey": "1kbu8",
+              "focusOffset": 0,
+              "isBackward": false,
+              "hasFocus": false,
+            },
+            "treeMap": Immutable.OrderedMap {
+              "1kbu8": Immutable.List [
+                Immutable.Record {
+                  "start": 0,
+                  "end": 0,
+                  "decoratorKey": null,
+                  "leaves": Immutable.List [
+                    Immutable.Record {
+                      "start": 0,
+                      "end": 0,
+                    },
+                  ],
+                },
+              ],
+            },
+            "undoStack": Immutable.Stack [],
+          },
+        },
+      },
+    }
+  }
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <C
+      component={[Function]}
+      label="Test Text Editor"
+      name="testEditorState"
+    />
+  </form>
+</ContextProvider>
+`;
+
+exports[`<FormTextEditor /> should match snapshot 2`] = `"<form><label class=\\"label\\" for=\\"nodejs\\">Test Text Editor</label><div class=\\"container labeled\\"><div class=\\"controlRow\\"><span class=\\"styleButton\\">H1</span><span class=\\"styleButton\\">H2</span><span class=\\"styleButton\\">H3</span><span class=\\"styleButton\\">H4</span><span class=\\"styleButton\\">H5</span><span class=\\"styleButton\\">H6</span><span class=\\"styleButton\\">Blockquote</span><span class=\\"styleButton\\">UL</span><span class=\\"styleButton\\">OL</span><span class=\\"styleButton\\">Code Block</span></div><div class=\\"controlRow\\"><span class=\\"styleButton\\">Bold</span><span class=\\"styleButton\\">Italic</span><span class=\\"styleButton\\">Underline</span><span class=\\"styleButton\\">Monospace</span></div><div class=\\"editor\\"><div class=\\"DraftEditor-root\\"><div class=\\"public-DraftEditorPlaceholder-root\\"><div class=\\"public-DraftEditorPlaceholder-inner\\" id=\\"placeholder-2fesl\\" style=\\"white-space:pre-wrap\\">Add content...</div></div><div class=\\"DraftEditor-editorContainer\\"><div aria-describedby=\\"placeholder-2fesl\\" class=\\"notranslate public-DraftEditor-content\\" contenteditable=\\"true\\" role=\\"textbox\\" spellcheck=\\"false\\" style=\\"outline:none;user-select:text;-webkit-user-select:text;white-space:pre-wrap;word-wrap:break-word\\"><div data-contents=\\"true\\"><div class=\\"\\" data-block=\\"true\\" data-editor=\\"2fesl\\" data-offset-key=\\"1kbu8-0-0\\"><div data-offset-key=\\"1kbu8-0-0\\" class=\\"public-DraftStyleDefault-block public-DraftStyleDefault-ltr\\"><span data-offset-key=\\"1kbu8-0-0\\"><br data-text=\\"true\\"/></span></div></div></div></div></div></div></div></div></form>"`;
