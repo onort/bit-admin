@@ -65,6 +65,9 @@ const FormTagField: React.SFC<Props> = ({
         !!errors[name] && (
           <span className={styles.error}>Error: {errors[name]}</span>
         )}
+      {!!errors[tagsarrayname] && (
+        <span className={styles.error}>Error: {errors[tagsarrayname]}</span>
+      )}
     </div>
   )
 }

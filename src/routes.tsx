@@ -1,12 +1,12 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 
-import { Add, ListView } from "./screens"
+import { AddScreen, ListView } from "./screens"
 
 const Routes = () => (
   <Switch>
-    <Route exact={true} path="/" component={Add} />
-    <Route path="/add" component={Add} />
+    <Route exact={true} path="/" component={AddScreen} />
+    <Route path="/add" component={AddScreen} />
     <Route path="/view" component={ListView} />
   </Switch>
 )

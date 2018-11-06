@@ -1,5 +1,5 @@
 import React from "react"
-import { FieldProps } from "formik"
+import { FastFieldProps } from "formik"
 import {
   Editor,
   EditorState,
@@ -14,7 +14,7 @@ import cx from "classnames"
 import styles from "./FormTextEditor.scss"
 import { BlockStyles, InlineStyles } from "./"
 
-interface Props extends FieldProps {
+interface Props extends FastFieldProps {
   className?: string
   label?: string
 }

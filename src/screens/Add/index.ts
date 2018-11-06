@@ -1,3 +1,3 @@
-import Add from "./Add"
+import AddScreen from "./Add"
 
-export default Add
+export default AddScreen

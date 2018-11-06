@@ -1,8 +1,6 @@
 import React, { Component } from "react"
-import { withFormik, FormikProps, Form, Field } from "formik"
-import { EditorState } from "draft-js"
+import { FastField, Field, Form, FormikProps } from "formik"
 import { MdArchive as SaveIcon } from "react-icons/md"
-import * as yup from "yup"
 
 import styles from "./Add.scss"
 import {
@@ -13,29 +11,9 @@ import {
   FormTextEditor,
   Shell
 } from "../../components"
-import { TagType } from "../../components/FormTagField"
-
-interface FormValues {
-  editorState: EditorState
-  description: string
-  title: string
-  tagToAdd: string
-  tags: TagType[]
-}
-
-const initialValues: FormValues = {
-  editorState: EditorState.createEmpty(),
-  description: "",
-  title: "",
-  tagToAdd: "",
-  tags: [
-    { name: "example", id: "123", count: 0 },
-    { name: "other", id: "1234", count: 0 }
-  ]
-}
+import formEnhancer, { FormValues } from "./formEnhancer"
 
 class Add extends Component<FormikProps<FormValues>> {
-  public handleEditorChange = () => console.log("Editor change.")
   public render() {
     return (
       <Shell>
@@ -56,7 +34,7 @@ class Add extends Component<FormikProps<FormValues>> {
               label="Description"
               component={FormInput}
             />
-            <Field
+            <FastField
               name="editorState"
               label="Content"
               component={FormTextEditor}
@@ -69,7 +47,12 @@ class Add extends Component<FormikProps<FormValues>> {
               tagsarrayname="tags"
               component={FormTagField}
             />
-            <Button text="Submit" type="submit" icon={<SaveIcon />} />
+            <Button
+              text="Submit"
+              type="submit"
+              success={true}
+              icon={<SaveIcon />}
+            />
           </Form>
         </Container>
       </Shell>
@@ -77,23 +60,6 @@ class Add extends Component<FormikProps<FormValues>> {
   }
 }
 
-const MyForm = withFormik<undefined, FormValues>({
-  mapPropsToValues: () => initialValues,
-  handleSubmit: (values: FormValues) => {
-    console.log("Form submitted", values)
-  },
-  validationSchema: yup.object().shape({
-    title: yup
-      .string()
-      .min(5)
-      .required()
-    // editor text content check breaks yup
-    // editorState: yup
-    //   .object()
-    //   .test("Editor should have text", "Content are can't be empty", (value: EditorState) =>
-    //     value.getCurrentContent().hasText()
-    //   )
-  })
-})(Add)
+const AddScreen = formEnhancer(Add)
 
-export default MyForm
+export default AddScreen

@@ -1,4 +1,4 @@
-import Add from "./Add"
+import AddScreen from "./Add"
 import ListView from "./ListView"
 
-export { Add, ListView }
+export { AddScreen, ListView }
