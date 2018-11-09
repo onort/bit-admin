@@ -8,3 +8,6 @@ coverage/
 *.log
 npm-debug.log*
 yarn-debug.log*
+
+notes.md
+config.ts

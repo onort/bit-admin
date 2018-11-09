@@ -1,5 +1,5 @@
 import { withFormik } from "formik"
-import { EditorState } from "draft-js"
+import { EditorState, convertToRaw } from "draft-js"
 import * as yup from "yup"
 
 import { TagType } from "../../components/FormTagField"
@@ -29,9 +29,19 @@ const validationSchema = yup.object().shape({
   tagToAdd: yup.string().min(2, "Tag should be at least 2 characters long.")
 })
 
+const handleSubmit = (values: FormValues) => {
+  // create an object to send backend
+  console.log("values are", values)
+  const editorString = JSON.stringify(
+    convertToRaw(values.editorState.getCurrentContent())
+  )
+  const btoa = window.btoa(editorString)
+  console.log("sting to send backend", btoa)
+}
+
 const formEnhancer = withFormik<undefined, FormValues>({
   mapPropsToValues: () => initialValues,
-  handleSubmit: (values: FormValues) => console.log("Form submitted.", values),
+  handleSubmit,
   validationSchema
 })
 
