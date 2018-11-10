@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Paper /> should match snapshot 1`] = `
+<div
+  className="container elevation1"
+/>
+`;
+
+exports[`<Paper /> should match snapshot 2`] = `"<div class=\\"container elevation1\\"></div>"`;
