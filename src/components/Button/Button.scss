@@ -34,6 +34,15 @@
   }
 }
 
+.disabled {
+  cursor: not-allowed;
+  color: $text-color-muted;
+  background-color: darken($light-bg, 10);
+  &:hover {
+    background-color: darken($light-bg, 10);
+  }
+}
+
 .text {
   display: block;
 }

@@ -14,12 +14,12 @@ const initialValues: FormValues = {
 const validationSchema = yup.object().shape({
   email: yup
     .string()
-    .email()
-    .required(),
+    .email("Please enter a valid email address.")
+    .required("Please enter your email address."),
   password: yup
     .string()
-    .min(6)
-    .required()
+    .min(6, "Your password must be at least 6 characters long.")
+    .required("Please enter your password.")
 })
 
 const handleSubmit = (values: FormValues) => {

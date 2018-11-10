@@ -11,7 +11,7 @@ class Login extends Component<FormikProps<FormValues>> {
       <Container className={styles.container}>
         <Paper className={styles.paper} elevation={2}>
           <Form>
-            <h3>Login</h3>
+            <h3 className={styles.title}>Login</h3>
             <Field
               type="text"
               name="email"
@@ -27,7 +27,18 @@ class Login extends Component<FormikProps<FormValues>> {
               component={FormInput}
             />
           </Form>
-          <Button text="Login" type="submit" />
+          <Button
+            text="Login"
+            type="submit"
+            success={true}
+            className={styles.button}
+          />
+          <Button
+            text="Register"
+            type="button"
+            disabled={true}
+            className={styles.button}
+          />
         </Paper>
       </Container>
     )

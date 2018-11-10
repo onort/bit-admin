@@ -33,6 +33,12 @@ describe("<Button />", () => {
     expect(wrapper.find("button").hasClass("danger")).toBe(true)
   })
 
+  it("should render disabled button", () => {
+    const wrapper = shallow(<Button text={testText} disabled={true} />)
+    expect(wrapper.find("button").hasClass("disabled")).toBe(true)
+    expect(wrapper.find("button").is("[disabled]")).toBe(true)
+  })
+
   it("should be able to have a custom className", () => {
     const wrapper = shallow(
       <Button text={testText} className={testClassName} />

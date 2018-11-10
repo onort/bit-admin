@@ -1,6 +1,20 @@
 @import "../../styles/main.scss";
 
 .container {
-  max-width: px-to-rem(600px);
-  margin: 4rem auto;
+  max-width: px-to-rem(480px);
+}
+
+.paper {
+  margin-top: 15%;
+}
+
+.title {
+  font-size: $font-size-xlg;
+  font-weight: 600;
+}
+
+.button {
+  width: 100%;
+  font-size: $font-size-lg;
+  margin-top: $spacer-sm;
 }
