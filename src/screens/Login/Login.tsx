@@ -8,7 +8,7 @@ import formEnhancer, { FormValues } from "./formEnhancer"
 class Login extends Component<FormikProps<FormValues>> {
   public render() {
     return (
-      <Container className={styles.container}>
+      <Container narrow="veryNarrow">
         <Paper className={styles.paper} elevation={2}>
           <Form>
             <h3 className={styles.title}>Login</h3>

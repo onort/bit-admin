@@ -17,7 +17,7 @@ export class Add extends Component<FormikProps<FormValues>> {
   public render() {
     return (
       <Shell>
-        <Container narrow={true}>
+        <Container narrow="narrow">
           <Form>
             <h3 className={styles.formTitle}>Add New Bit</h3>
             <Field

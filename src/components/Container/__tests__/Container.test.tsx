@@ -16,9 +16,9 @@ describe("<Container />", () => {
     expect(wrapper).toMatchSnapshot()
   })
 
-  it("should have correct css class if narrow prop is true", () => {
+  it("should have correct css class if narrow is set", () => {
     const wrapper = shallow(
-      <Container narrow={true}>
+      <Container narrow="narrow">
         <p>{testP}</p>
       </Container>
     )
