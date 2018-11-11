@@ -6,6 +6,7 @@
     "interface-name": false,
     "member-ordering": false,
     "no-console": false,
-    "curly": [true, "ignore-same-line"]
+    "curly": [true, "ignore-same-line"],
+    "jsx-no-lambda": false
   }
 }
