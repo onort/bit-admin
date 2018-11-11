@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import { Field, Form, FormikProps } from "formik"
+import { Link } from "react-router-dom"
 
 import styles from "./Login.scss"
 import { Button, Container, Paper, FormInput } from "../../components"
@@ -33,12 +34,9 @@ class Login extends Component<FormikProps<FormValues>> {
             success={true}
             className={styles.button}
           />
-          <Button
-            text="Register"
-            type="button"
-            disabled={true}
-            className={styles.button}
-          />
+          <Link to="/register">
+            <Button className={styles.button} text="Register" type="button" />
+          </Link>
         </Paper>
       </Container>
     )
