@@ -8,6 +8,7 @@ import FormTextEditor from "./FormTextEditor"
 import Paper from "./Paper"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
+import User from "./User"
 
 export {
   AppBar,
@@ -19,5 +20,6 @@ export {
   FormTextEditor,
   Paper,
   Shell,
-  Sidebar
+  Sidebar,
+  User
 }
