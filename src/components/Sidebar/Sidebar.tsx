@@ -1,9 +1,13 @@
 import React from "react"
 import cx from "classnames"
-import { MdAdd as AddIcon, MdViewList as ListIcon } from "react-icons/md"
+import {
+  MdAccountCircle as AccountIcon,
+  MdAdd as AddIcon,
+  MdViewList as ListIcon
+} from "react-icons/md"
 
 import styles from "./Sidebar.scss"
-import SidebarItem from "./Item"
+import { SidebarItem, SidebarLogout } from "./"
 import { User } from "../"
 
 interface Props {
@@ -19,14 +23,20 @@ const Sidebar: React.SFC<Props> = props => {
   )
   return (
     <nav className={className}>
-      <SidebarItem icon={<AddIcon />} title="Add" to="/add" />
-      <SidebarItem icon={<ListIcon />} title="View" to="/view" />
       <User>
-        {({ data }: any) => {
-          console.log("data", data)
-          if (data.me) return <p>{data.me.name}</p>
-          else return null
-        }}
+        {({ data }: any) => (
+          <>
+            {data.me ? (
+              <>
+                <SidebarItem icon={<AddIcon />} title="Add" to="/add" />
+                <SidebarItem icon={<ListIcon />} title="View" to="/view" />
+                <SidebarLogout />
+              </>
+            ) : (
+              <SidebarItem icon={<AccountIcon />} title="Login" to="/login" />
+            )}
+          </>
+        )}
       </User>
     </nav>
   )

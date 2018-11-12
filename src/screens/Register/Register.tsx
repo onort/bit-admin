@@ -1,12 +1,13 @@
 import React, { Component } from "react"
-import { Field, Form, Formik, FormikBag, FormikActions } from "formik"
+import { Field, Form, Formik, FormikActions } from "formik"
+import { withRouter, RouteComponentProps } from "react-router-dom"
 import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./Register.scss"
 import { Button, Container, Paper, FormInput } from "../../components"
 import validationSchema from "./validationSchema"
-import { FetchResult } from "apollo-link"
+import { CURRENT_USER_QUERY } from "../../components/User"
 
 interface FormValues {
   email: string
@@ -31,13 +32,14 @@ const REGISTER_USER_MUTATION = gql`
   }
 `
 
-class Register extends Component {
+class Register extends Component<RouteComponentProps> {
   public handleSubmit = (mutation: MutationFn<null, FormValues>) => async (
     values: FormValues,
     { resetForm, setSubmitting }: FormikActions<FormValues>
   ): Promise<any> => {
     setSubmitting(true)
-    const res = await mutation({
+    // Consider hashing password before sending to backend
+    await mutation({
       variables: {
         email: values.email,
         name: values.name,
@@ -46,10 +48,15 @@ class Register extends Component {
     })
     resetForm()
     setSubmitting(false)
+    this.props.history.push("/add")
   }
   public render() {
+    // refetch current user query can be omitted // redirect instead
     return (
-      <Mutation mutation={REGISTER_USER_MUTATION}>
+      <Mutation
+        mutation={REGISTER_USER_MUTATION}
+        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+      >
         {(registerUser, { error, loading }) => {
           return (
             <Container narrow="veryNarrow">
@@ -103,4 +110,4 @@ class Register extends Component {
   }
 }
 
-export default Register
+export default withRouter(Register)

@@ -1,11 +1,13 @@
 @import "../../styles/main.scss";
 
 .container {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: $appBar-height;
   left: 0;
   width: $sidebar-width;
-  padding: $spacer-xxlg 0 $spacer-md;
+  padding: $spacer-xxlg 0 $spacer-xxlg;
   background-color: $dark-bg;
   color: $white;
   min-height: calc(100vh - #{$appBar-height});
@@ -61,4 +63,9 @@
 .itemTitle {
   font-weight: 600;
   letter-spacing: px-to-rem(0.75px);
+}
+
+.logout {
+  margin-top: auto;
+  border-top: 1px solid $light-grey;
 }
