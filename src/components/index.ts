@@ -1,5 +1,6 @@
 import AppBar from "./AppBar"
 import AppMain from "./AppMain"
+import AuthRoute from "./AuthRoute"
 import Button from "./Button"
 import Container from "./Container"
 import FormInput from "./FormInput"
@@ -13,6 +14,7 @@ import User from "./User"
 export {
   AppBar,
   AppMain,
+  AuthRoute,
   Button,
   Container,
   FormInput,

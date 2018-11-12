@@ -7,6 +7,7 @@ import { ApolloProvider } from "react-apollo"
 import "normalize.css"
 import "minireset.css"
 import App from "./App"
+import { AuthProvider } from "./AuthContext"
 import { backendUrl } from "../config"
 
 const client = new ApolloClient({
@@ -22,9 +23,11 @@ const client = new ApolloClient({
 
 ReactDOM.render(
   <ApolloProvider client={client}>
-    <Router>
-      <App />
-    </Router>
+    <AuthProvider>
+      <Router>
+        <App />
+      </Router>
+    </AuthProvider>
   </ApolloProvider>,
   document.getElementById("root")
 )

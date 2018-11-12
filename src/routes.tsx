@@ -2,6 +2,7 @@ import React from "react"
 import { Route, Switch } from "react-router-dom"
 
 import { AddScreen, ListView, Login, Register } from "./screens"
+import { AuthRoute } from "./components"
 
 const Routes = () => (
   <Switch>
@@ -10,6 +11,7 @@ const Routes = () => (
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
+    <AuthRoute path="/authadd" component={AddScreen} />
   </Switch>
 )
 
