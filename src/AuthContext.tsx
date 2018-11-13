@@ -1,24 +1,44 @@
 import React, { Component } from "react"
+import { ApolloConsumer, graphql } from "react-apollo"
 
-interface AuthState {
-  isAuth: boolean
+// TODO: Typecheck
+const defaultValue = {
+  state: { isAuth: false },
+  onLogin: () => null,
+  onLogout: () => null
 }
-
-const defaultValue: AuthState = { isAuth: false }
 const AuthContext = React.createContext(defaultValue)
 
-class AuthProvider extends Component<any, AuthState> {
+class AuthProvider extends Component {
   public state = { isAuth: false }
+
+  public handleLogin = (): any => {
+    this.setState({ isAuth: true })
+  }
+
+  public handleLogout = (): any => {
+    console.log("Hanldelogut clicked!")
+  }
 
   public render() {
     return (
-      <AuthContext.Provider value={{ isAuth: this.state.isAuth }}>
-        {this.props.children}
-      </AuthContext.Provider>
+      <ApolloConsumer>
+        {client => (
+          <AuthContext.Provider
+            value={{
+              state: this.state,
+              onLogin: this.handleLogin,
+              onLogout: this.handleLogout
+            }}
+          >
+            {this.props.children}
+          </AuthContext.Provider>
+        )}
+      </ApolloConsumer>
     )
   }
 }
 
 const AuthConsumer = AuthContext.Consumer
 
-export { AuthConsumer, AuthProvider, AuthState }
+export { AuthConsumer, AuthProvider }

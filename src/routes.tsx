@@ -7,7 +7,7 @@ import { AuthRoute } from "./components"
 const Routes = () => (
   <Switch>
     <Route exact={true} path="/" component={Login} />
-    <Route path="/add" component={AddScreen} />
+    <AuthRoute path="/add" component={AddScreen} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
