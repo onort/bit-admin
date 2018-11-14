@@ -1,16 +1,13 @@
 import React, { Component } from "react"
 import { Field, Form, Formik, FormikActions } from "formik"
 import { Link, RouteComponentProps, withRouter } from "react-router-dom"
-import { Mutation, MutationFn } from "react-apollo"
-import gql from "graphql-tag"
 
 import styles from "./Login.scss"
 import { Button, Container, Paper, FormInput } from "../../components"
+import { AuthConsumer } from "../../context"
 import validationSchema from "./validationSchema"
-import { CURRENT_USER_QUERY } from "../../components/User"
-import { AuthConsumer } from "../../AuthContext"
 
-interface FormValues {
+export interface FormValues {
   email: string
   password: string
 }
@@ -20,97 +17,63 @@ const initialValues: FormValues = {
   password: ""
 }
 
-const SIGNIN_USER_MUTATION = gql`
-  mutation SIGNIN_USER($email: String!, $password: String!) {
-    signIn(email: $email, password: $password) {
-      name
-      id
-      password
-      email
-    }
-  }
-`
-
 class Login extends Component<RouteComponentProps> {
-  public handleSubmit = (
-    mutation: MutationFn<null, FormValues>,
-    ctx: any
-  ) => async (
+  public handleSubmit = (ctx: any) => async (
     values: FormValues,
     { resetForm, setSubmitting }: FormikActions<FormValues>
   ): Promise<any> => {
     // Consider hashing password before sending to backend
     setSubmitting(true)
-    await mutation({
-      variables: {
-        email: values.email,
-        password: values.password
-      }
-    })
-    setSubmitting(false)
     resetForm()
-    ctx.onLogin()
+    await ctx.onLogin(values)
+    setSubmitting(false)
     this.props.history.push("/add")
   }
   public render() {
-    // refetch current user quesy can be omitted // redirect
     return (
       <AuthConsumer>
         {ctx => (
-          <Mutation
-            mutation={SIGNIN_USER_MUTATION}
-            refetchQueries={[{ query: CURRENT_USER_QUERY }]}
-          >
-            {(signIn, { error, loading }) => {
-              return (
-                <Container narrow="veryNarrow">
-                  <Paper className={styles.paper} elevation={2}>
-                    <h3 className={styles.title}>Login</h3>
-                    {error && <p>{error.message}</p>}
-                    <Formik
-                      initialValues={initialValues}
-                      validationSchema={validationSchema}
-                      onSubmit={this.handleSubmit(signIn, ctx)}
-                      render={() => (
-                        <Form method="post">
-                          <fieldset disabled={loading} aria-busy={loading}>
-                            <Field
-                              type="text"
-                              name="email"
-                              placeholder="exmaple@mail.com"
-                              label="Email"
-                              component={FormInput}
-                            />
-                            <Field
-                              type="password"
-                              name="password"
-                              placeholder="password"
-                              label="Password"
-                              component={FormInput}
-                            />
-                            <Button
-                              text="Login"
-                              type="submit"
-                              success={true}
-                              className={styles.button}
-                            />
-                          </fieldset>
-                        </Form>
-                      )}
+          <Container narrow="veryNarrow">
+            <Paper className={styles.paper} elevation={2}>
+              <h3 className={styles.title}>Login</h3>
+              <Formik
+                initialValues={initialValues}
+                validationSchema={validationSchema}
+                onSubmit={this.handleSubmit(ctx)}
+                render={() => (
+                  <Form method="post">
+                    <Field
+                      type="text"
+                      name="email"
+                      placeholder="exmaple@mail.com"
+                      label="Email"
+                      component={FormInput}
                     />
-
-                    <Link to="/register">
-                      <Button
-                        className={styles.button}
-                        text="Register"
-                        type="button"
-                      />
-                    </Link>
-                  </Paper>
-                </Container>
-              )
-            }}
-          </Mutation>
+                    <Field
+                      type="password"
+                      name="password"
+                      placeholder="password"
+                      label="Password"
+                      component={FormInput}
+                    />
+                    <Button
+                      text="Login"
+                      type="submit"
+                      success={true}
+                      className={styles.button}
+                    />
+                  </Form>
+                )}
+              />
+              <Link to="/register">
+                <Button
+                  className={styles.button}
+                  text="Register"
+                  type="button"
+                />
+              </Link>
+            </Paper>
+          </Container>
         )}
       </AuthConsumer>
     )

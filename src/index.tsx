@@ -7,7 +7,7 @@ import { ApolloProvider } from "react-apollo"
 import "normalize.css"
 import "minireset.css"
 import App from "./App"
-import { AuthProvider } from "./AuthContext"
+import { AuthProvider } from "./context/"
 import { backendUrl } from "../config"
 
 const client = new ApolloClient({

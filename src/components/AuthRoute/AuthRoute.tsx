@@ -1,6 +1,6 @@
 import React from "react"
 import { Redirect, Route, RouteProps } from "react-router-dom"
-import { AuthConsumer } from "../../AuthContext"
+import { AuthConsumer } from "../../context"
 
 const AuthRoute: React.SFC<RouteProps> = props => {
   return (
