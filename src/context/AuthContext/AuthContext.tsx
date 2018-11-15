@@ -85,7 +85,7 @@ class Auth extends Component<Props, State> {
   }
 }
 
-const currentUserQuery = gql`
+export const currentUserQuery = gql`
   query currentUser {
     currentUser {
       id

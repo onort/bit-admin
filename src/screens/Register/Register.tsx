@@ -7,7 +7,9 @@ import gql from "graphql-tag"
 import styles from "./Register.scss"
 import { Button, Container, Paper, FormInput } from "../../components"
 import validationSchema from "./validationSchema"
-import { CURRENT_USER_QUERY } from "../../components/User"
+// import { CURRENT_USER_QUERY } from "../../components/User"
+
+import { currentUserQuery } from "../../context/AuthContext/AuthContext"
 
 interface FormValues {
   email: string
@@ -55,7 +57,7 @@ class Register extends Component<RouteComponentProps> {
     return (
       <Mutation
         mutation={REGISTER_USER_MUTATION}
-        refetchQueries={[{ query: CURRENT_USER_QUERY }]}
+        refetchQueries={[{ query: currentUserQuery }]}
       >
         {(registerUser, { error, loading }) => {
           return (

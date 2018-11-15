@@ -1,6 +1,10 @@
 import React from "react"
 import cx from "classnames"
-import { MdAdd as AddIcon, MdViewList as ListIcon } from "react-icons/md"
+import {
+  MdAdd as AddIcon,
+  MdViewList as ListIcon,
+  MdLocalOffer as TagIcon
+} from "react-icons/md"
 
 import styles from "./Sidebar.scss"
 import { SidebarItem, SidebarLogout } from "./"
@@ -19,6 +23,7 @@ const Sidebar: React.SFC<Props> = props => {
   return (
     <nav className={className}>
       <SidebarItem icon={<AddIcon />} title="Add" to="/add" />
+      <SidebarItem icon={<TagIcon />} title="Add Tag" to="/add-tag" />
       <SidebarItem icon={<ListIcon />} title="View" to="/view" />
       <SidebarLogout />
     </nav>

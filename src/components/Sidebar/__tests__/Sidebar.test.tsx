@@ -20,7 +20,7 @@ describe("<Sidebar />", () => {
         <Sidebar sidebarOpen={true} />
       </Router>
     )
-    expect(wrapper.find(NavLink)).toHaveLength(2)
+    expect(wrapper.find(NavLink)).toHaveLength(3)
     wrapper.unmount()
   })
 })

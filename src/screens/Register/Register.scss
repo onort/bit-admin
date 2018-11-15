@@ -7,6 +7,8 @@
 .title {
   font-size: $font-size-xlg;
   font-weight: 600;
+  border-bottom: 1px solid $light-border;
+  padding-bottom: $spacer-xxsm;
 }
 
 .button {
