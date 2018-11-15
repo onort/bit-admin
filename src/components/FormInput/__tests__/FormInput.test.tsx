@@ -18,7 +18,7 @@ describe("<FormInput />", () => {
     expect(wrapper.html()).toMatchSnapshot()
   })
 
-  it("should should render a label element with correct text", () => {
+  it("should render a label element with correct text", () => {
     const fakeSubmit = jest.fn()
     const testLabel = "Test"
     const wrapper = mount(
@@ -38,7 +38,7 @@ describe("<FormInput />", () => {
     wrapper.unmount()
   })
 
-  it.skip("should should error text when there's an error", () => {
+  it.skip("should error text when there's an error", () => {
     // Test fails, need to handle async validation?
     const fakeSubmit = jest.fn()
     const failValidate = () => ({ test: "Error" })

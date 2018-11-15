@@ -9,6 +9,7 @@ import {
   FormInput,
   FormTagField,
   FormTextEditor,
+  FormTitle,
   Shell
 } from "../../components"
 import formEnhancer, { FormValues } from "./formEnhancer"
@@ -19,7 +20,7 @@ export class Add extends Component<FormikProps<FormValues>> {
       <Shell>
         <Container narrow="narrow">
           <Form>
-            <h3 className={styles.formTitle}>Add New Bit</h3>
+            <FormTitle title="Add New Bit" />
             <Field
               type="text"
               name="title"

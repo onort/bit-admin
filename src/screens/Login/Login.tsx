@@ -3,7 +3,13 @@ import { Field, Form, Formik, FormikActions } from "formik"
 import { Link, RouteComponentProps, withRouter } from "react-router-dom"
 
 import styles from "./Login.scss"
-import { Button, Container, Paper, FormInput } from "../../components"
+import {
+  Button,
+  Container,
+  Paper,
+  FormInput,
+  FormTitle
+} from "../../components"
 import { AuthConsumer } from "../../context"
 import validationSchema from "./validationSchema"
 
@@ -35,7 +41,7 @@ class Login extends Component<RouteComponentProps> {
         {ctx => (
           <Container narrow="veryNarrow">
             <Paper className={styles.paper} elevation={2}>
-              <h3 className={styles.title}>Login</h3>
+              <FormTitle title="Login" />
               <Formik
                 initialValues={initialValues}
                 validationSchema={validationSchema}

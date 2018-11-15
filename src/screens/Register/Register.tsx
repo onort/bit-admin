@@ -5,7 +5,13 @@ import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./Register.scss"
-import { Button, Container, Paper, FormInput } from "../../components"
+import {
+  Button,
+  Container,
+  Paper,
+  FormInput,
+  FormTitle
+} from "../../components"
 import validationSchema from "./validationSchema"
 // import { CURRENT_USER_QUERY } from "../../components/User"
 
@@ -63,7 +69,7 @@ class Register extends Component<RouteComponentProps> {
           return (
             <Container narrow="veryNarrow">
               <Paper className={styles.paper} elevation={2}>
-                <h3 className={styles.title}>Register</h3>
+                <FormTitle title="Register" />
                 {error && <p>{error.message}</p>}
                 <Formik
                   initialValues={initialValues}

@@ -1,0 +1,19 @@
+@import "../../styles/main.scss";
+
+.container {
+  display: flex;
+  border-bottom: 1px solid $light-border;
+  padding-bottom: $spacer-xxsm;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  font-size: $font-size-xxlg;
+  margin-right: $spacer-sm;
+}
+
+.title {
+  font-size: $font-size-xlg;
+  font-weight: 600;
+}

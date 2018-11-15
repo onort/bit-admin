@@ -1,10 +1,17 @@
 import React from "react"
 import { Field, Form, Formik, FormikProps } from "formik"
 import { Mutation } from "react-apollo"
-import { MdArchive as SaveIcon } from "react-icons/md"
+import { MdLocalOffer as TagIcon, MdArchive as SaveIcon } from "react-icons/md"
 
 import styles from "./AddTag.scss"
-import { Button, Container, FormInput, Paper, Shell } from "../../components"
+import {
+  Button,
+  Container,
+  FormInput,
+  FormTitle,
+  Paper,
+  Shell
+} from "../../components"
 import validationSchema from "./validationSchema"
 
 interface Tag {
@@ -30,7 +37,7 @@ const AddTag: React.SFC = () => {
             onSubmit={values => console.log(values)}
             render={() => (
               <Form>
-                <h3 className={styles.title}>Add New Tag</h3>
+                <FormTitle title="Add New Tag" icon={<TagIcon />} />
                 <Field
                   type="text"
                   name="name"
