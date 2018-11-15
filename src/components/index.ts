@@ -3,6 +3,7 @@ import AppMain from "./AppMain"
 import AuthRoute from "./AuthRoute"
 import Button from "./Button"
 import Container from "./Container"
+import ErrorMessage from "./ErrorMessage"
 import FormInput from "./FormInput"
 import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
@@ -17,6 +18,7 @@ export {
   AuthRoute,
   Button,
   Container,
+  ErrorMessage,
   FormInput,
   FormTagField,
   FormTextEditor,

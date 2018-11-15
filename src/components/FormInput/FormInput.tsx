@@ -2,6 +2,7 @@ import React from "react"
 import { FieldProps } from "formik"
 
 import styles from "./FormInput.scss"
+import { ErrorMessage } from "../"
 
 // Custom component props are untyped as of formik v1.3.1
 interface Props extends FieldProps {
@@ -20,9 +21,7 @@ const FormInput: React.SFC<Props> = ({ form, field, ...props }) => {
       )}
       <input className={styles.input} {...field} {...props} />
       {touched[name] &&
-        !!errors[name] && (
-          <span className={styles.error}>Error: {errors[name]}</span>
-        )}
+        errors[name] && <ErrorMessage small={true} message={errors[name]} />}
     </div>
   )
 }

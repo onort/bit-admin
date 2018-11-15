@@ -3,6 +3,7 @@ import { FieldProps } from "formik"
 
 import styles from "./FormTagField.scss"
 import { Tag } from "./"
+import { ErrorMessage } from "../"
 
 export interface TagType {
   name: string
@@ -62,12 +63,10 @@ const FormTagField: React.SFC<Props> = ({
         </div>
       )}
       {touched[name] &&
-        !!errors[name] && (
-          <span className={styles.error}>Error: {errors[name]}</span>
-        )}
+        !!errors[name] && <ErrorMessage small={true} message={errors[name]} />}
       {touched[name] &&
         !!errors[tagsarrayname] && (
-          <span className={styles.error}>Error: {errors[tagsarrayname]}</span>
+          <ErrorMessage small={true} message={errors[tagsarrayname]} />
         )}
     </div>
   )

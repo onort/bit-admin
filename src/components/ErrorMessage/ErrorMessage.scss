@@ -1,0 +1,15 @@
+@import "../../styles/main.scss";
+
+.container {
+  border-left: px-to-rem(6px) solid $danger;
+  margin: $spacer-xsm 0;
+  padding: $spacer-xxsm $spacer-xsm;
+  color: $danger;
+}
+
+.small {
+  border-left: px-to-rem(2px) solid $danger;
+  margin: $spacer-xxsm 0;
+  padding: 0 $spacer-xsm;
+  font-size: $font-size-sm;
+}

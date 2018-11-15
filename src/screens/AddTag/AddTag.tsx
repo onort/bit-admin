@@ -8,6 +8,7 @@ import styles from "./AddTag.scss"
 import {
   Button,
   Container,
+  ErrorMessage,
   FormInput,
   FormTitle,
   Paper,
@@ -43,7 +44,7 @@ const addTagMuatation = gql`
   }
 `
 
-// TODO: Form Error and Loading Components
+// TODO: Loading Component
 // TODO: Success feedback via Modal
 const AddTag: React.SFC = () => {
   const handleSubmit = (mutation: MutationFn<null, Tag>) => async (
@@ -78,7 +79,7 @@ const AddTag: React.SFC = () => {
                     return (
                       <Form method="post">
                         <FormTitle title="Add New Tag" icon={<TagIcon />} />
-                        {error && <p>Error: {error.message}</p>}
+                        {error && <ErrorMessage message={error.message} />}
                         <Field
                           type="text"
                           name="name"
