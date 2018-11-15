@@ -4,6 +4,7 @@
   display: flex;
   border-bottom: 1px solid $light-border;
   padding-bottom: $spacer-xxsm;
+  color: lighten($text-color, 10);
 }
 
 .icon {
