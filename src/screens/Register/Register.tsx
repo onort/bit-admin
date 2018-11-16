@@ -8,13 +8,12 @@ import styles from "./Register.scss"
 import {
   Button,
   Container,
-  Paper,
+  ErrorMessage,
   FormInput,
-  FormTitle
+  FormTitle,
+  Paper
 } from "../../components"
 import validationSchema from "./validationSchema"
-// import { CURRENT_USER_QUERY } from "../../components/User"
-
 import { currentUserQuery } from "../../context/AuthContext/AuthContext"
 
 interface FormValues {
@@ -29,13 +28,10 @@ const initialValues: FormValues = {
   password: ""
 }
 
-const REGISTER_USER_MUTATION = gql`
-  mutation REGISTER($email: String!, $name: String!, $password: String!) {
+const registerUserMutation = gql`
+  mutation registerUser($email: String!, $name: String!, $password: String!) {
     registerUser(email: $email, name: $name, password: $password) {
-      name
       id
-      password
-      email
     }
   }
 `
@@ -62,7 +58,7 @@ class Register extends Component<RouteComponentProps> {
     // refetch current user query can be omitted // redirect instead
     return (
       <Mutation
-        mutation={REGISTER_USER_MUTATION}
+        mutation={registerUserMutation}
         refetchQueries={[{ query: currentUserQuery }]}
       >
         {(registerUser, { error, loading }) => {
@@ -70,7 +66,7 @@ class Register extends Component<RouteComponentProps> {
             <Container narrow="veryNarrow">
               <Paper className={styles.paper} elevation={2}>
                 <FormTitle title="Register" />
-                {error && <p>{error.message}</p>}
+                {error && <ErrorMessage message={error.message} />}
                 <Formik
                   initialValues={initialValues}
                   validationSchema={validationSchema}

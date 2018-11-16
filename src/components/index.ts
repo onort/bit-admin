@@ -1,3 +1,4 @@
+import Alert from "./Alert"
 import AppBar from "./AppBar"
 import AppMain from "./AppMain"
 import AuthRoute from "./AuthRoute"
@@ -13,6 +14,7 @@ import Shell from "./Shell"
 import Sidebar from "./Sidebar"
 
 export {
+  Alert,
   AppBar,
   AppMain,
   AuthRoute,

@@ -1,0 +1,32 @@
+@import "../../styles/main.scss";
+
+.container {
+  position: absolute;
+  width: px-to-rem(240px);
+  top: calc(#{$appBar-height} + #{$spacer-md});
+  right: 5%;
+  z-index: 999;
+  background-color: darken($light-bg, 10);
+  padding: $spacer-xsm $spacer-md;
+  border-radius: px-to-rem(6px);
+  opacity: 0.6;
+}
+
+.default {
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14),
+    0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+.success {
+  background-color: $success;
+  color: $white;
+  box-shadow: 0 2px 4px -1px rgba(40, 167, 69, 0.2),
+    0 4px 5px 0 rgba(40, 167, 69, 0.14), 0 1px 10px 0 rgba(40, 167, 69, 0.12);
+}
+
+.error {
+  background-color: $danger;
+  color: $white;
+  box-shadow: 0 2px 4px -1px rgba(220, 53, 69, 0.2),
+    0 4px 5px 0 rgba(220, 53, 69, 0.14), 0 1px 10px 0 rgba(220, 53, 69, 0.12);
+}

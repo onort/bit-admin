@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Alert /> should match snapshot 1`] = `
+<div
+  className="container default"
+>
+  <span
+    className="message"
+  >
+    Test message.
+  </span>
+</div>
+`;
+
+exports[`<Alert /> should match snapshot 2`] = `"<div class=\\"container default\\"><span class=\\"message\\">Test message.</span></div>"`;
