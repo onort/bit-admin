@@ -1,0 +1,76 @@
+@import "../../styles/main.scss";
+
+$total: 16;
+
+.table {
+  table-layout: fixed;
+  width: 100%;
+  font-size: px-to-rem(14px);
+  margin-bottom: $spacer-md;
+}
+
+.head {
+  font-size: $spacer-md;
+  font-weight: 600;
+  color: lighten($text-color, 20);
+  text-align: left;
+  margin-bottom: $spacer-sm;
+
+  .row {
+    background-color: $white;
+    &:hover {
+      background-color: $white;
+    }
+  }
+
+  .cell {
+    padding: $spacer-xsm $spacer-sm $spacer-xsm $spacer-xxsm;
+  }
+}
+
+.row {
+  background-color: $white;
+  transition: all 0.25s;
+
+  &:hover {
+    background-color: darken($white, 2);
+  }
+
+  &:nth-child(even) {
+    background-color: $lighter-bg;
+
+    &:hover {
+      background-color: darken($lighter-bg, 2);
+    }
+  }
+}
+
+.cell {
+  display: table-cell;
+  width: auto;
+  padding: $spacer-xxsm $spacer-sm $spacer-xxsm $spacer-xxsm;
+  border-bottom: px-to-rem(1px) solid $light-border;
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.left {
+  text-align: left;
+}
+
+.center {
+  text-align: center;
+}
+
+.right {
+  text-align: right;
+}
+
+@for $i from 1 through $total {
+  .width-#{$i} {
+    width: get-percentage($i, $total);
+    max-width: get-percentage($i, $total);
+  }
+}

@@ -3,14 +3,15 @@ import cx from "classnames"
 
 import styles from "./Table.scss"
 import { Body, Cell, Head, Row } from "./"
-import { Width as CellWidth } from "./Cell"
+import { Alignment as CellAlignment, Width as CellWidth } from "./Cell"
 
 // TODO: Dynamic Data interace?
 interface Data {
   id: string
 }
 
-interface Column {
+export interface Column {
+  align?: CellAlignment
   dataIndex: string
   title: string
   width?: CellWidth
@@ -33,6 +34,7 @@ class Table extends Component<Props, any> {
             {this.props.columns.map((column: Column) => (
               <Cell
                 key={column.dataIndex}
+                align={column.align}
                 dataIndex={column.dataIndex}
                 width={column.width}
               >
@@ -45,8 +47,12 @@ class Table extends Component<Props, any> {
           {data.map(cellData => (
             <Row key={cellData.id}>
               {columns.map((col: Column) => (
-                <Cell key={cellData.id + col.dataIndex} width={col.width}>
-                  {cellData[col.dataIndex]}
+                <Cell
+                  key={cellData.id + col.dataIndex}
+                  align={col.align}
+                  width={col.width}
+                >
+                  {!!cellData[col.dataIndex] ? cellData[col.dataIndex] : " - "}
                 </Cell>
               ))}
             </Row>
