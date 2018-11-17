@@ -20,6 +20,7 @@ class Add extends Component {
     return (
       <Query query={ALL_ENTRIES_QUERY}>
         {({ loading, error, data }) => {
+          console.log(data)
           if (loading) return <p>Loading...</p>
           if (error) return <p>Error: {error.message}</p>
           return (
