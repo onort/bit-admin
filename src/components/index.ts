@@ -12,6 +12,12 @@ import FormTitle from "./FormTitle"
 import Paper from "./Paper"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
+import Table, {
+  Body as TableBody,
+  Cell as TableCell,
+  Head as TableHead,
+  Row as TableRow
+} from "./Table"
 
 export {
   Alert,
@@ -27,5 +33,10 @@ export {
   FormTitle,
   Paper,
   Shell,
-  Sidebar
+  Sidebar,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow
 }
