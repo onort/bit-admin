@@ -45,10 +45,10 @@
 
 .text {
   display: block;
+  margin-left: $spacer-xsm;
 }
 
 .icon {
   display: flex;
   font-size: $font-size-lg;
-  margin-right: $spacer-xsm;
 }

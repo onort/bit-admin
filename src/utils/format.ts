@@ -2,10 +2,11 @@ import dayjs from "dayjs"
 
 const defaultDateFormat = "DD.MM.YYYY"
 
+// if date is converted already in cached data, it returns date as it is
 export const convertISODate = (
   date: string,
   format: string = defaultDateFormat
-) => dayjs(date).format(format)
+) => (dayjs(date).isValid() ? dayjs(date).format(format) : date)
 
 export const convertISODateFromData = (
   data: any[],

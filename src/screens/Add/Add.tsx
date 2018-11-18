@@ -10,6 +10,7 @@ import {
   FormTagField,
   FormTextEditor,
   FormTitle,
+  Paper,
   Shell
 } from "../../components"
 import formEnhancer, { FormValues } from "./formEnhancer"
@@ -19,43 +20,45 @@ export class Add extends Component<FormikProps<FormValues>> {
     return (
       <Shell>
         <Container narrow="narrow">
-          <Form>
-            <FormTitle title="Add New Bit" />
-            <Field
-              type="text"
-              name="title"
-              placeholder="Title"
-              label="Title"
-              component={FormInput}
-            />
-            <Field
-              type="text"
-              name="description"
-              placeholder="Description"
-              label="Description"
-              component={FormInput}
-            />
-            <FastField
-              name="editorState"
-              label="Content"
-              component={FormTextEditor}
-            />
-            <Field
-              type="text"
-              name="tagToAdd"
-              placeholder=""
-              label="Tags"
-              tagsarrayname="tags"
-              component={FormTagField}
-            />
-            <Button
-              className={styles.submitButton}
-              text="Submit"
-              type="submit"
-              success={true}
-              icon={<SaveIcon />}
-            />
-          </Form>
+          <Paper className={styles.paper} elevation={2}>
+            <Form>
+              <FormTitle title="Add New Bit" />
+              <Field
+                type="text"
+                name="title"
+                placeholder="Title"
+                label="Title"
+                component={FormInput}
+              />
+              <Field
+                type="text"
+                name="description"
+                placeholder="Description"
+                label="Description"
+                component={FormInput}
+              />
+              <FastField
+                name="editorState"
+                label="Content"
+                component={FormTextEditor}
+              />
+              <Field
+                type="text"
+                name="tagToAdd"
+                placeholder=""
+                label="Tags"
+                tagsarrayname="tags"
+                component={FormTagField}
+              />
+              <Button
+                className={styles.submit}
+                text="Submit"
+                type="submit"
+                success={true}
+                icon={<SaveIcon />}
+              />
+            </Form>
+          </Paper>
         </Container>
       </Shell>
     )

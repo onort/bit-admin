@@ -1,5 +1,9 @@
 @import "../../styles/main.scss";
 
-.submitButton {
+.paper {
+  margin-top: $spacer-xlg;
+}
+
+.submit {
   margin: $spacer-md 0 $spacer-md auto;
 }

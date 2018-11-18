@@ -1,27 +1,77 @@
 import React, { Component } from "react"
+import { Query } from "react-apollo"
+import gql from "graphql-tag"
 
 import styles from "./ViewTags.scss"
-import { Container, Paper, Shell, Table } from "../../components"
+import { Container, Pagination, Paper, Shell, Table } from "../../components"
 import { ColumnType } from "../../components/Table"
+import { itemsPerPage } from "../../constants"
 import { format } from "../../utils"
-import mockData from "./mockData" // REMOVE
+
+const tagsQuery = gql`
+  query tags($skip: Int = 0, $first: Int = ${itemsPerPage} ) {
+    tags(first: $first, skip: $skip, orderBy: createdAt_DESC) {
+      id
+      metaDescription
+      metaTitle
+      name
+      createdAt
+      updatedAt
+    }
+  }
+`
 
 const columns: ColumnType[] = [
   { dataIndex: "name", title: "Name", width: 4 },
-  { dataIndex: "metaTitle", title: "Title(Meta)", width: 4 },
-  { dataIndex: "metaDescription", title: "Description(Meta)", width: 4 },
+  { dataIndex: "metaTitle", title: "Title (Meta)", width: 4 },
+  { dataIndex: "metaDescription", title: "Description (Meta)", width: 4 },
   { dataIndex: "createdAt", title: "Created", width: 2, align: "center" },
   { dataIndex: "updatedAt", title: "Last Update", width: 2, align: "center" }
 ]
 
-class ViewTags extends Component {
+interface State {
+  currentPage: number
+}
+
+// TODO: Loading Component
+// TODO: Error Page / Error Component / Error Alert ?
+// TODO: Handle Case: There's no data
+class ViewTags extends Component<any, State> {
+  public state = { currentPage: 1 }
+  public handleNextClick = () =>
+    this.setState({ currentPage: this.state.currentPage + 1 })
+  public handlePrevClick = () =>
+    this.setState({ currentPage: this.state.currentPage - 1 })
   public render() {
-    const data = format.convertISODateFromData(mockData.tags)
+    const { currentPage } = this.state
     return (
       <Shell>
         <Container>
           <Paper className={styles.paper} elevation={2}>
-            <Table data={data} columns={columns} />
+            <Query
+              query={tagsQuery}
+              fetchPolicy="network-only"
+              variables={{
+                skip: (currentPage - 1) * itemsPerPage
+              }}
+            >
+              {({ data, loading, error }) => {
+                if (loading) return <p>Loading...</p>
+                if (error) return <p>Error: {error.message}</p>
+                return (
+                  <Table
+                    data={format.convertISODateFromData(data.tags)}
+                    columns={columns}
+                  />
+                )
+              }}
+            </Query>
+            <Pagination
+              currentPage={currentPage}
+              onNextClick={this.handleNextClick}
+              onPrevClick={this.handlePrevClick}
+              queryEndPoint="tagsConnection"
+            />
           </Paper>
         </Container>
       </Shell>

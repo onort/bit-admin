@@ -11,10 +11,11 @@ import {
 } from "./screens"
 import { AuthRoute } from "./components"
 
+// TODO: Utilize AuthRoute
 const Routes = () => (
   <Switch>
     <Route exact={true} path="/" component={Login} />
-    <AuthRoute path="/add" component={AddScreen} />
+    <Route path="/add" component={AddScreen} />
     <Route path="/add-tag" component={AddTag} />
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
@@ -31,6 +32,6 @@ export type AppRoute =
   | "/login"
   | "/register"
   | "/view"
-  | " view-tags"
+  | "/view-tags"
 
 export default Routes

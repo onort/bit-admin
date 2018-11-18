@@ -9,6 +9,7 @@ import FormInput from "./FormInput"
 import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
+import Pagination from "./Pagination"
 import Paper from "./Paper"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
@@ -31,6 +32,7 @@ export {
   FormTagField,
   FormTextEditor,
   FormTitle,
+  Pagination,
   Paper,
   Shell,
   Sidebar,
