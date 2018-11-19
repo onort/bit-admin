@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import { Field, Form, Formik, FormikActions } from "formik"
+import { Field, Form, Formik, FormikActions, FormikProps } from "formik"
 import { Link, RouteComponentProps, withRouter } from "react-router-dom"
 
 import styles from "./Login.scss"
@@ -8,7 +8,8 @@ import {
   Container,
   Paper,
   FormInput,
-  FormTitle
+  FormTitle,
+  Loading
 } from "../../components"
 import { AuthConsumer } from "../../context"
 import validationSchema from "./validationSchema"
@@ -46,38 +47,43 @@ class Login extends Component<RouteComponentProps> {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={this.handleSubmit(ctx)}
-                render={() => (
-                  <Form method="post">
-                    <Field
-                      type="text"
-                      name="email"
-                      placeholder="exmaple@mail.com"
-                      label="Email"
-                      component={FormInput}
-                    />
-                    <Field
-                      type="password"
-                      name="password"
-                      placeholder="password"
-                      label="Password"
-                      component={FormInput}
-                    />
-                    <Button
-                      text="Login"
-                      type="submit"
-                      success={true}
-                      className={styles.button}
-                    />
-                  </Form>
-                )}
+                render={(form: FormikProps<FormValues>) => {
+                  if (form.isSubmitting) return <Loading />
+                  return (
+                    <>
+                      <Form method="post">
+                        <Field
+                          type="text"
+                          name="email"
+                          placeholder="exmaple@mail.com"
+                          label="Email"
+                          component={FormInput}
+                        />
+                        <Field
+                          type="password"
+                          name="password"
+                          placeholder="password"
+                          label="Password"
+                          component={FormInput}
+                        />
+                        <Button
+                          text="Login"
+                          type="submit"
+                          success={true}
+                          className={styles.button}
+                        />
+                      </Form>
+                      <Link to="/register">
+                        <Button
+                          className={styles.button}
+                          text="Register"
+                          type="button"
+                        />
+                      </Link>
+                    </>
+                  )
+                }}
               />
-              <Link to="/register">
-                <Button
-                  className={styles.button}
-                  text="Register"
-                  type="button"
-                />
-              </Link>
             </Paper>
           </Container>
         )}

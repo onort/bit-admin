@@ -12,6 +12,7 @@ export const convertISODateFromData = (
   data: any[],
   format: string = defaultDateFormat
 ) => {
+  if (!data) return []
   return data.map(d => {
     const { createdAt, updatedAt } = d
     if (!createdAt && !updatedAt) return d

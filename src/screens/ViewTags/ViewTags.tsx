@@ -56,12 +56,12 @@ class ViewTags extends Component<any, State> {
               }}
             >
               {({ data, loading, error }) => {
-                if (loading) return <p>Loading...</p>
                 if (error) return <p>Error: {error.message}</p>
                 return (
                   <Table
                     data={format.convertISODateFromData(data.tags)}
                     columns={columns}
+                    loading={loading}
                   />
                 )
               }}

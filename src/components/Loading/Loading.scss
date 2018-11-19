@@ -1,0 +1,52 @@
+@import "../../styles/main.scss";
+
+// credit: http://tobiasahlin.com/spinkit/
+
+.container {
+  margin: px-to-rem(100px) auto;
+  width: 100%;
+  text-align: center;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  margin: 10% auto 0;
+  z-index: 9999;
+}
+
+[class*="_dot"] {
+  width: $spacer-md;
+  height: $spacer-md;
+  margin-left: $spacer-xxsm;
+  background-color: $text-color;
+  border-radius: 100%;
+  display: inline-block;
+  animation: bouncedelay 1.4s infinite ease-in-out both;
+}
+
+.container > .dot1 {
+  animation-delay: -0.32s;
+}
+
+.container > .dot2 {
+  animation-delay: -0.16s;
+}
+
+.container > .dot3 {
+  animation-delay: 0s;
+}
+
+@keyframes bouncedelay {
+  0%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}

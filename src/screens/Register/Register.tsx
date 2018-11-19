@@ -11,6 +11,7 @@ import {
   ErrorMessage,
   FormInput,
   FormTitle,
+  Loading,
   Paper
 } from "../../components"
 import validationSchema from "./validationSchema"
@@ -71,9 +72,10 @@ class Register extends Component<RouteComponentProps> {
                   initialValues={initialValues}
                   validationSchema={validationSchema}
                   onSubmit={this.handleSubmit(registerUser)}
-                  render={() => (
-                    <Form method="post">
-                      <fieldset disabled={loading} aria-busy={loading}>
+                  render={() => {
+                    if (loading) return <Loading />
+                    return (
+                      <Form method="post">
                         <Field
                           type="text"
                           name="name"
@@ -101,9 +103,9 @@ class Register extends Component<RouteComponentProps> {
                           type="submit"
                           success={true}
                         />
-                      </fieldset>
-                    </Form>
-                  )}
+                      </Form>
+                    )
+                  }}
                 />
               </Paper>
             </Container>

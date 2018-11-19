@@ -16,8 +16,7 @@ interface Props {
   queryEndPoint: string
 }
 
-// TODO: Loading Component
-// TODO: Error page?
+// TO DECIDE: Handle cases error & loading or return null?
 const Pagination: React.SFC<Props> = props => {
   const { currentPage, onNextClick, onPrevClick, queryEndPoint } = props
   const paginationQuery = gql`
@@ -35,8 +34,8 @@ const Pagination: React.SFC<Props> = props => {
   return (
     <Query query={paginationQuery} fetchPolicy="network-only">
       {({ data, error, loading }) => {
-        if (loading) return <p>Loading...</p>
-        if (error) return <p>{error.message}</p>
+        if (loading) return null
+        if (error) return null
         if (data.length === 0) return null
         const count = data[queryEndPoint].aggregate.count
         const totalPages = Math.ceil(count / itemsPerPage)

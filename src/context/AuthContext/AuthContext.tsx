@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import { graphql, compose, MutationFn, QueryResult } from "react-apollo"
 import gql from "graphql-tag"
 
+import { Loading } from "../../components"
 import { FormValues } from "../../screens/Login"
 
 interface State {
@@ -18,28 +19,34 @@ interface Props {
 }
 
 const defaultValue = {
-  state: { isAuth: null, checkingAuth: true },
+  state: { isAuth: null, checkingAuth: false },
   onLogin: (values: FormValues) => Promise.resolve(),
   onLogout: () => Promise.resolve()
 }
 const AuthContext = React.createContext(defaultValue)
 
+// TO FIX: AuthFlow is flawed!
 class Auth extends Component<Props, State> {
-  public state = { isAuth: null, checkingAuth: true }
+  public state = { isAuth: null, checkingAuth: false }
 
   public handleLogin = async (values: FormValues): Promise<any> => {
     this.setState({ checkingAuth: true })
-    const res: any = await this.props.signInMutation({
-      variables: {
-        email: values.email,
-        password: values.password
-      },
-      refetchQueries: [{ query: currentUserQuery }]
-    })
-
-    if (res.data.signIn.id) {
-      this.setState({ isAuth: true, checkingAuth: false })
+    try {
+      const res: any = await this.props.signInMutation({
+        variables: {
+          email: values.email,
+          password: values.password
+        },
+        refetchQueries: [{ query: currentUserQuery }]
+      })
+      if (res.data.signIn.id) {
+        this.setState({ isAuth: true, checkingAuth: false })
+      }
+      return
+    } catch (e) {
+      console.log(e)
     }
+    this.setState({ isAuth: true, checkingAuth: false })
   }
 
   public handleLogout = async (): Promise<void> => {
@@ -76,7 +83,7 @@ class Auth extends Component<Props, State> {
         }}
       >
         {this.props.currentUserQuery.loading ? (
-          <p>Loading</p>
+          <Loading fullscreen={true} />
         ) : (
           this.props.children
         )}

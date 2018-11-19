@@ -14,6 +14,7 @@ import {
   ErrorMessage,
   FormInput,
   FormTitle,
+  Loading,
   Paper,
   Shell
 } from "../../components"
@@ -53,7 +54,6 @@ interface State {
   message: string
 }
 
-// TODO: Loading Component
 class AddTag extends Component<any, State> {
   public state = {
     showAlert: false,
@@ -109,7 +109,7 @@ class AddTag extends Component<any, State> {
                     validationSchema={validationSchema}
                     onSubmit={this.handleSubmit(addTag)}
                     render={(form: FormikProps<Tag>) => {
-                      if (loading) return <p>Loading...</p>
+                      if (loading) return <Loading />
                       return (
                         <Form method="post">
                           <FormTitle title="Add New Tag" icon={<TagIcon />} />
