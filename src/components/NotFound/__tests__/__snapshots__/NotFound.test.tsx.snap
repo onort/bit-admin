@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NotFound /> should match snapshot 1`] = `"<div class=\\"wrapper\\"><div class=\\"container\\"><span class=\\"code\\">404</span><span class=\\"message\\">The page you&#x27;re looking for cannot be found. Make sure you have entered the page address correctly.</span><a class=\\"action\\" href=\\"/\\">Homepage</a></div></div>"`;

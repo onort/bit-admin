@@ -13,6 +13,7 @@ import Loading from "./Loading"
 import Pagination from "./Pagination"
 import Paper from "./Paper"
 import NoData from "./NoData"
+import NotFound from "./NotFound"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
 import Table, {
@@ -21,6 +22,7 @@ import Table, {
   Head as TableHead,
   Row as TableRow
 } from "./Table"
+import Wrapper from "./Wrapper"
 
 export {
   Alert,
@@ -38,11 +40,13 @@ export {
   Pagination,
   Paper,
   NoData,
+  NotFound,
   Shell,
   Sidebar,
   Table,
   TableBody,
   TableCell,
   TableHead,
-  TableRow
+  TableRow,
+  Wrapper
 }

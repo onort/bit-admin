@@ -12,7 +12,8 @@ import {
   FormInput,
   FormTitle,
   Loading,
-  Paper
+  Paper,
+  Wrapper
 } from "../../components"
 import validationSchema from "./validationSchema"
 import { currentUserQuery } from "../../context/AuthContext/AuthContext"
@@ -64,51 +65,53 @@ class Register extends Component<RouteComponentProps> {
       >
         {(registerUser, { error, loading }) => {
           return (
-            <Container narrow="veryNarrow">
-              <Paper className={styles.paper} elevation={2}>
-                <FormTitle title="Register" />
-                {error && <ErrorMessage message={error.message} />}
-                <Formik
-                  initialValues={initialValues}
-                  validationSchema={validationSchema}
-                  onSubmit={this.handleSubmit(registerUser)}
-                  render={() => {
-                    if (loading) return <Loading />
-                    return (
-                      <Form method="post">
-                        <Field
-                          type="text"
-                          name="name"
-                          placeholder="Your Name"
-                          label="Name"
-                          component={FormInput}
-                        />
-                        <Field
-                          type="text"
-                          name="email"
-                          placeholder="Your Email"
-                          label="Email"
-                          component={FormInput}
-                        />
-                        <Field
-                          type="password"
-                          name="password"
-                          placeholder="Your Password"
-                          label="Password"
-                          component={FormInput}
-                        />
-                        <Button
-                          className={styles.button}
-                          text="Register"
-                          type="submit"
-                          success={true}
-                        />
-                      </Form>
-                    )
-                  }}
-                />
-              </Paper>
-            </Container>
+            <Wrapper>
+              <Container narrow="veryNarrow">
+                <Paper className={styles.paper} elevation={2}>
+                  <FormTitle title="Register" />
+                  {error && <ErrorMessage message={error.message} />}
+                  <Formik
+                    initialValues={initialValues}
+                    validationSchema={validationSchema}
+                    onSubmit={this.handleSubmit(registerUser)}
+                    render={() => {
+                      if (loading) return <Loading />
+                      return (
+                        <Form method="post">
+                          <Field
+                            type="text"
+                            name="name"
+                            placeholder="Your Name"
+                            label="Name"
+                            component={FormInput}
+                          />
+                          <Field
+                            type="text"
+                            name="email"
+                            placeholder="Your Email"
+                            label="Email"
+                            component={FormInput}
+                          />
+                          <Field
+                            type="password"
+                            name="password"
+                            placeholder="Your Password"
+                            label="Password"
+                            component={FormInput}
+                          />
+                          <Button
+                            className={styles.button}
+                            text="Register"
+                            type="submit"
+                            success={true}
+                          />
+                        </Form>
+                      )
+                    }}
+                  />
+                </Paper>
+              </Container>
+            </Wrapper>
           )
         }}
       </Mutation>

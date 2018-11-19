@@ -9,7 +9,8 @@ import {
   Paper,
   FormInput,
   FormTitle,
-  Loading
+  Loading,
+  Wrapper
 } from "../../components"
 import { AuthConsumer } from "../../context"
 import validationSchema from "./validationSchema"
@@ -40,52 +41,54 @@ class Login extends Component<RouteComponentProps> {
     return (
       <AuthConsumer>
         {ctx => (
-          <Container narrow="veryNarrow">
-            <Paper className={styles.paper} elevation={2}>
-              <FormTitle title="Login" />
-              <Formik
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-                onSubmit={this.handleSubmit(ctx)}
-                render={(form: FormikProps<FormValues>) => {
-                  if (form.isSubmitting) return <Loading />
-                  return (
-                    <>
-                      <Form method="post">
-                        <Field
-                          type="text"
-                          name="email"
-                          placeholder="exmaple@mail.com"
-                          label="Email"
-                          component={FormInput}
-                        />
-                        <Field
-                          type="password"
-                          name="password"
-                          placeholder="password"
-                          label="Password"
-                          component={FormInput}
-                        />
-                        <Button
-                          text="Login"
-                          type="submit"
-                          success={true}
-                          className={styles.button}
-                        />
-                      </Form>
-                      <Link to="/register">
-                        <Button
-                          className={styles.button}
-                          text="Register"
-                          type="button"
-                        />
-                      </Link>
-                    </>
-                  )
-                }}
-              />
-            </Paper>
-          </Container>
+          <Wrapper>
+            <Container narrow="veryNarrow">
+              <Paper className={styles.paper} elevation={2}>
+                <FormTitle title="Login" />
+                <Formik
+                  initialValues={initialValues}
+                  validationSchema={validationSchema}
+                  onSubmit={this.handleSubmit(ctx)}
+                  render={(form: FormikProps<FormValues>) => {
+                    if (form.isSubmitting) return <Loading />
+                    return (
+                      <>
+                        <Form method="post">
+                          <Field
+                            type="text"
+                            name="email"
+                            placeholder="exmaple@mail.com"
+                            label="Email"
+                            component={FormInput}
+                          />
+                          <Field
+                            type="password"
+                            name="password"
+                            placeholder="password"
+                            label="Password"
+                            component={FormInput}
+                          />
+                          <Button
+                            text="Login"
+                            type="submit"
+                            success={true}
+                            className={styles.button}
+                          />
+                        </Form>
+                        <Link to="/register">
+                          <Button
+                            className={styles.button}
+                            text="Register"
+                            type="button"
+                          />
+                        </Link>
+                      </>
+                    )
+                  }}
+                />
+              </Paper>
+            </Container>
+          </Wrapper>
         )}
       </AuthConsumer>
     )

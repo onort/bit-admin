@@ -9,7 +9,7 @@ import {
   Register,
   ViewTags
 } from "./screens"
-import { AuthRoute } from "./components"
+import { AuthRoute, NotFound } from "./components"
 
 // TODO: Utilize AuthRoute
 const Routes = () => (
@@ -22,6 +22,7 @@ const Routes = () => (
     <Route path="/view" component={ListView} />
     <Route path="/view-tags" component={ViewTags} />
     <AuthRoute path="/authadd" component={AddScreen} />
+    <Route component={NotFound} />
   </Switch>
 )
 

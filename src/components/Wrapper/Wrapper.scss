@@ -1,0 +1,8 @@
+@import "../../styles/main.scss";
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: $lighter-bg;
+  display: flex;
+}

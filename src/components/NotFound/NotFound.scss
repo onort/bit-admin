@@ -1,0 +1,48 @@
+@import "../../styles/main.scss";
+
+.wrapper {
+  height: 100vh;
+  width: 100vw;
+  background-color: $lighter-bg;
+  display: flex;
+}
+
+.container {
+  color: $text-color-muted;
+  margin: 10% auto;
+  width: px-to-rem(600px);
+
+  span {
+    display: block;
+  }
+}
+
+.code {
+  font-size: 7.5rem;
+  font-weight: 600;
+  color: lighten($text-color-muted, 35);
+  line-height: 1;
+  letter-spacing: px-to-rem(4px);
+}
+
+.message {
+  margin-top: $spacer-md;
+  font-size: $font-size-lg;
+  letter-spacing: 1.025px;
+}
+
+.action {
+  display: inline-block;
+  margin-top: $spacer-lg;
+  padding: $spacer-xxsm $spacer-xsm;
+  border: 2px solid lighten($orange, 20);
+  border-radius: px-to-rem(6px);
+  font-size: $font-size-lg;
+  font-weight: 600;
+  color: lighten($orange, 15);
+  transition: all 0.2s;
+
+  &:hover {
+    color: lighten($orange, 20);
+  }
+}
