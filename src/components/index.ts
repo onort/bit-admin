@@ -11,6 +11,7 @@ import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
 import Pagination from "./Pagination"
 import Paper from "./Paper"
+import NoData from "./NoData"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
 import Table, {
@@ -34,6 +35,7 @@ export {
   FormTitle,
   Pagination,
   Paper,
+  NoData,
   Shell,
   Sidebar,
   Table,

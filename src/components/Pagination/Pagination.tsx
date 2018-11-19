@@ -37,6 +37,7 @@ const Pagination: React.SFC<Props> = props => {
       {({ data, error, loading }) => {
         if (loading) return <p>Loading...</p>
         if (error) return <p>{error.message}</p>
+        if (data.length === 0) return null
         const count = data[queryEndPoint].aggregate.count
         const totalPages = Math.ceil(count / itemsPerPage)
         const rangeStart = (currentPage - 1) * itemsPerPage + 1

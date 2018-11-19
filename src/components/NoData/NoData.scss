@@ -1,0 +1,10 @@
+@import "../../styles/main.scss";
+
+.container {
+  padding: $spacer-lg $spacer-sm;
+}
+
+.message {
+  color: $text-color-muted;
+  font-style: italic;
+}

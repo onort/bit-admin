@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NoData /> should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <p
+    className="message"
+  >
+    No data to show.
+  </p>
+</div>
+`;
+
+exports[`<NoData /> should match snapshot 2`] = `"<div class=\\"container\\"><p class=\\"message\\">No data to show.</p></div>"`;

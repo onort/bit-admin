@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import cx from "classnames"
 
 import styles from "./Table.scss"
+import { NoData } from "../"
 import { Body, Cell, Head, Row } from "./"
 import { Alignment as CellAlignment, Width as CellWidth } from "./Cell"
 
@@ -28,37 +29,42 @@ class Table extends Component<Props, any> {
     const className = cx(styles.table, this.props.className)
     const { data, columns } = this.props
     return (
-      <table className={className}>
-        <Head>
-          <Row>
-            {this.props.columns.map((column: Column) => (
-              <Cell
-                key={column.dataIndex}
-                align={column.align}
-                dataIndex={column.dataIndex}
-                width={column.width}
-              >
-                {column.title}
-              </Cell>
-            ))}
-          </Row>
-        </Head>
-        <Body>
-          {data.map(cellData => (
-            <Row key={cellData.id}>
-              {columns.map((col: Column) => (
+      <>
+        <table className={className}>
+          <Head>
+            <Row>
+              {this.props.columns.map((column: Column) => (
                 <Cell
-                  key={cellData.id + col.dataIndex}
-                  align={col.align}
-                  width={col.width}
+                  key={column.dataIndex}
+                  align={column.align}
+                  dataIndex={column.dataIndex}
+                  width={column.width}
                 >
-                  {!!cellData[col.dataIndex] ? cellData[col.dataIndex] : " - "}
+                  {column.title}
                 </Cell>
               ))}
             </Row>
-          ))}
-        </Body>
-      </table>
+          </Head>
+          <Body>
+            {data.map(cellData => (
+              <Row key={cellData.id}>
+                {columns.map((col: Column) => (
+                  <Cell
+                    key={cellData.id + col.dataIndex}
+                    align={col.align}
+                    width={col.width}
+                  >
+                    {!!cellData[col.dataIndex]
+                      ? cellData[col.dataIndex]
+                      : " - "}
+                  </Cell>
+                ))}
+              </Row>
+            ))}
+          </Body>
+        </table>
+        {data.length === 0 && <NoData />}
+      </>
     )
   }
 }
