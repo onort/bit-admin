@@ -9,7 +9,7 @@ describe("<SidebarItem />", () => {
   it("should match snapshot", () => {
     const wrapper = shallow(
       <Router>
-        <SidebarItem icon={<AddIcon />} title="Add" to="/add" />
+        <SidebarItem icon={<AddIcon />} title="Add" to="/add-bit" />
       </Router>
     )
     expect(wrapper.html()).toMatchSnapshot()
@@ -17,7 +17,7 @@ describe("<SidebarItem />", () => {
 
   it("should have an icon, correct title and target url", () => {
     const title = "Add"
-    const targetUrl = "/add"
+    const targetUrl = "/add-bit"
     const wrapper = mount(
       <Router>
         <SidebarItem icon={<AddIcon />} title={title} to={targetUrl} />

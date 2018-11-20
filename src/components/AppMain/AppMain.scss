@@ -4,6 +4,7 @@
   display: flex;
   flex-grow: 1;
   background-color: $lighter-bg;
+  margin-top: $appBar-height;
   margin-left: $sidebar-width;
   min-height: calc(100vh - #{$appBar-height});
   transition: margin-left 0.3s;

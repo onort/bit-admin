@@ -22,7 +22,7 @@ const Sidebar: React.SFC<Props> = props => {
   )
   return (
     <nav className={className}>
-      <SidebarItem icon={<AddIcon />} title="Add" to="/add" />
+      <SidebarItem icon={<AddIcon />} title="Add Bit" to="/add-bit" />
       <SidebarItem icon={<TagIcon />} title="Add Tag" to="/add-tag" />
       <SidebarItem icon={<ListIcon />} title="View" to="/view-tags" />
       <SidebarLogout />

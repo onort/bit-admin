@@ -70,8 +70,8 @@ class AddTag extends Component<any, State> {
       await mutation({
         variables: {
           name: values.name.toLowerCase(),
-          metaDescription: values.metaDescription.toLowerCase(),
-          metaTitle: values.metaDescription.toLowerCase()
+          metaDescription: values.metaDescription,
+          metaTitle: values.metaDescription
         }
       })
       resetForm()

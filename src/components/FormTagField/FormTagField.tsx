@@ -5,6 +5,7 @@ import styles from "./FormTagField.scss"
 import { Tag } from "./"
 import { ErrorMessage } from "../"
 
+// TODO: Rewamp TagType
 export interface TagType {
   name: string
   id?: string
@@ -15,7 +16,7 @@ export interface TagType {
 interface Props extends FieldProps {
   label?: string
   tagsarrayname: string
-  tags: TagType[]
+  tags: string[]
 }
 
 const FormTagField: React.SFC<Props> = ({
@@ -31,15 +32,13 @@ const FormTagField: React.SFC<Props> = ({
   ) => {
     if (e.key === "Enter") {
       e.preventDefault()
-      values[tagsarrayname].push({ name: value })
+      values[tagsarrayname].push(value)
       setFieldValue(tagsarrayname, values[tagsarrayname])
       setFieldValue(name, "")
     }
   }
-  const handleRemove = (tag: TagType) => {
-    const newArr = values[tagsarrayname].filter(
-      (t: TagType) => t.name !== tag.name
-    )
+  const handleRemove = (tag: string) => {
+    const newArr = values[tagsarrayname].filter((t: string) => t !== tag)
     setFieldValue(tagsarrayname, newArr)
   }
   return (
@@ -57,8 +56,8 @@ const FormTagField: React.SFC<Props> = ({
       />
       {values[tagsarrayname].length > 0 && (
         <div className={styles.tags}>
-          {values[tagsarrayname].map((tag: TagType) => (
-            <Tag key={tag.name} tag={tag} onRemove={handleRemove} />
+          {values[tagsarrayname].map((tag: string) => (
+            <Tag key={tag} tag={tag} onRemove={handleRemove} />
           ))}
         </div>
       )}

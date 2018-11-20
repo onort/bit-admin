@@ -35,7 +35,7 @@ class Login extends Component<RouteComponentProps> {
     resetForm()
     await ctx.onLogin(values)
     setSubmitting(false)
-    this.props.history.push("/add")
+    this.props.history.push("/add-bit")
   }
   public render() {
     return (

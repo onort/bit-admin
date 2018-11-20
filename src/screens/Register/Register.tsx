@@ -54,7 +54,7 @@ class Register extends Component<RouteComponentProps> {
     })
     resetForm()
     setSubmitting(false)
-    this.props.history.push("/add")
+    this.props.history.push("/add-bit")
   }
   public render() {
     // refetch current user query can be omitted // redirect instead

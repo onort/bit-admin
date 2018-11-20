@@ -1,9 +1,12 @@
 @import "../../styles/main.scss";
 
 .container {
+  position: fixed;
   z-index: 11;
-  padding: $spacer-sm;
+  width: 100%;
   height: $appBar-height;
+  padding: $spacer-sm;
+  background-color: $white;
   box-shadow: 0px 1px 10px #999;
 }
 
