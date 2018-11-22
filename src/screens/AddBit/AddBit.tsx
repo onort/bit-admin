@@ -6,6 +6,7 @@ import gql from "graphql-tag"
 
 import styles from "./AddBit.scss"
 import {
+  Alert,
   Button,
   Container,
   ErrorMessage,
@@ -17,12 +18,10 @@ import {
   Paper,
   Shell
 } from "../../components"
-import {
-  Bit,
-  editorStateToString,
-  initialValues,
-  validationSchema
-} from "./formHelpers"
+import { Bit, initialValues, validationSchema } from "./formHelpers"
+import { AlertTypes } from "../../components/Alert"
+import { AlertPortal } from "../../portals"
+import { format } from "../../utils"
 
 const addBitMutation = gql`
   mutation addBit(
@@ -50,11 +49,22 @@ const addBitMutation = gql`
   }
 `
 
-// TODO: Success / Error Feedback using AlertPortal
+interface State {
+  showAlert: boolean
+  messageType: AlertTypes
+  message: string
+}
+
 // TODO: MutationFn Options Type
 // TODO: Tag Type &  AutoComplete
 // TODO: resetForm is not enough to reset values.tags?
-class AddBit extends Component {
+class AddBit extends Component<any, State> {
+  public state = {
+    showAlert: false,
+    messageType: "default" as AlertTypes,
+    message: ""
+  }
+
   public handleSubmit = (mutation: MutationFn<null, any>) => async (
     values: Bit,
     { resetForm, setSubmitting }: FormikActions<Bit>
@@ -63,7 +73,7 @@ class AddBit extends Component {
     try {
       await mutation({
         variables: {
-          content: editorStateToString(values.editorState),
+          content: format.editorStateToString(values.editorState),
           imageCredit: values.imageCredit,
           imageURL: values.imageURL,
           metaDescription: values.metaDescription,
@@ -75,11 +85,26 @@ class AddBit extends Component {
       })
       resetForm()
       setSubmitting(false)
+      this.setState({
+        showAlert: true,
+        messageType: "success",
+        message: "Successfully added bit to databse."
+      })
     } catch (e) {
       setSubmitting(false)
+      this.setState({
+        showAlert: true,
+        messageType: "error",
+        message: "An error has occured during saving bit."
+      })
     }
+    setTimeout(this.toggleAlert, 3500)
   }
+
+  public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })
+
   public render() {
+    const { showAlert, message, messageType } = this.state
     return (
       <Mutation mutation={addBitMutation}>
         {(addBit, { loading, error }) => {
@@ -164,6 +189,11 @@ class AddBit extends Component {
                   />
                 </Paper>
               </Container>
+              {showAlert && (
+                <AlertPortal>
+                  <Alert message={message} type={messageType} />
+                </AlertPortal>
+              )}
             </Shell>
           )
         }}

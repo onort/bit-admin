@@ -1,3 +1,4 @@
+import { EditorState, convertToRaw } from "draft-js"
 import dayjs from "dayjs"
 
 const defaultDateFormat = "DD.MM.YYYY"
@@ -20,4 +21,9 @@ export const convertISODateFromData = (
     if (d.updatedAt) d.updatedAt = convertISODate(d.updatedAt, format)
     return d
   })
+}
+
+export const editorStateToString = (editorState: EditorState): string => {
+  const rawContent = convertToRaw(editorState.getCurrentContent())
+  return JSON.stringify(rawContent)
 }

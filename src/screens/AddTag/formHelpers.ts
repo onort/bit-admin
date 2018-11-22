@@ -1,6 +1,18 @@
 import * as yup from "yup"
 
-export default yup.object().shape({
+export interface Tag {
+  metaDescription: string
+  metaTitle: string
+  name: string
+}
+
+export const initialValues: Tag = {
+  metaDescription: "",
+  metaTitle: "",
+  name: ""
+}
+
+export const validationSchema = yup.object().shape({
   metaDescription: yup
     .string()
     .min(20, "Meta description must be at least 20 characters long."),

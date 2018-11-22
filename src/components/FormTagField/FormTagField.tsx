@@ -32,7 +32,7 @@ const FormTagField: React.SFC<Props> = ({
   ) => {
     if (e.key === "Enter") {
       e.preventDefault()
-      values[tagsarrayname].push(value)
+      values[tagsarrayname].push(value.trim())
       setFieldValue(tagsarrayname, values[tagsarrayname])
       setFieldValue(name, "")
     }

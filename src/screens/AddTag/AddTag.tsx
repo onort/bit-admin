@@ -18,19 +18,7 @@ import {
   Paper,
   Shell
 } from "../../components"
-import validationSchema from "./validationSchema"
-
-interface Tag {
-  metaDescription: string
-  metaTitle: string
-  name: string
-}
-
-const initialValues: Tag = {
-  metaDescription: "",
-  metaTitle: "",
-  name: ""
-}
+import { initialValues, Tag, validationSchema } from "./formHelpers"
 
 const addTagMuatation = gql`
   mutation addTag(
@@ -81,7 +69,6 @@ class AddTag extends Component<any, State> {
         messageType: "success",
         message: "Successfully added tag to databse."
       })
-      setTimeout(this.toggleAlert, 3500)
     } catch (e) {
       setSubmitting(false)
       this.setState({
@@ -89,8 +76,8 @@ class AddTag extends Component<any, State> {
         messageType: "error",
         message: "An error has occured during saving tag."
       })
-      setTimeout(this.toggleAlert, 3500)
     }
+    setTimeout(this.toggleAlert, 3500)
   }
 
   public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })

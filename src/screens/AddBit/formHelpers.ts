@@ -29,11 +29,6 @@ export const initialValues: Bit = {
   tags: []
 }
 
-export const editorStateToString = (editorState: EditorState): string => {
-  const rawContent = convertToRaw(editorState.getCurrentContent())
-  return JSON.stringify(rawContent)
-}
-
 export const validationSchema = yup.object().shape({
   tags: yup.array().min(1, "At least one tag must be added."),
   tagToAdd: yup.string().min(2, "Tag should be at least 2 characters long.")
