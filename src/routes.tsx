@@ -1,7 +1,15 @@
 import React from "react"
 import { Route, Switch } from "react-router-dom"
 
-import { AddBit, AddTag, ListView, Login, Register, ViewTags } from "./screens"
+import {
+  AddBit,
+  AddTag,
+  ListView,
+  Login,
+  Register,
+  ViewBits,
+  ViewTags
+} from "./screens"
 import { AuthRoute, NotFound } from "./components"
 
 // TODO: Utilize AuthRoute
@@ -13,6 +21,7 @@ const Routes = () => (
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
+    <Route path="/view-bits" component={ViewBits} />
     <Route path="/view-tags" component={ViewTags} />
     <AuthRoute path="/authadd" component={AddBit} />
     <Route component={NotFound} />
@@ -26,6 +35,7 @@ export type AppRoute =
   | "/login"
   | "/register"
   | "/view"
+  | "/view-bits"
   | "/view-tags"
 
 export default Routes

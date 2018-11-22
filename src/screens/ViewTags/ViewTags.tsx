@@ -3,8 +3,9 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./ViewTags.scss"
-import { Container, Pagination, Paper, Shell, Table } from "../../components"
+import { Container, Pagination, Paper, Shell } from "../../components"
 import { ColumnType } from "../../components/Table"
+import TagsTable from "./TagsTable"
 import { itemsPerPage } from "../../constants"
 import { format } from "../../utils"
 
@@ -33,9 +34,7 @@ interface State {
   currentPage: number
 }
 
-// TODO: Loading Component
 // TODO: Error Page / Error Component / Error Alert ?
-// TODO: Handle Case: There's no data
 class ViewTags extends Component<any, State> {
   public state = { currentPage: 1 }
   public handleNextClick = () =>
@@ -58,7 +57,7 @@ class ViewTags extends Component<any, State> {
               {({ data, loading, error }) => {
                 if (error) return <p>Error: {error.message}</p>
                 return (
-                  <Table
+                  <TagsTable
                     data={format.convertISODateFromData(data.tags)}
                     columns={columns}
                     loading={loading}
