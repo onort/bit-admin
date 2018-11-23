@@ -14,8 +14,10 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  margin: 10% auto 0;
+  margin: 0;
+  padding: 20% 0 0;
   z-index: 9999;
+  background-color: $lighter-bg;
 }
 
 [class*="_dot"] {

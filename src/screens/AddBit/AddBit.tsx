@@ -132,6 +132,7 @@ class AddBit extends Component<any, State> {
                             placeholder=""
                             label="Tags"
                             tagsarrayname="tags"
+                            required={true}
                             component={FormTagField}
                           />
                           <Field

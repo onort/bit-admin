@@ -1,5 +1,6 @@
 import React from "react"
 import { FieldProps } from "formik"
+import cx from "classnames"
 
 import styles from "./FormTagField.scss"
 import { Tag } from "./"
@@ -15,6 +16,7 @@ export interface TagType {
 // Custom component props are untyped as of formik v1.3.1
 interface Props extends FieldProps {
   label?: string
+  required?: boolean
   tagsarrayname: string
   tags: string[]
 }
@@ -41,10 +43,11 @@ const FormTagField: React.SFC<Props> = ({
     const newArr = values[tagsarrayname].filter((t: string) => t !== tag)
     setFieldValue(tagsarrayname, newArr)
   }
+  const labelClassName = cx(styles.label, { [styles.required]: props.required })
   return (
     <div className={styles.container}>
       {props.label && (
-        <label className={styles.label} htmlFor={name}>
+        <label className={labelClassName} htmlFor={name}>
           {props.label}
         </label>
       )}
@@ -69,6 +72,10 @@ const FormTagField: React.SFC<Props> = ({
         )}
     </div>
   )
+}
+
+FormTagField.defaultProps = {
+  required: false
 }
 
 export default FormTagField

@@ -13,6 +13,11 @@
   margin-bottom: $spacer-xxsm;
 }
 
+.required:after {
+  content: " *";
+  margin-left: px-to-rem(-2px);
+}
+
 .input {
   display: block;
   width: 100%;

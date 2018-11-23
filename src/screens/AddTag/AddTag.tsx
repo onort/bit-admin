@@ -106,6 +106,7 @@ class AddTag extends Component<any, State> {
                             name="name"
                             placeholder="Tag name"
                             label="Tag Name"
+                            required={true}
                             component={FormInput}
                           />
                           <Field

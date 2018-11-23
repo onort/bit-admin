@@ -83,6 +83,7 @@ class Register extends Component<RouteComponentProps> {
                             name="name"
                             placeholder="Your Name"
                             label="Name"
+                            required={true}
                             component={FormInput}
                           />
                           <Field
@@ -90,6 +91,7 @@ class Register extends Component<RouteComponentProps> {
                             name="email"
                             placeholder="Your Email"
                             label="Email"
+                            required={true}
                             component={FormInput}
                           />
                           <Field
@@ -97,6 +99,7 @@ class Register extends Component<RouteComponentProps> {
                             name="password"
                             placeholder="Your Password"
                             label="Password"
+                            required={true}
                             component={FormInput}
                           />
                           <Button
