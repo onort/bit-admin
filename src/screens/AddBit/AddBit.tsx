@@ -1,5 +1,12 @@
 import React, { Component } from "react"
-import { FastField, Field, Form, Formik, FormikActions } from "formik"
+import {
+  FastField,
+  Field,
+  Form,
+  Formik,
+  FormikActions,
+  FormikProps
+} from "formik"
 import { MdArchive as SaveIcon } from "react-icons/md"
 import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
@@ -18,7 +25,7 @@ import {
   Paper,
   Shell
 } from "../../components"
-import { Bit, initialValues, validationSchema } from "./formHelpers"
+import { Bit, BitForm, initialValues, validationSchema } from "./"
 import { AlertTypes } from "../../components/Alert"
 import { AlertPortal } from "../../portals"
 import { format } from "../../utils"
@@ -116,76 +123,9 @@ class AddBit extends Component<any, State> {
                     initialValues={initialValues}
                     onSubmit={this.handleSubmit(addBit)}
                     validationSchema={validationSchema}
-                    render={() => {
+                    render={(form: FormikProps<Bit>) => {
                       if (loading) return <Loading />
-                      return (
-                        <Form>
-                          <FormTitle title="Add New Bit" />
-                          {error && <ErrorMessage message={error.message} />}
-                          <FastField
-                            name="editorState"
-                            component={FormTextEditor}
-                          />
-                          <Field
-                            type="text"
-                            name="tagToAdd"
-                            placeholder=""
-                            label="Tags"
-                            tagsarrayname="tags"
-                            required={true}
-                            component={FormTagField}
-                          />
-                          <Field
-                            type="text"
-                            name="metaTitle"
-                            placeholder="Title"
-                            label="Title (Meta)"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="metaDescription"
-                            placeholder="Description"
-                            label="Description (Meta)"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="imageURL"
-                            placeholder="Image URL"
-                            label="Image URL"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="imageCredit"
-                            placeholder="Image Source"
-                            label="Image Source"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="sourceCredit"
-                            placeholder="Source"
-                            label="Source"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="sourceURL"
-                            placeholder="Source URL"
-                            label="Source URL"
-                            component={FormInput}
-                          />
-                          <Button
-                            className={styles.submit}
-                            text="Submit"
-                            type="submit"
-                            success={true}
-                            icon={<SaveIcon />}
-                          />
-                        </Form>
-                      )
+                      return <BitForm form={form} error={error} />
                     }}
                   />
                 </Paper>

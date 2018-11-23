@@ -1,24 +1,13 @@
 import React, { Component } from "react"
-import { Field, Form, Formik, FormikActions, FormikProps } from "formik"
+import { Formik, FormikActions, FormikProps } from "formik"
 import { Mutation, MutationFn } from "react-apollo"
-import { MdLocalOffer as TagIcon, MdArchive as SaveIcon } from "react-icons/md"
 import gql from "graphql-tag"
 
 import styles from "./AddTag.scss"
 import { AlertPortal } from "../../portals"
 import { AlertTypes } from "../../components/Alert"
-import {
-  Alert,
-  Button,
-  Container,
-  ErrorMessage,
-  FormInput,
-  FormTitle,
-  Loading,
-  Paper,
-  Shell
-} from "../../components"
-import { initialValues, Tag, validationSchema } from "./formHelpers"
+import { Alert, Container, Loading, Paper, Shell } from "../../components"
+import { initialValues, Tag, TagForm, validationSchema } from "./"
 
 const addTagMuatation = gql`
   mutation addTag(
@@ -97,41 +86,7 @@ class AddTag extends Component<any, State> {
                     onSubmit={this.handleSubmit(addTag)}
                     render={(form: FormikProps<Tag>) => {
                       if (loading) return <Loading />
-                      return (
-                        <Form method="post">
-                          <FormTitle title="Add New Tag" icon={<TagIcon />} />
-                          {error && <ErrorMessage message={error.message} />}
-                          <Field
-                            type="text"
-                            name="name"
-                            placeholder="Tag name"
-                            label="Tag Name"
-                            required={true}
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="metaTitle"
-                            placeholder="Title"
-                            label="Title (Meta)"
-                            component={FormInput}
-                          />
-                          <Field
-                            type="text"
-                            name="metaDescription"
-                            placeholder="Description"
-                            label="Description (Meta)"
-                            component={FormInput}
-                          />
-                          <Button
-                            text="Save Tag"
-                            type="submit"
-                            success={true}
-                            disabled={form.isSubmitting}
-                            icon={<SaveIcon />}
-                          />
-                        </Form>
-                      )
+                      return <TagForm form={form} error={error} />
                     }}
                   />
                 </Paper>
