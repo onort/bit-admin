@@ -13,11 +13,11 @@ const tagsQuery = gql`
   query tags($skip: Int = 0, $first: Int = ${itemsPerPage} ) {
     tags(first: $first, skip: $skip, orderBy: createdAt_DESC) {
       id
+      createdAt
+      updatedAt
       metaDescription
       metaTitle
       name
-      createdAt
-      updatedAt
     }
   }
 `

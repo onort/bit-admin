@@ -51,7 +51,7 @@ const TagsTable: React.SFC<Props> = props => {
           ))}
         </TableBody>
       </Table>
-      {data && data.length === 0 && <NoData />}
+      {!loading && data && data.length === 0 && <NoData />}
     </>
   )
 }
