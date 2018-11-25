@@ -23,7 +23,7 @@ const Routes = () => (
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
     <Route path="/view-bits" component={ViewBits} />
-    <Route path="/view-tags/detail/:id" component={TagDetails} />
+    <Route path="/view-tags/detail/:tagId" component={TagDetails} />
     <Route path="/view-tags" component={ViewTags} />
     <AuthRoute path="/authadd" component={AddBit} />
     <Route component={NotFound} />
