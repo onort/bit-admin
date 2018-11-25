@@ -1,0 +1,60 @@
+@import "../../styles/main.scss";
+
+.row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.edit {
+  margin-left: auto;
+  margin-right: 1%;
+  background-color: $blue;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($blue, 10);
+  }
+}
+
+.half {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 48%;
+  padding: $spacer-md $spacer-lg;
+}
+
+.name {
+  font-family: $font-family-secondary;
+  font-size: $font-size-giant;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.id {
+  color: $text-color-muted;
+  font-size: $font-size-lg;
+}
+
+.dateRow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dateLabel {
+  font-family: $font-family-secondary;
+  font-size: $font-size-lg;
+  font-weight: 700;
+}
+
+.date {
+  color: $text-color-muted;
+}
+
+.label {
+  font-family: $font-family-secondary;
+  font-size: $font-size-xlg;
+  font-weight: 700;
+  border-bottom: 1px solid $light-border;
+  margin-bottom: $spacer-sm;
+}

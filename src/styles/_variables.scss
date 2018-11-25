@@ -1,6 +1,7 @@
 @import "./functions";
 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
 
 // TODO: Crate a mixin/function to make colored and leveled elevations for paper & alert components
 
@@ -18,9 +19,11 @@ $green: #588c7e;
 $yellow: #f2e394;
 $success: #28a745;
 $danger: #dc3545;
+$blue: #259fdb;
 
 // Fonts
-$font-family-sans: "Open Sans", sans-serif;
+$font-family-primary: "Open Sans", sans-serif;
+$font-family-secondary: "Montserrat", sans-serif;
 $base-font-size: 16px;
 
 $font-size-sm: px-to-rem($base-font-size - 4px);
@@ -28,6 +31,7 @@ $font-size-md: $base-font-size;
 $font-size-lg: px-to-rem($base-font-size + 4px);
 $font-size-xlg: px-to-rem($base-font-size + 8px);
 $font-size-xxlg: px-to-rem($base-font-size + 12px);
+$font-size-giant: calc(#{$base-font-size} * 3.5);
 
 // Spacing
 $spacer-xxsm: px-to-rem($base-font-size * 0.25);

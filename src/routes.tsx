@@ -7,6 +7,7 @@ import {
   ListView,
   Login,
   Register,
+  TagDetails,
   ViewBits,
   ViewTags
 } from "./screens"
@@ -22,6 +23,7 @@ const Routes = () => (
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
     <Route path="/view-bits" component={ViewBits} />
+    <Route path="/view-tags/detail/:id" component={TagDetails} />
     <Route path="/view-tags" component={ViewTags} />
     <AuthRoute path="/authadd" component={AddBit} />
     <Route component={NotFound} />
@@ -37,5 +39,6 @@ export type AppRoute =
   | "/view"
   | "/view-bits"
   | "/view-tags"
+  | "/view-tags/detail"
 
 export default Routes
