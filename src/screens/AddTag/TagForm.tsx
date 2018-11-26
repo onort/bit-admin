@@ -2,16 +2,18 @@ import React from "react"
 import { Field, Form, FormikProps } from "formik"
 import { MdLocalOffer as TagIcon, MdArchive as SaveIcon } from "react-icons/md"
 
+import styles from "./AddTag.scss"
 import { Button, ErrorMessage, FormInput, FormTitle } from "../../components"
 import { Tag } from "./"
 
 interface Props {
+  buttonText?: string
+  error?: { message: string }
   form: FormikProps<Tag>
-  error?: any
 }
 
 const TagForm: React.SFC<Props> = props => {
-  const { form, error } = props
+  const { buttonText, error, form } = props
   return (
     <Form method="post">
       <FormTitle title="Add New Tag" icon={<TagIcon />} />
@@ -39,7 +41,8 @@ const TagForm: React.SFC<Props> = props => {
         component={FormInput}
       />
       <Button
-        text="Save Tag"
+        className={styles.submit}
+        text={buttonText}
         type="submit"
         success={true}
         disabled={form.isSubmitting}
@@ -47,6 +50,10 @@ const TagForm: React.SFC<Props> = props => {
       />
     </Form>
   )
+}
+
+TagForm.defaultProps = {
+  buttonText: "Save Tag"
 }
 
 export default TagForm

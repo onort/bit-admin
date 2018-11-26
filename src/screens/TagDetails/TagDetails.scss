@@ -6,14 +6,31 @@
 }
 
 .edit {
-  margin-left: auto;
-  margin-right: 1%;
+  margin-right: auto;
+  margin-left: 1%;
   background-color: $blue;
   color: $white;
 
   &:hover {
     background-color: lighten($blue, 10);
   }
+}
+
+.view {
+  margin-right: auto;
+  margin-left: 1%;
+  background-color: $green;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($green, 10);
+  }
+}
+
+.full {
+  width: 98%;
+  margin: 0 auto;
+  padding: $spacer-md $spacer-lg;
 }
 
 .half {

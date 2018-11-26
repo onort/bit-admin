@@ -10,3 +10,13 @@
   border-bottom: 1px solid $light-border;
   padding-bottom: $spacer-xxsm;
 }
+
+.submit {
+  margin: $spacer-lg 0 $spacer-lg auto;
+  background-color: $green;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($green, 10);
+  }
+}

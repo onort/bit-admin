@@ -1,5 +1,6 @@
 import TagDetails from "./TagDetails"
+import DetailEdit from "./DetailEdit"
 import DetailView from "./DetailView"
 
 export default TagDetails
-export { DetailView }
+export { DetailEdit, DetailView }

@@ -1,15 +1,18 @@
 import React, { Component } from "react"
 import { RouteComponentProps } from "react-router-dom"
-import { Query } from "react-apollo"
+import { Mutation, MutationFn, Query } from "react-apollo"
 import gql from "graphql-tag"
+import { FormikActions } from "formik"
 
-import styles from "./TagDetails.scss"
-import { Container, Loading, Shell } from "../../components"
-import { DetailView } from "./"
+import { Alert, Container, Loading, Shell } from "../../components"
+import { AlertPortal } from "../../portals"
+import { AlertTypes } from "../../components/Alert"
+import { Tag } from "../AddTag"
+import { DetailEdit, DetailView } from "./"
 
 const tagQuery = gql`
   query tag($id: ID!) {
-    tag(id: $id) {
+    tag(where: { id: $id }) {
       id
       createdAt
       updatedAt
@@ -20,28 +23,121 @@ const tagQuery = gql`
   }
 `
 
+const tagUpdateMutation = gql`
+  mutation tagUpdate(
+    $id: ID!
+    $metaDescription: String
+    $metaTitle: String
+    $name: String
+  ) {
+    updateTag(
+      id: $id
+      metaDescription: $metaDescription
+      metaTitle: $metaTitle
+      name: $name
+    ) {
+      id
+    }
+  }
+`
+
+export interface MutationVars extends Tag {
+  id: string
+}
+
 interface Props extends RouteComponentProps<{ tagId: string }> {}
 
-class TagDetails extends Component<Props, any> {
-  public state = { editting: false }
+interface State {
+  editing: boolean
+  message: string
+  messageType: AlertTypes
+  showAlert: boolean
+}
 
-  public toggleStatus = () => this.setState({ editting: !this.state.editting })
+class TagDetails extends Component<Props, State> {
+  public tagId = this.props.match.params.tagId
+
+  public state = {
+    editing: false,
+    message: "",
+    messageType: "default" as AlertTypes,
+    showAlert: false
+  }
+
+  public toggleStatus = () => this.setState({ editing: !this.state.editing })
+
+  public handleSubmit = (mutation: MutationFn<null, MutationVars>) => async (
+    values: Tag,
+    { setSubmitting }: FormikActions<Tag>
+  ) => {
+    try {
+      setSubmitting(true)
+      await mutation({
+        variables: { id: this.tagId, ...values },
+        refetchQueries: [{ query: tagQuery, variables: { id: this.tagId } }]
+      })
+      setSubmitting(false)
+      this.setState({
+        editing: false,
+        message: "Successfully updated tag.",
+        messageType: "success",
+        showAlert: true
+      })
+    } catch (e) {
+      setSubmitting(false)
+      this.setState({
+        editing: false,
+        message: "An error has occured during updating tag.",
+        messageType: "error",
+        showAlert: true
+      })
+    }
+    setTimeout(this.toggleAlert, 3500)
+  }
+
+  public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })
 
   public render() {
-    const id = this.props.match.params.tagId
+    const { editing, message, messageType, showAlert } = this.state
     return (
       <Shell>
         <Container>
-          <Query query={tagQuery} variables={{ id }} fetchPolicy="network-only">
-            {({ data, loading, error }) => {
-              console.log("data is", data)
-              if (loading) return <Loading />
-              else if (error) return <p>{error.message}</p>
-              return (
+          <Query
+            query={tagQuery}
+            variables={{ id: this.tagId }}
+            fetchPolicy="network-only"
+          >
+            {({ data, loading: queryLoading, error: queryError }) => {
+              if (queryLoading) return <Loading />
+              if (queryError) return <p>{queryError.message}</p>
+              return !editing ? (
                 <DetailView tag={data.tag} onEditClick={this.toggleStatus} />
+              ) : (
+                <Mutation mutation={tagUpdateMutation}>
+                  {(
+                    tagUpdate,
+                    { loading: mutationLoading, error: mutationError }
+                  ) => {
+                    if (mutationLoading) return <Loading />
+                    return (
+                      <DetailEdit
+                        error={mutationError}
+                        initialValues={data.tag}
+                        mutation={tagUpdate}
+                        onSubmit={this.handleSubmit}
+                        onToggle={this.toggleStatus}
+                      />
+                    )
+                  }}
+                </Mutation>
               )
             }}
           </Query>
+          {showAlert && (
+            <AlertPortal>
+              <Alert message={message} type={messageType} />
+            </AlertPortal>
+          )}
         </Container>
       </Shell>
     )

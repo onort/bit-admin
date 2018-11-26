@@ -26,16 +26,16 @@ const addTagMuatation = gql`
 `
 
 interface State {
-  showAlert: boolean
-  messageType: AlertTypes
   message: string
+  messageType: AlertTypes
+  showAlert: boolean
 }
 
 class AddTag extends Component<any, State> {
   public state = {
-    showAlert: false,
+    message: "",
     messageType: "default" as AlertTypes,
-    message: ""
+    showAlert: false
   }
 
   public handleSubmit = (mutation: MutationFn<null, Tag>) => async (
@@ -54,16 +54,16 @@ class AddTag extends Component<any, State> {
       resetForm()
       setSubmitting(false)
       this.setState({
-        showAlert: true,
+        message: "Successfully added tag to databse.",
         messageType: "success",
-        message: "Successfully added tag to databse."
+        showAlert: true
       })
     } catch (e) {
       setSubmitting(false)
       this.setState({
-        showAlert: true,
+        message: "An error has occured during saving tag.",
         messageType: "error",
-        message: "An error has occured during saving tag."
+        showAlert: true
       })
     }
     setTimeout(this.toggleAlert, 3500)
