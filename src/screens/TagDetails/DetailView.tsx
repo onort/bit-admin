@@ -1,5 +1,6 @@
 import React from "react"
-import { MdEdit as EditIcon } from "react-icons/md"
+import { MdDelete as DeleteIcon, MdEdit as EditIcon } from "react-icons/md"
+import cx from "classnames"
 
 import styles from "./TagDetails.scss"
 import { Button, Container, Paper } from "../../components"
@@ -30,13 +31,20 @@ const DetailView: React.SFC<Props> = props => {
   } = props.tag
   const created = convertISODate(createdAt, "DD.MM.YYYY HH:mm")
   const updated = convertISODate(updatedAt, "DD.MM.YYYY HH:mm")
+  const buttonsRow = cx(styles.row, styles.buttons)
   return (
     <>
-      <Container className={styles.row}>
+      <Container className={buttonsRow}>
         <Button
           className={styles.edit}
           icon={<EditIcon />}
           text="Edit Tag"
+          onClick={props.onEditClick}
+        />
+        <Button
+          className={styles.delete}
+          icon={<DeleteIcon />}
+          text="Delete Tag"
           onClick={props.onEditClick}
         />
       </Container>

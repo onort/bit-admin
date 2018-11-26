@@ -2,6 +2,7 @@ import React from "react"
 import { Formik, FormikActions, FormikProps } from "formik"
 import { MdPageview as ViewIcon } from "react-icons/md"
 import { MutationFn } from "react-apollo"
+import cx from "classnames"
 
 import styles from "./TagDetails.scss"
 import { Button, Container, Paper } from "../../components"
@@ -20,9 +21,10 @@ interface Props {
 
 const DetailEdit: React.SFC<Props> = props => {
   const { error, initialValues, mutation, onToggle, onSubmit } = props
+  const buttonsRow = cx(styles.row, styles.buttons)
   return (
     <>
-      <Container className={styles.row}>
+      <Container className={buttonsRow}>
         <Button
           className={styles.view}
           icon={<ViewIcon />}

@@ -5,8 +5,11 @@
   justify-content: space-around;
 }
 
+.buttons {
+  justify-content: flex-start;
+}
+
 .edit {
-  margin-right: auto;
   margin-left: 1%;
   background-color: $blue;
   color: $white;
@@ -16,8 +19,17 @@
   }
 }
 
+.delete {
+  margin-left: 1%;
+  background-color: $danger;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($danger, 10);
+  }
+}
+
 .view {
-  margin-right: auto;
   margin-left: 1%;
   background-color: $green;
   color: $white;
