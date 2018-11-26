@@ -19,14 +19,17 @@ import { Bit } from "./"
 interface Props {
   data: any[]
   loading?: boolean
+  onRowClick: (id: string) => void
 }
 
 const BitsTable: React.SFC<Props> = props => {
   const { data, loading } = props
-  console.log("data is", data)
+
+  const handleRowClick = (id: string) => props.onRowClick(id)
+
   return (
     <>
-      <Table>
+      <Table loading={loading}>
         <TableHead>
           <TableRow>
             <TableCell className={styles.icon} align="center" width={1}>
@@ -40,7 +43,7 @@ const BitsTable: React.SFC<Props> = props => {
         </TableHead>
         <TableBody>
           {data.map((bit: Bit) => (
-            <TableRow key={bit.id}>
+            <TableRow key={bit.id} onClick={() => handleRowClick(bit.id)}>
               <TableCell className={styles.icon} align="center" width={1}>
                 {bit.isPublished ? (
                   <Published className={styles.published} />

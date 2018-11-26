@@ -14,10 +14,12 @@ interface Props {
   columns: Column[]
   data: any[]
   loading?: boolean
+  onRowClick: (id: string) => void
 }
 
 const TagsTable: React.SFC<Props> = props => {
   const { columns, data, loading } = props
+  const handleRowClick = (id: string) => props.onRowClick(id)
   return (
     <>
       <Table loading={loading}>
@@ -37,7 +39,10 @@ const TagsTable: React.SFC<Props> = props => {
         </TableHead>
         <TableBody>
           {data.map(cellData => (
-            <TableRow key={cellData.id}>
+            <TableRow
+              key={cellData.id}
+              onClick={() => handleRowClick(cellData.id)}
+            >
               {columns.map((col: Column) => (
                 <TableCell
                   key={cellData.id + col.dataIndex}

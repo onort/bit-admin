@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { RouteComponentProps } from "react-router-dom"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 
@@ -35,12 +36,18 @@ interface State {
 }
 
 // TODO: Error Page / Error Component / Error Alert ?
-class ViewTags extends Component<any, State> {
+class ViewTags extends Component<RouteComponentProps, State> {
   public state = { currentPage: 1 }
+
   public handleNextClick = () =>
     this.setState({ currentPage: this.state.currentPage + 1 })
+
   public handlePrevClick = () =>
     this.setState({ currentPage: this.state.currentPage - 1 })
+
+  public handleRowClick = (id: string) =>
+    this.props.history.push(`/view-tags/detail/${id}`)
+
   public render() {
     const { currentPage } = this.state
     return (
@@ -58,9 +65,10 @@ class ViewTags extends Component<any, State> {
                 if (error) return <p>Error: {error.message}</p>
                 return (
                   <TagsTable
-                    data={format.convertISODateFromData(data.tags)}
                     columns={columns}
+                    data={format.convertISODateFromData(data.tags)}
                     loading={loading}
+                    onRowClick={this.handleRowClick}
                   />
                 )
               }}

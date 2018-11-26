@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { RouteComponentProps } from "react-router"
 import { Query } from "react-apollo"
 import gql from "graphql-tag"
 
@@ -34,12 +35,18 @@ interface State {
   currentPage: number
 }
 
-class ViewBits extends Component<any, State> {
+class ViewBits extends Component<RouteComponentProps, State> {
   public state = { currentPage: 1 }
+
   public handleNextClick = () =>
     this.setState({ currentPage: this.state.currentPage + 1 })
+
   public handlePrevClick = () =>
     this.setState({ currentPage: this.state.currentPage - 1 })
+
+  public handleRowClick = (id: string) =>
+    this.props.history.push(`/view-bits/detail/${id}`)
+
   public render() {
     const { currentPage } = this.state
     return (
@@ -56,8 +63,9 @@ class ViewBits extends Component<any, State> {
               {({ data, loading, error }) => {
                 return (
                   <BitsTable
-                    loading={loading}
                     data={format.convertISODateFromData(data.bits)}
+                    loading={loading}
+                    onRowClick={this.handleRowClick}
                   />
                 )
               }}
