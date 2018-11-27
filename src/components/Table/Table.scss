@@ -45,6 +45,10 @@ $total: 16;
   }
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .cell {
   display: table-cell;
   width: auto;

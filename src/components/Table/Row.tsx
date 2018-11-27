@@ -10,7 +10,11 @@ interface Props {
 }
 
 const Row: React.SFC<Props> = props => {
-  const className = cx(styles.row, props.className)
+  const className = cx(
+    styles.row,
+    { [styles.clickable]: props.onClick },
+    props.className
+  )
   return (
     <tr className={className} onClick={props.onClick}>
       {props.children}

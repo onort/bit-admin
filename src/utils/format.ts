@@ -1,4 +1,9 @@
-import { EditorState, convertToRaw } from "draft-js"
+import {
+  ContentState,
+  EditorState,
+  convertFromHTML,
+  convertToRaw
+} from "draft-js"
 import dayjs from "dayjs"
 
 const defaultDateFormat = "DD.MM.YYYY"
@@ -26,4 +31,15 @@ export const convertISODateFromData = (
 export const editorStateToString = (editorState: EditorState): string => {
   const rawContent = convertToRaw(editorState.getCurrentContent())
   return JSON.stringify(rawContent)
+}
+
+export const covnertBitDataToInitialValues = (data: any) => {
+  const bit = { ...data }
+  const blocksFromHTML = convertFromHTML(data.contentHTML)
+  const state = ContentState.createFromBlockArray(
+    blocksFromHTML.contentBlocks,
+    blocksFromHTML.entityMap
+  )
+  bit.editorState = EditorState.createWithContent(state)
+  return bit
 }

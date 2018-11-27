@@ -53,16 +53,27 @@
   padding: $spacer-md $spacer-lg;
 }
 
-.name {
+.label {
   font-family: $font-family-secondary;
-  font-size: $font-size-giant;
+  font-size: $font-size-xlg;
   font-weight: 700;
-  line-height: 1;
+  border-bottom: 1px solid $light-border;
+  margin-bottom: $spacer-sm;
 }
 
-.id {
+.tagsContainer {
+  margin-top: $spacer-md;
+  padding: $spacer-sm 0 0;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: $spacer-sm;
+  padding: $spacer-xxsm $spacer-xsm;
+  background-color: $light-bg;
   color: $text-color-muted;
-  font-size: $font-size-lg;
+  font-size: $font-size-sm;
+  border-radius: px-to-rem(4px);
 }
 
 .dataRow {
@@ -83,10 +94,9 @@
   color: $text-color-muted;
 }
 
-.label {
-  font-family: $font-family-secondary;
-  font-size: $font-size-xlg;
-  font-weight: 700;
-  border-bottom: 1px solid $light-border;
-  margin-bottom: $spacer-sm;
+.dataLink {
+  margin-left: $spacer-xsm;
+  font-size: $font-size-lg;
+  color: $text-color;
+  line-height: 1;
 }

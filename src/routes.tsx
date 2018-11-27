@@ -4,6 +4,7 @@ import { Route, Switch } from "react-router-dom"
 import {
   AddBit,
   AddTag,
+  BitDetails,
   ListView,
   Login,
   Register,
@@ -22,6 +23,7 @@ const Routes = () => (
     <Route path="/login" component={Login} />
     <Route path="/register" component={Register} />
     <Route path="/view" component={ListView} />
+    <Route path="/view-bits/detail/:bitId" component={BitDetails} />
     <Route path="/view-bits" component={ViewBits} />
     <Route path="/view-tags/detail/:tagId" component={TagDetails} />
     <Route path="/view-tags" component={ViewTags} />
@@ -38,6 +40,7 @@ export type AppRoute =
   | "/register"
   | "/view"
   | "/view-bits"
+  | "/view-bits/detail"
   | "/view-tags"
   | "/view-tags/detail"
 

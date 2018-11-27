@@ -14,12 +14,13 @@ import {
 import { Bit } from "./"
 
 interface Props {
-  form: FormikProps<Bit>
+  buttonText?: string
   error?: any
+  form: FormikProps<Bit>
 }
 
 const TagForm: React.SFC<Props> = props => {
-  const { form, error } = props
+  const { buttonText, error, form } = props
   return (
     <Form>
       <FormTitle title="Add New Bit" />
@@ -77,7 +78,7 @@ const TagForm: React.SFC<Props> = props => {
       />
       <Button
         className={styles.submit}
-        text="Submit"
+        text={buttonText}
         type="submit"
         success={true}
         disabled={form.isSubmitting}
@@ -85,6 +86,10 @@ const TagForm: React.SFC<Props> = props => {
       />
     </Form>
   )
+}
+
+TagForm.defaultProps = {
+  buttonText: "Save Bit"
 }
 
 export default TagForm

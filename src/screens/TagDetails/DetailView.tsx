@@ -57,26 +57,26 @@ const DetailView: React.SFC<Props> = props => {
           <h4 className={styles.id}>{id}</h4>
         </Paper>
         <Paper className={styles.half} elevation={2}>
-          <div className={styles.dateRow}>
-            <span className={styles.dateLabel}>Last Update</span>
-            <span className={styles.date}>{updated}</span>
+          <div className={styles.dataRow}>
+            <span className={styles.dataLabel}>Last Update</span>
+            <span className={styles.data}>{updated}</span>
           </div>
-          <div className={styles.dateRow}>
-            <span className={styles.dateLabel}>Creation Date</span>
-            <span className={styles.date}>{created}</span>
+          <div className={styles.dataRow}>
+            <span className={styles.dataLabel}>Creation Date</span>
+            <span className={styles.data}>{created}</span>
           </div>
         </Paper>
       </Container>
       <Container className={styles.row}>
         <Paper className={styles.half} elevation={2}>
-          <h1 className={styles.label}>Meta Title</h1>
-          <h4 className={styles.text}>{metaTitle ? metaTitle : "-"}</h4>
+          <h2 className={styles.label}>Meta Title</h2>
+          <p className={styles.text}>{metaTitle ? metaTitle : "-"}</p>
         </Paper>
         <Paper className={styles.half} elevation={2}>
-          <h1 className={styles.label}>Meta Description</h1>
-          <h4 className={styles.text}>
+          <h2 className={styles.label}>Meta Description</h2>
+          <p className={styles.text}>
             {metaDescription ? metaDescription : "-"}
-          </h4>
+          </p>
         </Paper>
       </Container>
     </>
