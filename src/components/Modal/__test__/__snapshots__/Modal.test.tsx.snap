@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Modal /> should match snapshot 1`] = `
+<div
+  className="container"
+>
+  <p>
+    Test message.
+  </p>
+</div>
+`;
+
+exports[`<Modal /> should match snapshot 2`] = `"<div class=\\"container\\"><p>Test message.</p></div>"`;

@@ -6,12 +6,13 @@ import { FormikActions } from "formik"
 
 import {
   Container,
+  ConfirmationModal,
   ErrorMessage,
   Loading,
   Notification,
   Shell
 } from "../../components"
-import { NotificationPortal } from "../../portals"
+import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
 import { DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation } from "./"
 import {
@@ -75,11 +76,10 @@ interface State {
   editing: boolean
   message: string
   messageType: NotificationTypes
+  showModal: boolean
   showNotification: boolean
 }
 
-// TODO: Modal Portal
-// TODO: Modal Component
 // TODO: Delete Flow
 // TO CONSIDER: Move types and query & mutations to a seperate file?
 
@@ -90,6 +90,7 @@ class BitDetails extends Component<Props, State> {
     editing: false,
     message: "",
     messageType: "default" as NotificationTypes,
+    showModal: false,
     showNotification: false
   }
 
@@ -141,8 +142,16 @@ class BitDetails extends Component<Props, State> {
   public toggleNotification = () =>
     this.setState({ showNotification: !this.state.showNotification })
 
+  public toggleModal = () => this.setState({ showModal: !this.state.showModal })
+
   public render() {
-    const { editing, message, messageType, showNotification } = this.state
+    const {
+      editing,
+      message,
+      messageType,
+      showModal,
+      showNotification
+    } = this.state
     return (
       <Shell>
         <Container>
@@ -164,15 +173,19 @@ class BitDetails extends Component<Props, State> {
                       <DetailEdit
                         error={mutationError}
                         initialValues={initialValues}
-                        onToggle={this.toggleStatus}
                         onSubmit={this.handleSubmit}
+                        onViewClick={this.toggleStatus}
                         mutation={bitUpdate}
                       />
                     )
                   }}
                 </Mutation>
               ) : (
-                <DetailView bit={data.bit} onEditClick={this.toggleStatus} />
+                <DetailView
+                  bit={data.bit}
+                  onDeleteClick={this.toggleModal}
+                  onEditClick={this.toggleStatus}
+                />
               )
             }}
           </Query>
@@ -180,6 +193,17 @@ class BitDetails extends Component<Props, State> {
             <NotificationPortal>
               <Notification message={message} type={messageType} />
             </NotificationPortal>
+          )}
+          {showModal && (
+            <ModalPortal>
+              <ConfirmationModal
+                confirmText="Delete"
+                onCancel={this.toggleModal}
+                onConfirm={() => console.log("Confirm clicked.")}
+                onClose={this.toggleModal}
+                text="Are you sure you want to delete this bit?"
+              />
+            </ModalPortal>
           )}
         </Container>
       </Shell>

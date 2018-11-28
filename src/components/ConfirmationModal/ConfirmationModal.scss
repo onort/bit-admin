@@ -1,0 +1,51 @@
+@import "../../styles/main.scss";
+
+.container {
+  position: relative;
+  margin: 20vh auto 0 !important;
+  max-width: 80% !important;
+  width: px-to-rem(480px) !important;
+  border-radius: px-to-rem(4px) !important;
+  background-color: $white;
+  padding: $spacer-xlg $spacer-lg $spacer-md !important;
+}
+
+.content {
+  padding: $spacer-lg 0 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $spacer-xlg;
+  padding-top: $spacer-sm;
+  border-top: 1px solid $light-border;
+}
+
+.confirm {
+  background-color: $green;
+  color: $white;
+
+  &:hover {
+    background-color: lighten($green, 10);
+  }
+}
+
+.cancel {
+  background-color: $danger;
+  color: $white;
+  margin-left: $spacer-md;
+
+  &:hover {
+    background-color: lighten($danger, 10);
+  }
+}
+
+.close {
+  position: absolute;
+  top: $spacer-md;
+  right: $spacer-lg;
+  cursor: pointer;
+  stroke-width: 1px;
+  color: $text-color-muted;
+}

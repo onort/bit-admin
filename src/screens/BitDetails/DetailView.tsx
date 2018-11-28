@@ -13,6 +13,7 @@ import { convertISODate } from "../../utils/format"
 
 interface Props {
   bit: BitData
+  onDeleteClick: () => void
   onEditClick: () => void
 }
 
@@ -46,7 +47,7 @@ const DetailView: React.SFC<Props> = props => {
           className={styles.delete}
           icon={<DeleteIcon />}
           text="Delete Tag"
-          onClick={props.onEditClick}
+          onClick={props.onDeleteClick}
         />
       </Container>
       <Container className={styles.row}>

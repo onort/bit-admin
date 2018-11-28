@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ConfirmationModal /> should match snapshot 1`] = `
+<Modal>
+  <Paper
+    className="container"
+    elevation={4}
+  >
+    <div
+      className="content"
+    >
+      <p
+        className="text"
+      >
+        Test text.
+      </p>
+    </div>
+    <div
+      className="actions"
+    >
+      <Button
+        className="confirm"
+        onClick={[MockFunction]}
+        text="Accept"
+      />
+      <Button
+        className="cancel"
+        onClick={[MockFunction]}
+        text="Cancel"
+      />
+    </div>
+  </Paper>
+</Modal>
+`;
+
+exports[`<ConfirmationModal /> should match snapshot 2`] = `"<div class=\\"container\\"><div class=\\"container elevation4 container\\"><div class=\\"content\\"><p class=\\"text\\">Test text.</p></div><div class=\\"actions\\"><button class=\\"button confirm\\"><span class=\\"text\\">Accept</span></button><button class=\\"button cancel\\"><span class=\\"text\\">Cancel</span></button></div></div></div>"`;

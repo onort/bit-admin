@@ -7,20 +7,23 @@ import cx from "classnames"
 import styles from "./BitDetails.scss"
 import { Button, Container, Paper } from "../../components"
 import { BitForm, validationSchema } from "../AddBit"
-import { BitEdit } from "./"
+import { UpdateBitForm, UpdateBitMutation } from "./"
 
 interface Props {
   error?: { message: string }
-  initialValues: BitEdit
-  mutation: MutationFn<null, any>
+  initialValues: UpdateBitForm
+  mutation: MutationFn<null, UpdateBitMutation>
   onSubmit: (
-    mutation: MutationFn<null, any>
-  ) => (values: BitEdit, formikActions: FormikActions<BitEdit>) => Promise<void>
-  onToggle: () => void
+    mutation: MutationFn<null, UpdateBitMutation>
+  ) => (
+    values: UpdateBitForm,
+    formikActions: FormikActions<UpdateBitForm>
+  ) => Promise<void>
+  onViewClick: () => void
 }
 
 const DetailsEdit: React.SFC<Props> = props => {
-  const { error, initialValues, mutation, onToggle, onSubmit } = props
+  const { error, initialValues, mutation, onViewClick, onSubmit } = props
   const buttonsRow = cx(styles.row, styles.buttons)
   return (
     <>
@@ -29,7 +32,7 @@ const DetailsEdit: React.SFC<Props> = props => {
           className={styles.view}
           icon={<ViewIcon />}
           text="View Tag"
-          onClick={onToggle}
+          onClick={onViewClick}
         />
       </Container>
       <Container className={styles.row}>

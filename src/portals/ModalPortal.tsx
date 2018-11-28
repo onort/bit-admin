@@ -1,20 +1,20 @@
 import { Component } from "react"
 import ReactDOM from "react-dom"
 
-const notificationRoot = document.getElementById("notification")
+const modalRoot = document.getElementById("modal")
 
-class NotificationPortal extends Component {
+class ModalPortal extends Component {
   public el = document.createElement("div")
 
   public componentDidMount() {
-    if (notificationRoot) {
-      notificationRoot.appendChild(this.el)
+    if (modalRoot) {
+      modalRoot.appendChild(this.el)
     }
   }
 
   public componentWillUnmount() {
-    if (notificationRoot) {
-      notificationRoot.removeChild(this.el)
+    if (modalRoot) {
+      modalRoot.removeChild(this.el)
     }
   }
 
@@ -23,4 +23,4 @@ class NotificationPortal extends Component {
   }
 }
 
-export default NotificationPortal
+export default ModalPortal

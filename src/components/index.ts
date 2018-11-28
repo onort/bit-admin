@@ -2,6 +2,7 @@ import AppBar from "./AppBar"
 import AppMain from "./AppMain"
 import AuthRoute from "./AuthRoute"
 import Button from "./Button"
+import ConfirmationModal from "./ConfirmationModal"
 import Container from "./Container"
 import ErrorMessage from "./ErrorMessage"
 import FormInput from "./FormInput"
@@ -9,11 +10,12 @@ import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
 import Loading from "./Loading"
+import Modal from "./Modal"
+import NoData from "./NoData"
+import NotFound from "./NotFound"
 import Notification from "./Notification"
 import Pagination from "./Pagination"
 import Paper from "./Paper"
-import NoData from "./NoData"
-import NotFound from "./NotFound"
 import Shell from "./Shell"
 import Sidebar from "./Sidebar"
 import Table, {
@@ -29,6 +31,7 @@ export {
   AppMain,
   AuthRoute,
   Button,
+  ConfirmationModal,
   Container,
   ErrorMessage,
   FormInput,
@@ -36,11 +39,12 @@ export {
   FormTextEditor,
   FormTitle,
   Loading,
+  Modal,
+  NoData,
+  NotFound,
   Notification,
   Pagination,
   Paper,
-  NoData,
-  NotFound,
   Shell,
   Sidebar,
   Table,

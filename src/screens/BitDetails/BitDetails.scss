@@ -1,5 +1,6 @@
 @import "../../styles/main.scss";
 
+// Common
 .row {
   display: flex;
   justify-content: space-around;
@@ -53,6 +54,7 @@
   padding: $spacer-md $spacer-lg;
 }
 
+// View
 .label {
   font-family: $font-family-secondary;
   font-size: $font-size-xlg;

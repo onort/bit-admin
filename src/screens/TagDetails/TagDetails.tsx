@@ -4,8 +4,14 @@ import { Mutation, MutationFn, Query } from "react-apollo"
 import gql from "graphql-tag"
 import { FormikActions } from "formik"
 
-import { Container, Loading, Notification, Shell } from "../../components"
-import { NotificationPortal } from "../../portals"
+import {
+  ConfirmationModal,
+  Container,
+  Loading,
+  Notification,
+  Shell
+} from "../../components"
+import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
 import { Tag } from "../AddTag"
 import { DetailEdit, DetailView, TagMutation } from "./"
@@ -47,6 +53,7 @@ interface State {
   editing: boolean
   message: string
   messageType: NotificationTypes
+  showModal: boolean
   showNotification: boolean
 }
 
@@ -57,6 +64,7 @@ class TagDetails extends Component<Props, State> {
     editing: false,
     message: "",
     messageType: "default" as NotificationTypes,
+    showModal: false,
     showNotification: false
   }
 
@@ -94,8 +102,16 @@ class TagDetails extends Component<Props, State> {
   public toggleNotification = () =>
     this.setState({ showNotification: !this.state.showNotification })
 
+  public toggleModal = () => this.setState({ showModal: !this.state.showModal })
+
   public render() {
-    const { editing, message, messageType, showNotification } = this.state
+    const {
+      editing,
+      message,
+      messageType,
+      showModal,
+      showNotification
+    } = this.state
     return (
       <Shell>
         <Container>
@@ -108,7 +124,11 @@ class TagDetails extends Component<Props, State> {
               if (queryLoading) return <Loading />
               if (queryError) return <p>{queryError.message}</p>
               return !editing ? (
-                <DetailView tag={data.tag} onEditClick={this.toggleStatus} />
+                <DetailView
+                  tag={data.tag}
+                  onDeleteClick={this.toggleModal}
+                  onEditClick={this.toggleStatus}
+                />
               ) : (
                 <Mutation mutation={tagUpdateMutation}>
                   {(
@@ -134,6 +154,17 @@ class TagDetails extends Component<Props, State> {
             <NotificationPortal>
               <Notification message={message} type={messageType} />
             </NotificationPortal>
+          )}
+          {showModal && (
+            <ModalPortal>
+              <ConfirmationModal
+                confirmText="Delete"
+                onCancel={this.toggleModal}
+                onConfirm={() => console.log("Confirm clicked.")}
+                onClose={this.toggleModal}
+                text="Are you sure you want to delete this tag?"
+              />
+            </ModalPortal>
           )}
         </Container>
       </Shell>
