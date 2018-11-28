@@ -4,7 +4,13 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./ViewBits.scss"
-import { Container, Pagination, Paper, Shell } from "../../components"
+import {
+  Container,
+  ErrorMessage,
+  Pagination,
+  Paper,
+  Shell
+} from "../../components"
 import { itemsPerPage } from "../../constants"
 import { BitsTable } from "./"
 import { format } from "../../utils"
@@ -21,15 +27,6 @@ const bitsQuery = gql`
    }
  }
 `
-
-export interface Bit {
-  createdAt: string
-  contentText: string
-  id: string
-  isPublished: boolean
-  tags: string[]
-  updatedAt: string
-}
 
 interface State {
   currentPage: number
@@ -61,6 +58,7 @@ class ViewBits extends Component<RouteComponentProps, State> {
               }}
             >
               {({ data, loading, error }) => {
+                if (error) return <ErrorMessage message={error.message} />
                 return (
                   <BitsTable
                     data={format.convertISODateFromData(data.bits)}

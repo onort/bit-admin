@@ -5,5 +5,11 @@
 }
 
 .submit {
-  margin: $spacer-md 0 $spacer-md auto;
+  margin: $spacer-lg 0 $spacer-lg auto;
+  background-color: $green !important;
+  color: $white !important;
+
+  &:hover {
+    background-color: lighten($green, 10) !important;
+  }
 }

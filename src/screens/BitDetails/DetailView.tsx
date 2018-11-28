@@ -8,26 +8,11 @@ import cx from "classnames"
 
 import styles from "./BitDetails.scss"
 import { Button, Container, Paper } from "../../components"
+import { BitData } from "./"
 import { convertISODate } from "../../utils/format"
 
-export interface Bit {
-  id: string
-  createdAt: string
-  updatedAt: string
-  contentHTML: string
-  contentText: string
-  imageCredit?: string
-  imageURL?: string
-  isPublished: boolean
-  metaDescription?: string
-  metaTitle?: string
-  sourceCredit?: string
-  sourceURL?: string
-  tags: string[]
-}
-
 interface Props {
-  bit: Bit
+  bit: BitData
   onEditClick: () => void
 }
 

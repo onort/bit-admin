@@ -1,6 +1,7 @@
-import BitDetails, { BitEdit } from "./BitDetails"
-import DetailView, { Bit } from "./DetailView"
+import BitDetails from "./BitDetails"
+import DetailView from "./DetailView"
 import DetailEdit from "./DetailEdit"
+import { BitData, UpdateBitForm, UpdateBitMutation } from "./formHelpers"
 
 export default BitDetails
-export { Bit, BitEdit, DetailEdit, DetailView }
+export { BitData, DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation }

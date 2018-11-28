@@ -7,14 +7,14 @@ import cx from "classnames"
 import styles from "./TagDetails.scss"
 import { Button, Container, Paper } from "../../components"
 import { Tag, TagForm, validationSchema } from "../AddTag"
-import { MutationVars } from "./TagDetails"
+import { TagMutation } from "./"
 
 interface Props {
   error?: { message: string }
   initialValues: Tag
-  mutation: MutationFn<null, MutationVars>
+  mutation: MutationFn<null, TagMutation>
   onSubmit: (
-    mutation: MutationFn<null, MutationVars>
+    mutation: MutationFn<null, TagMutation>
   ) => (values: Tag, formikActions: FormikActions<Tag>) => Promise<void>
   onToggle: () => void
 }

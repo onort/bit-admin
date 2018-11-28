@@ -8,7 +8,7 @@ import { Alert, Container, Loading, Shell } from "../../components"
 import { AlertPortal } from "../../portals"
 import { AlertTypes } from "../../components/Alert"
 import { Tag } from "../AddTag"
-import { DetailEdit, DetailView } from "./"
+import { DetailEdit, DetailView, TagMutation } from "./"
 
 const tagQuery = gql`
   query tag($id: ID!) {
@@ -41,10 +41,6 @@ const tagUpdateMutation = gql`
   }
 `
 
-export interface MutationVars extends Tag {
-  id: string
-}
-
 interface Props extends RouteComponentProps<{ tagId: string }> {}
 
 interface State {
@@ -66,7 +62,7 @@ class TagDetails extends Component<Props, State> {
 
   public toggleStatus = () => this.setState({ editing: !this.state.editing })
 
-  public handleSubmit = (mutation: MutationFn<null, MutationVars>) => async (
+  public handleSubmit = (mutation: MutationFn<null, TagMutation>) => async (
     values: Tag,
     { setSubmitting }: FormikActions<Tag>
   ) => {

@@ -44,7 +44,6 @@ const TagForm: React.SFC<Props> = props => {
         className={styles.submit}
         text={buttonText}
         type="submit"
-        success={true}
         disabled={form.isSubmitting}
         icon={<SaveIcon />}
       />

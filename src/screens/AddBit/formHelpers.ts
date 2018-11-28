@@ -1,4 +1,4 @@
-import { EditorState, convertToRaw } from "draft-js"
+import { EditorState } from "draft-js"
 import * as yup from "yup"
 
 // import { TagType } from "../../components/FormTagField"
@@ -6,18 +6,25 @@ import * as yup from "yup"
 // Change to tags: TagType[]
 // TagType needs rewamp
 export interface Bit {
-  editorState: EditorState
   imageCredit?: string
   imageURL?: string
   metaDescription?: string
   metaTitle?: string
   sourceCredit?: string
   sourceURL?: string
-  tagToAdd: string
   tags: string[]
 }
 
-export const initialValues: Bit = {
+export interface CreateBitForm extends Bit {
+  editorState: EditorState
+  tagToAdd: string
+}
+
+export interface CreateBitMutation extends Bit {
+  content: string
+}
+
+export const initialValues: CreateBitForm = {
   editorState: EditorState.createEmpty(),
   imageCredit: "",
   imageURL: "",

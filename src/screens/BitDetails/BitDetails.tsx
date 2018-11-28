@@ -4,7 +4,6 @@ import gql from "graphql-tag"
 import { RouteComponentProps } from "react-router-dom"
 import { FormikActions } from "formik"
 
-import styles from "./BitDetails.scss"
 import {
   Alert,
   Container,
@@ -14,12 +13,11 @@ import {
 } from "../../components"
 import { AlertPortal } from "../../portals"
 import { AlertTypes } from "../../components/Alert"
-import { DetailEdit, DetailView } from "./"
+import { DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation } from "./"
 import {
   covnertBitDataToInitialValues,
   editorStateToString
 } from "../../utils/format"
-import { Bit } from "../AddBit"
 
 const bitQuery = gql`
   query bit($id: ID!) {
@@ -71,14 +69,6 @@ const bitUpdateMutation = gql`
   }
 `
 
-export interface BitEdit extends Bit {
-  content?: string
-  contentHTML?: string
-  contentText?: string
-  id: string
-  isPublished: boolean
-}
-
 interface Props extends RouteComponentProps<{ bitId: string }> {}
 
 interface State {
@@ -88,7 +78,6 @@ interface State {
   showAlert: boolean
 }
 
-// TODO: Better Typings
 // TODO: Modal Portal
 // TODO: Modal Component
 // TODO: Delete Flow
@@ -106,9 +95,11 @@ class BitDetails extends Component<Props, State> {
 
   public toggleStatus = () => this.setState({ editing: !this.state.editing })
 
-  public handleSubmit = (mutation: MutationFn<null, any>) => async (
-    values: BitEdit,
-    { setSubmitting }: FormikActions<BitEdit>
+  public handleSubmit = (
+    mutation: MutationFn<null, UpdateBitMutation>
+  ) => async (
+    values: UpdateBitForm,
+    { setSubmitting }: FormikActions<UpdateBitForm>
   ) => {
     try {
       setSubmitting(true)

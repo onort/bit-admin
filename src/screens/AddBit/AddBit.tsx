@@ -1,31 +1,17 @@
 import React, { Component } from "react"
-import {
-  FastField,
-  Field,
-  Form,
-  Formik,
-  FormikActions,
-  FormikProps
-} from "formik"
-import { MdArchive as SaveIcon } from "react-icons/md"
+import { Formik, FormikActions, FormikProps } from "formik"
 import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./AddBit.scss"
+import { Alert, Container, Loading, Paper, Shell } from "../../components"
 import {
-  Alert,
-  Button,
-  Container,
-  ErrorMessage,
-  FormInput,
-  FormTagField,
-  FormTextEditor,
-  FormTitle,
-  Loading,
-  Paper,
-  Shell
-} from "../../components"
-import { Bit, BitForm, initialValues, validationSchema } from "./"
+  BitForm,
+  CreateBitForm,
+  CreateBitMutation,
+  initialValues,
+  validationSchema
+} from "./"
 import { AlertTypes } from "../../components/Alert"
 import { AlertPortal } from "../../portals"
 import { format } from "../../utils"
@@ -62,7 +48,6 @@ interface State {
   message: string
 }
 
-// TODO: MutationFn Options Type
 // TODO: Tag Type &  AutoComplete
 // TODO: resetForm is not enough to reset values.tags?
 class AddBit extends Component<any, State> {
@@ -72,9 +57,11 @@ class AddBit extends Component<any, State> {
     message: ""
   }
 
-  public handleSubmit = (mutation: MutationFn<null, any>) => async (
-    values: Bit,
-    { resetForm, setSubmitting }: FormikActions<Bit>
+  public handleSubmit = (
+    mutation: MutationFn<null, CreateBitMutation>
+  ) => async (
+    values: CreateBitForm,
+    { resetForm, setSubmitting }: FormikActions<CreateBitForm>
   ) => {
     setSubmitting(true)
     try {
@@ -123,7 +110,7 @@ class AddBit extends Component<any, State> {
                     initialValues={initialValues}
                     onSubmit={this.handleSubmit(addBit)}
                     validationSchema={validationSchema}
-                    render={(form: FormikProps<Bit>) => {
+                    render={(form: FormikProps<CreateBitForm>) => {
                       if (loading) return <Loading />
                       return <BitForm form={form} error={error} />
                     }}

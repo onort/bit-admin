@@ -14,10 +14,10 @@ import {
   TableHead,
   TableRow
 } from "../../components"
-import { Bit } from "./"
+import { BitData } from "../BitDetails"
 
 interface Props {
-  data: any[]
+  data: BitData[]
   loading?: boolean
   onRowClick: (id: string) => void
 }
@@ -42,7 +42,7 @@ const BitsTable: React.SFC<Props> = props => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((bit: Bit) => (
+          {data.map((bit: BitData) => (
             <TableRow key={bit.id} onClick={() => handleRowClick(bit.id)}>
               <TableCell className={styles.icon} align="center" width={1}>
                 {bit.isPublished ? (

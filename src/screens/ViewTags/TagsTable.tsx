@@ -9,10 +9,11 @@ import {
   TableRow
 } from "../../components"
 import { ColumnType as Column } from "../../components/Table"
+import { TagData } from "../TagDetails"
 
 interface Props {
   columns: Column[]
-  data: any[]
+  data: TagData[]
   loading?: boolean
   onRowClick: (id: string) => void
 }

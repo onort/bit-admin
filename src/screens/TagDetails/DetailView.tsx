@@ -3,20 +3,12 @@ import { MdDelete as DeleteIcon, MdEdit as EditIcon } from "react-icons/md"
 import cx from "classnames"
 
 import styles from "./TagDetails.scss"
-import { Button, Container, Paper } from "../../components"
 import { convertISODate } from "../../utils/format"
-
-interface Tag {
-  id: string
-  createdAt: string
-  updatedAt: string
-  metaDescription?: string
-  metaTitle?: string
-  name: string
-}
+import { Button, Container, Paper } from "../../components"
+import { TagData } from "./"
 
 interface Props {
-  tag: Tag
+  tag: TagData
   onEditClick: () => void
 }
 
@@ -54,9 +46,13 @@ const DetailView: React.SFC<Props> = props => {
             &#35;
             {name}
           </h1>
-          <h4 className={styles.id}>{id}</h4>
         </Paper>
         <Paper className={styles.half} elevation={2}>
+          <h2 className={styles.label}>Info</h2>
+          <div className={styles.dataRow}>
+            <span className={styles.dataLabel}>Id</span>
+            <span className={styles.data}>{id}</span>
+          </div>
           <div className={styles.dataRow}>
             <span className={styles.dataLabel}>Last Update</span>
             <span className={styles.data}>{updated}</span>

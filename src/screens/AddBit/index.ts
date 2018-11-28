@@ -1,6 +1,19 @@
 import AddBit from "./AddBit"
 import BitForm from "./BitForm"
-import { Bit, initialValues, validationSchema } from "./formHelpers"
+import {
+  Bit,
+  CreateBitForm,
+  CreateBitMutation,
+  initialValues,
+  validationSchema
+} from "./formHelpers"
 
 export default AddBit
-export { Bit, BitForm, initialValues, validationSchema }
+export {
+  Bit,
+  BitForm,
+  CreateBitForm,
+  CreateBitMutation,
+  initialValues,
+  validationSchema
+}
