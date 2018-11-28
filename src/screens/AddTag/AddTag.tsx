@@ -4,9 +4,15 @@ import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./AddTag.scss"
-import { AlertPortal } from "../../portals"
-import { AlertTypes } from "../../components/Alert"
-import { Alert, Container, Loading, Paper, Shell } from "../../components"
+import { NotificationPortal } from "../../portals"
+import { NotificationTypes } from "../../components/Notification"
+import {
+  Container,
+  Loading,
+  Notification,
+  Paper,
+  Shell
+} from "../../components"
 import { initialValues, Tag, TagForm, validationSchema } from "./"
 
 const addTagMuatation = gql`
@@ -27,15 +33,15 @@ const addTagMuatation = gql`
 
 interface State {
   message: string
-  messageType: AlertTypes
-  showAlert: boolean
+  messageType: NotificationTypes
+  showNotification: boolean
 }
 
 class AddTag extends Component<any, State> {
   public state = {
     message: "",
-    messageType: "default" as AlertTypes,
-    showAlert: false
+    messageType: "default" as NotificationTypes,
+    showNotification: false
   }
 
   public handleSubmit = (mutation: MutationFn<null, Tag>) => async (
@@ -56,23 +62,24 @@ class AddTag extends Component<any, State> {
       this.setState({
         message: "Successfully added tag to databse.",
         messageType: "success",
-        showAlert: true
+        showNotification: true
       })
     } catch (e) {
       setSubmitting(false)
       this.setState({
         message: "An error has occured during saving tag.",
         messageType: "error",
-        showAlert: true
+        showNotification: true
       })
     }
-    setTimeout(this.toggleAlert, 3500)
+    setTimeout(this.toggleNotification, 3500)
   }
 
-  public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })
+  public toggleNotification = () =>
+    this.setState({ showNotification: !this.state.showNotification })
 
   public render() {
-    const { showAlert, message, messageType } = this.state
+    const { showNotification, message, messageType } = this.state
     return (
       <Mutation mutation={addTagMuatation}>
         {(addTag, { loading, error }) => {
@@ -91,10 +98,10 @@ class AddTag extends Component<any, State> {
                   />
                 </Paper>
               </Container>
-              {showAlert && (
-                <AlertPortal>
-                  <Alert message={message} type={messageType} />
-                </AlertPortal>
+              {showNotification && (
+                <NotificationPortal>
+                  <Notification message={message} type={messageType} />
+                </NotificationPortal>
               )}
             </Shell>
           )

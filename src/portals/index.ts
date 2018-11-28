@@ -1,3 +1,3 @@
-import AlertPortal from "./AlertPortal"
+import NotificationPortal from "./NotificationPortal"
 
-export { AlertPortal }
+export { NotificationPortal }

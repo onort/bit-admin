@@ -4,7 +4,13 @@ import { Mutation, MutationFn } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./AddBit.scss"
-import { Alert, Container, Loading, Paper, Shell } from "../../components"
+import {
+  Container,
+  Loading,
+  Notification,
+  Paper,
+  Shell
+} from "../../components"
 import {
   BitForm,
   CreateBitForm,
@@ -12,8 +18,8 @@ import {
   initialValues,
   validationSchema
 } from "./"
-import { AlertTypes } from "../../components/Alert"
-import { AlertPortal } from "../../portals"
+import { NotificationPortal } from "../../portals"
+import { NotificationTypes } from "../../components/Notification"
 import { format } from "../../utils"
 
 const addBitMutation = gql`
@@ -43,8 +49,8 @@ const addBitMutation = gql`
 `
 
 interface State {
-  showAlert: boolean
-  messageType: AlertTypes
+  showNotification: boolean
+  messageType: NotificationTypes
   message: string
 }
 
@@ -52,8 +58,8 @@ interface State {
 // TODO: resetForm is not enough to reset values.tags?
 class AddBit extends Component<any, State> {
   public state = {
-    showAlert: false,
-    messageType: "default" as AlertTypes,
+    showNotification: false,
+    messageType: "default" as NotificationTypes,
     message: ""
   }
 
@@ -80,25 +86,26 @@ class AddBit extends Component<any, State> {
       resetForm()
       setSubmitting(false)
       this.setState({
-        showAlert: true,
+        showNotification: true,
         messageType: "success",
         message: "Successfully added bit to databse."
       })
     } catch (e) {
       setSubmitting(false)
       this.setState({
-        showAlert: true,
+        showNotification: true,
         messageType: "error",
         message: "An error has occured during saving bit."
       })
     }
-    setTimeout(this.toggleAlert, 3500)
+    setTimeout(this.toggleNotification, 3500)
   }
 
-  public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })
+  public toggleNotification = () =>
+    this.setState({ showNotification: !this.state.showNotification })
 
   public render() {
-    const { showAlert, message, messageType } = this.state
+    const { showNotification, message, messageType } = this.state
     return (
       <Mutation mutation={addBitMutation}>
         {(addBit, { loading, error }) => {
@@ -117,10 +124,10 @@ class AddBit extends Component<any, State> {
                   />
                 </Paper>
               </Container>
-              {showAlert && (
-                <AlertPortal>
-                  <Alert message={message} type={messageType} />
-                </AlertPortal>
+              {showNotification && (
+                <NotificationPortal>
+                  <Notification message={message} type={messageType} />
+                </NotificationPortal>
               )}
             </Shell>
           )

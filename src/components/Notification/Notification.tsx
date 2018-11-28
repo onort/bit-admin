@@ -1,18 +1,18 @@
 import React from "react"
 import cx from "classnames"
 
-import styles from "./Alert.scss"
+import styles from "./Notification.scss"
 
-export type AlertTypes = "error" | "default" | "success"
+export type NotificationTypes = "error" | "default" | "success"
 
 interface Props {
   className?: string
   message: string
-  type?: AlertTypes
+  type?: NotificationTypes
 }
 
 // TODO: Consider adding an onClose prop and close icon
-const Alert: React.SFC<Props> = props => {
+const Notification: React.SFC<Props> = props => {
   const className = cx(
     styles.container,
     { [styles[`${props.type}`]]: props.type },
@@ -25,8 +25,8 @@ const Alert: React.SFC<Props> = props => {
   )
 }
 
-Alert.defaultProps = {
+Notification.defaultProps = {
   type: "default"
 }
 
-export default Alert
+export default Notification

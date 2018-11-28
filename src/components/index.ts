@@ -1,4 +1,3 @@
-import Alert from "./Alert"
 import AppBar from "./AppBar"
 import AppMain from "./AppMain"
 import AuthRoute from "./AuthRoute"
@@ -10,6 +9,7 @@ import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
 import Loading from "./Loading"
+import Notification from "./Notification"
 import Pagination from "./Pagination"
 import Paper from "./Paper"
 import NoData from "./NoData"
@@ -25,7 +25,6 @@ import Table, {
 import Wrapper from "./Wrapper"
 
 export {
-  Alert,
   AppBar,
   AppMain,
   AuthRoute,
@@ -37,6 +36,7 @@ export {
   FormTextEditor,
   FormTitle,
   Loading,
+  Notification,
   Pagination,
   Paper,
   NoData,

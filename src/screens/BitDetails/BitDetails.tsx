@@ -5,14 +5,14 @@ import { RouteComponentProps } from "react-router-dom"
 import { FormikActions } from "formik"
 
 import {
-  Alert,
   Container,
   ErrorMessage,
   Loading,
+  Notification,
   Shell
 } from "../../components"
-import { AlertPortal } from "../../portals"
-import { AlertTypes } from "../../components/Alert"
+import { NotificationPortal } from "../../portals"
+import { NotificationTypes } from "../../components/Notification"
 import { DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation } from "./"
 import {
   covnertBitDataToInitialValues,
@@ -74,8 +74,8 @@ interface Props extends RouteComponentProps<{ bitId: string }> {}
 interface State {
   editing: boolean
   message: string
-  messageType: AlertTypes
-  showAlert: boolean
+  messageType: NotificationTypes
+  showNotification: boolean
 }
 
 // TODO: Modal Portal
@@ -89,8 +89,8 @@ class BitDetails extends Component<Props, State> {
   public state = {
     editing: false,
     message: "",
-    messageType: "default" as AlertTypes,
-    showAlert: false
+    messageType: "default" as NotificationTypes,
+    showNotification: false
   }
 
   public toggleStatus = () => this.setState({ editing: !this.state.editing })
@@ -124,7 +124,7 @@ class BitDetails extends Component<Props, State> {
         editing: false,
         message: "Successfully updated tag.",
         messageType: "success",
-        showAlert: true
+        showNotification: true
       })
     } catch (e) {
       setSubmitting(false)
@@ -132,16 +132,17 @@ class BitDetails extends Component<Props, State> {
         editing: false,
         message: "An error has occured during updating tag.",
         messageType: "error",
-        showAlert: true
+        showNotification: true
       })
     }
-    setTimeout(this.toggleAlert, 3500)
+    setTimeout(this.toggleNotification, 3500)
   }
 
-  public toggleAlert = () => this.setState({ showAlert: !this.state.showAlert })
+  public toggleNotification = () =>
+    this.setState({ showNotification: !this.state.showNotification })
 
   public render() {
-    const { editing, message, messageType, showAlert } = this.state
+    const { editing, message, messageType, showNotification } = this.state
     return (
       <Shell>
         <Container>
@@ -175,10 +176,10 @@ class BitDetails extends Component<Props, State> {
               )
             }}
           </Query>
-          {showAlert && (
-            <AlertPortal>
-              <Alert message={message} type={messageType} />
-            </AlertPortal>
+          {showNotification && (
+            <NotificationPortal>
+              <Notification message={message} type={messageType} />
+            </NotificationPortal>
           )}
         </Container>
       </Shell>
