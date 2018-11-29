@@ -7,6 +7,7 @@ import { FormikActions } from "formik"
 import {
   ConfirmationModal,
   Container,
+  ErrorMessage,
   Loading,
   Notification,
   Shell
@@ -43,6 +44,14 @@ const tagUpdateMutation = gql`
       name: $name
     ) {
       id
+    }
+  }
+`
+
+const tagDeleteMutation = gql`
+  mutation tagDelete($id: ID!) {
+    deleteTag(id: $id) {
+      message
     }
   }
 `
@@ -99,6 +108,31 @@ class TagDetails extends Component<Props, State> {
     setTimeout(this.toggleNotification, 3500)
   }
 
+  public handleDelete = (
+    mutation: MutationFn<null, { id: string }>
+  ) => async () => {
+    try {
+      await mutation()
+      this.setState({
+        message: "Successfully deleted tag from database.",
+        messageType: "success",
+        showModal: false,
+        showNotification: true
+      })
+      // TODO: Pass state to new route, showNotification, message, messageType
+      setTimeout(this.toggleNotification, 3500) // Won't be necessary
+      this.props.history.push("/view-tags")
+    } catch (e) {
+      this.setState({
+        message: "An error has occured during deleting tag.",
+        messageType: "error",
+        showModal: false,
+        showNotification: true
+      })
+      setTimeout(this.toggleNotification, 3500)
+    }
+  }
+
   public toggleNotification = () =>
     this.setState({ showNotification: !this.state.showNotification })
 
@@ -124,11 +158,40 @@ class TagDetails extends Component<Props, State> {
               if (queryLoading) return <Loading />
               if (queryError) return <p>{queryError.message}</p>
               return !editing ? (
-                <DetailView
-                  tag={data.tag}
-                  onDeleteClick={this.toggleModal}
-                  onEditClick={this.toggleStatus}
-                />
+                <Mutation
+                  mutation={tagDeleteMutation}
+                  variables={{ id: data.tag.id }}
+                >
+                  {(
+                    tagDelete,
+                    { loading: deleteLoading, error: deleteError }
+                  ) => {
+                    if (deleteLoading) return <Loading />
+                    if (deleteError) {
+                      return <ErrorMessage message={deleteError.message} />
+                    }
+                    return (
+                      <>
+                        <DetailView
+                          tag={data.tag}
+                          onDeleteClick={this.toggleModal}
+                          onEditClick={this.toggleStatus}
+                        />
+                        {showModal && (
+                          <ModalPortal>
+                            <ConfirmationModal
+                              confirmText="Delete"
+                              onCancel={this.toggleModal}
+                              onConfirm={this.handleDelete(tagDelete)}
+                              onClose={this.toggleModal}
+                              text="Are you sure you want to delete this tag?"
+                            />
+                          </ModalPortal>
+                        )}
+                      </>
+                    )
+                  }}
+                </Mutation>
               ) : (
                 <Mutation mutation={tagUpdateMutation}>
                   {(
@@ -154,17 +217,6 @@ class TagDetails extends Component<Props, State> {
             <NotificationPortal>
               <Notification message={message} type={messageType} />
             </NotificationPortal>
-          )}
-          {showModal && (
-            <ModalPortal>
-              <ConfirmationModal
-                confirmText="Delete"
-                onCancel={this.toggleModal}
-                onConfirm={() => console.log("Confirm clicked.")}
-                onClose={this.toggleModal}
-                text="Are you sure you want to delete this tag?"
-              />
-            </ModalPortal>
           )}
         </Container>
       </Shell>

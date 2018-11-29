@@ -8,9 +8,9 @@ interface Props {
   cancelText?: string
   confirmText?: string
   text: string
-  onCancel: () => void
-  onClose?: () => void
-  onConfirm: () => void
+  onCancel: (e: React.MouseEvent) => void
+  onClose?: (e: React.MouseEvent) => void
+  onConfirm: (e: React.MouseEvent) => void
 }
 
 const ConfirmationModal: React.SFC<Props> = props => {

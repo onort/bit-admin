@@ -70,6 +70,14 @@ const bitUpdateMutation = gql`
   }
 `
 
+const bitDeleteMutation = gql`
+  mutation bitDelete($id: ID!) {
+    deleteBit(id: $id) {
+      message
+    }
+  }
+`
+
 interface Props extends RouteComponentProps<{ bitId: string }> {}
 
 interface State {
@@ -80,9 +88,7 @@ interface State {
   showNotification: boolean
 }
 
-// TODO: Delete Flow
 // TO CONSIDER: Move types and query & mutations to a seperate file?
-
 class BitDetails extends Component<Props, State> {
   public bitId = this.props.match.params.bitId
 
@@ -123,7 +129,7 @@ class BitDetails extends Component<Props, State> {
       setSubmitting(false)
       this.setState({
         editing: false,
-        message: "Successfully updated tag.",
+        message: "Successfully updated bit.",
         messageType: "success",
         showNotification: true
       })
@@ -131,12 +137,37 @@ class BitDetails extends Component<Props, State> {
       setSubmitting(false)
       this.setState({
         editing: false,
-        message: "An error has occured during updating tag.",
+        message: "An error has occured during updating bit.",
         messageType: "error",
         showNotification: true
       })
     }
     setTimeout(this.toggleNotification, 3500)
+  }
+
+  public handleDelete = (
+    mutation: MutationFn<null, { id: string }>
+  ) => async () => {
+    try {
+      await mutation()
+      this.setState({
+        message: "Successfully deleted bit from database.",
+        messageType: "success",
+        showModal: false,
+        showNotification: true
+      })
+      setTimeout(this.toggleNotification, 3500) // Won't be necessary
+      // TODO: Pass state to new route, showNotification, message, messageType
+      this.props.history.push("/view-bits")
+    } catch (e) {
+      this.setState({
+        message: "An error has occured during deleting bit.",
+        messageType: "error",
+        showModal: false,
+        showNotification: true
+      })
+      setTimeout(this.toggleNotification, 3500)
+    }
   }
 
   public toggleNotification = () =>
@@ -166,12 +197,12 @@ class BitDetails extends Component<Props, State> {
                 <Mutation mutation={bitUpdateMutation}>
                   {(
                     bitUpdate,
-                    { loading: mutationLoading, error: mutationError }
+                    { loading: updateLoading, error: updateError }
                   ) => {
-                    if (mutationLoading) return <Loading />
+                    if (updateLoading) return <Loading />
                     return (
                       <DetailEdit
-                        error={mutationError}
+                        error={updateError}
                         initialValues={initialValues}
                         onSubmit={this.handleSubmit}
                         onViewClick={this.toggleStatus}
@@ -181,11 +212,40 @@ class BitDetails extends Component<Props, State> {
                   }}
                 </Mutation>
               ) : (
-                <DetailView
-                  bit={data.bit}
-                  onDeleteClick={this.toggleModal}
-                  onEditClick={this.toggleStatus}
-                />
+                <Mutation
+                  mutation={bitDeleteMutation}
+                  variables={{ id: data.bit.id }}
+                >
+                  {(
+                    bitDelete,
+                    { loading: deleteLoading, error: deleteError }
+                  ) => {
+                    if (deleteLoading) return <Loading />
+                    if (deleteError) {
+                      return <ErrorMessage message={deleteError.message} />
+                    }
+                    return (
+                      <>
+                        <DetailView
+                          bit={data.bit}
+                          onDeleteClick={this.toggleModal}
+                          onEditClick={this.toggleStatus}
+                        />
+                        {showModal && (
+                          <ModalPortal>
+                            <ConfirmationModal
+                              confirmText="Delete"
+                              onCancel={this.toggleModal}
+                              onConfirm={this.handleDelete(bitDelete)}
+                              onClose={this.toggleModal}
+                              text="Are you sure you want to delete this bit?"
+                            />
+                          </ModalPortal>
+                        )}
+                      </>
+                    )
+                  }}
+                </Mutation>
               )
             }}
           </Query>
@@ -193,17 +253,6 @@ class BitDetails extends Component<Props, State> {
             <NotificationPortal>
               <Notification message={message} type={messageType} />
             </NotificationPortal>
-          )}
-          {showModal && (
-            <ModalPortal>
-              <ConfirmationModal
-                confirmText="Delete"
-                onCancel={this.toggleModal}
-                onConfirm={() => console.log("Confirm clicked.")}
-                onClose={this.toggleModal}
-                text="Are you sure you want to delete this bit?"
-              />
-            </ModalPortal>
           )}
         </Container>
       </Shell>
