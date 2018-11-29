@@ -14,6 +14,7 @@ import {
 } from "../../components"
 import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
+import { ViewTagsState } from "../ViewTags"
 import { Tag } from "../AddTag"
 import { DetailEdit, DetailView, TagMutation } from "./"
 
@@ -114,14 +115,17 @@ class TagDetails extends Component<Props, State> {
     try {
       await mutation()
       this.setState({
-        message: "Successfully deleted tag from database.",
-        messageType: "success",
-        showModal: false,
-        showNotification: true
+        showModal: false
       })
-      // TODO: Pass state to new route, showNotification, message, messageType
-      setTimeout(this.toggleNotification, 3500) // Won't be necessary
-      this.props.history.push("/view-tags")
+      this.props.history.push({
+        pathname: "/view-tags",
+        state: {
+          currentPage: 1,
+          message: "Successfully deleted tag from database.",
+          messageType: "success",
+          showNotification: true
+        } as ViewTagsState
+      })
     } catch (e) {
       this.setState({
         message: "An error has occured during deleting tag.",

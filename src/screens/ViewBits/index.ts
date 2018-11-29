@@ -1,5 +1,5 @@
-import ViewBits, { Bit } from "./ViewBits"
+import ViewBits, { State as ViewBitsState } from "./ViewBits"
 import BitsTable from "./BitsTable"
 
 export default ViewBits
-export { Bit, BitsTable }
+export { BitsTable, ViewBitsState }

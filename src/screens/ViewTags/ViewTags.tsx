@@ -4,7 +4,16 @@ import { Query } from "react-apollo"
 import gql from "graphql-tag"
 
 import styles from "./ViewTags.scss"
-import { Container, Pagination, Paper, Shell } from "../../components"
+import {
+  Container,
+  ErrorMessage,
+  Notification,
+  Pagination,
+  Paper,
+  Shell
+} from "../../components"
+import { NotificationPortal } from "../../portals"
+import { NotificationTypes } from "../../components/Notification"
 import { ColumnType } from "../../components/Table"
 import TagsTable from "./TagsTable"
 import { itemsPerPage } from "../../constants"
@@ -31,13 +40,30 @@ const columns: ColumnType[] = [
   { dataIndex: "updatedAt", title: "Last Update", width: 2, align: "center" }
 ]
 
-interface State {
+export interface State {
   currentPage: number
+  message: string
+  messageType: NotificationTypes
+  showNotification: boolean
 }
 
-// TODO: Error Page / Error Component / Error Alert ?
 class ViewTags extends Component<RouteComponentProps, State> {
-  public state = { currentPage: 1 }
+  public state = {
+    currentPage: 1,
+    message: "",
+    messageType: "default" as NotificationTypes,
+    showNotification: false
+  }
+
+  public componentDidMount() {
+    const passedState: State = this.props.location.state
+    if (passedState) {
+      this.setState(passedState)
+      if (passedState.showNotification) {
+        setTimeout(this.toggleNotification, 3500)
+      }
+    }
+  }
 
   public handleNextClick = () =>
     this.setState({ currentPage: this.state.currentPage + 1 })
@@ -48,8 +74,11 @@ class ViewTags extends Component<RouteComponentProps, State> {
   public handleRowClick = (id: string) =>
     this.props.history.push(`/view-tags/detail/${id}`)
 
+  public toggleNotification = () =>
+    this.setState({ showNotification: !this.state.showNotification })
+
   public render() {
-    const { currentPage } = this.state
+    const { currentPage, message, messageType, showNotification } = this.state
     return (
       <Shell>
         <Container>
@@ -62,7 +91,7 @@ class ViewTags extends Component<RouteComponentProps, State> {
               }}
             >
               {({ data, loading, error }) => {
-                if (error) return <p>Error: {error.message}</p>
+                if (error) return <ErrorMessage message={error.message} />
                 return (
                   <TagsTable
                     columns={columns}
@@ -80,6 +109,11 @@ class ViewTags extends Component<RouteComponentProps, State> {
               queryEndPoint="tagsConnection"
             />
           </Paper>
+          {showNotification && (
+            <NotificationPortal>
+              <Notification message={message} type={messageType} />
+            </NotificationPortal>
+          )}
         </Container>
       </Shell>
     )

@@ -14,6 +14,7 @@ import {
 } from "../../components"
 import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
+import { ViewBitsState } from "../ViewBits"
 import { DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation } from "./"
 import {
   covnertBitDataToInitialValues,
@@ -151,14 +152,17 @@ class BitDetails extends Component<Props, State> {
     try {
       await mutation()
       this.setState({
-        message: "Successfully deleted bit from database.",
-        messageType: "success",
-        showModal: false,
-        showNotification: true
+        showModal: false
       })
-      setTimeout(this.toggleNotification, 3500) // Won't be necessary
-      // TODO: Pass state to new route, showNotification, message, messageType
-      this.props.history.push("/view-bits")
+      this.props.history.push({
+        pathname: "/view-bits",
+        state: {
+          currentPage: 1,
+          message: "Successfully deleted bit from database.",
+          messageType: "success",
+          showNotification: true
+        } as ViewBitsState
+      })
     } catch (e) {
       this.setState({
         message: "An error has occured during deleting bit.",
