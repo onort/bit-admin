@@ -6,8 +6,8 @@ import cx from "classnames"
 
 import styles from "./TagDetails.scss"
 import { Button, Container, Paper } from "../../components"
-import { Tag, TagForm, validationSchema } from "../AddTag"
-import { TagMutation } from "./"
+import { TagForm, validationSchema } from "../AddTag"
+import { Tag, TagMutation } from "../../types"
 
 interface Props {
   error?: { message: string }

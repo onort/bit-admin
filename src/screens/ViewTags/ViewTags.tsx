@@ -92,22 +92,27 @@ class ViewTags extends Component<RouteComponentProps, State> {
             >
               {({ data, loading, error }) => {
                 if (error) return <ErrorMessage message={error.message} />
+                const tags = format.convertISODateFromData(data.tags)
                 return (
-                  <TagsTable
-                    columns={columns}
-                    data={format.convertISODateFromData(data.tags)}
-                    loading={loading}
-                    onRowClick={this.handleRowClick}
-                  />
+                  <>
+                    <TagsTable
+                      columns={columns}
+                      data={tags}
+                      loading={loading}
+                      onRowClick={this.handleRowClick}
+                    />
+                    {tags.length > 0 && (
+                      <Pagination
+                        currentPage={currentPage}
+                        onNextClick={this.handleNextClick}
+                        onPrevClick={this.handlePrevClick}
+                        queryEndPoint="tagsConnection"
+                      />
+                    )}
+                  </>
                 )
               }}
             </Query>
-            <Pagination
-              currentPage={currentPage}
-              onNextClick={this.handleNextClick}
-              onPrevClick={this.handlePrevClick}
-              queryEndPoint="tagsConnection"
-            />
           </Paper>
           {showNotification && (
             <NotificationPortal>

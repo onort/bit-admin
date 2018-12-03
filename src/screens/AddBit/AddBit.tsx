@@ -31,7 +31,7 @@ const addBitMutation = gql`
     $metaTitle: String
     $sourceCredit: String
     $sourceURL: String
-    $tags: [String!]!
+    $tagIds: [String!]!
   ) {
     createBit(
       content: $content
@@ -41,7 +41,7 @@ const addBitMutation = gql`
       metaTitle: $metaTitle
       sourceCredit: $sourceCredit
       sourceURL: $sourceURL
-      tags: $tags
+      tagIds: $tagIds
     ) {
       message
     }
@@ -80,7 +80,7 @@ class AddBit extends Component<any, State> {
           metaTitle: values.metaTitle,
           sourceCredit: values.sourceCredit,
           sourceURL: values.sourceURL,
-          tags: values.tags
+          tagIds: values.tags
         }
       })
       resetForm()

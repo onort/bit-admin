@@ -13,7 +13,8 @@ import {
   Paper,
   Shell
 } from "../../components"
-import { initialValues, Tag, TagForm, validationSchema } from "./"
+import { initialValues, TagForm, validationSchema } from "./"
+import { Tag } from "../../types"
 
 const addTagMuatation = gql`
   mutation addTag(
@@ -26,7 +27,7 @@ const addTagMuatation = gql`
       metaTitle: $metaTitle
       metaDescription: $metaDescription
     ) {
-      id
+      message
     }
   }
 `

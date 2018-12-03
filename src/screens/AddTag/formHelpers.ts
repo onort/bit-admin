@@ -1,10 +1,5 @@
 import * as yup from "yup"
-
-export interface Tag {
-  metaDescription: string
-  metaTitle: string
-  name: string
-}
+import { Tag } from "../../types"
 
 export const initialValues: Tag = {
   metaDescription: "",

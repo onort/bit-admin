@@ -12,16 +12,18 @@ export interface Bit {
   metaTitle?: string
   sourceCredit?: string
   sourceURL?: string
-  tags: string[]
+  // tags: string[]
 }
 
 export interface CreateBitForm extends Bit {
   editorState: EditorState
+  tags: string[]
   tagToAdd: string
 }
 
 export interface CreateBitMutation extends Bit {
   content: string
+  tagIds: string[]
 }
 
 export const initialValues: CreateBitForm = {

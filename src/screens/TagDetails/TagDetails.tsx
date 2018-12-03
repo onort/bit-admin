@@ -15,8 +15,8 @@ import {
 import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
 import { ViewTagsState } from "../ViewTags"
-import { Tag } from "../AddTag"
-import { DetailEdit, DetailView, TagMutation } from "./"
+import { DetailEdit, DetailView } from "./"
+import { Tag, TagMutation } from "../../types"
 
 const tagQuery = gql`
   query tag($id: ID!) {
@@ -44,7 +44,7 @@ const tagUpdateMutation = gql`
       metaTitle: $metaTitle
       name: $name
     ) {
-      id
+      message
     }
   }
 `

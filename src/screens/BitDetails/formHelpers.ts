@@ -7,6 +7,7 @@ export interface BitData extends Bit {
   contentHTML: string
   contentText: string
   isPublished: boolean
+  tags: any[]
 }
 
 export interface UpdateBitForm extends CreateBitForm {

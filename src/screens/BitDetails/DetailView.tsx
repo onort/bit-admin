@@ -59,8 +59,8 @@ const DetailView: React.SFC<Props> = props => {
           />
           <div className={styles.tagsContainer}>
             {tags.map(tag => (
-              <span key={tag} className={styles.tag}>
-                {tag}
+              <span key={tag.id} className={styles.tag}>
+                {tag.name}
               </span>
             ))}
           </div>

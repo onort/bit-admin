@@ -26,7 +26,10 @@ const bitsQuery = gql`
      updatedAt
      contentText
      isPublished
-     tags
+     tags {
+       id
+       name
+     }
    }
  }
 `
@@ -83,21 +86,26 @@ class ViewBits extends Component<RouteComponentProps, State> {
             >
               {({ data, loading, error }) => {
                 if (error) return <ErrorMessage message={error.message} />
+                const bits = format.convertISODateFromData(data.bits)
                 return (
-                  <BitsTable
-                    data={format.convertISODateFromData(data.bits)}
-                    loading={loading}
-                    onRowClick={this.handleRowClick}
-                  />
+                  <>
+                    <BitsTable
+                      data={bits}
+                      loading={loading}
+                      onRowClick={this.handleRowClick}
+                    />
+                    {bits.length > 0 && (
+                      <Pagination
+                        currentPage={currentPage}
+                        onNextClick={this.handleNextClick}
+                        onPrevClick={this.handlePrevClick}
+                        queryEndPoint="bitsConnection"
+                      />
+                    )}
+                  </>
                 )
               }}
             </Query>
-            <Pagination
-              currentPage={currentPage}
-              onNextClick={this.handleNextClick}
-              onPrevClick={this.handlePrevClick}
-              queryEndPoint="bitsConnection"
-            />
           </Paper>
           {showNotification && (
             <NotificationPortal>

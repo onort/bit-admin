@@ -36,7 +36,10 @@ const bitQuery = gql`
       metaTitle
       sourceCredit
       sourceURL
-      tags
+      tags {
+        id
+        name
+      }
     }
   }
 `
@@ -52,7 +55,7 @@ const bitUpdateMutation = gql`
     $metaTitle: String
     $sourceCredit: String
     $sourceURL: String
-    $tags: [String!]!
+    $tagIds: [String!]!
   ) {
     updateBit(
       content: $content
@@ -64,9 +67,9 @@ const bitUpdateMutation = gql`
       metaTitle: $metaTitle
       sourceCredit: $sourceCredit
       sourceURL: $sourceURL
-      tags: $tags
+      tagIds: $tagIds
     ) {
-      id
+      message
     }
   }
 `
@@ -123,7 +126,7 @@ class BitDetails extends Component<Props, State> {
           metaTitle: values.metaTitle,
           sourceCredit: values.sourceCredit,
           sourceURL: values.sourceURL,
-          tags: values.tags
+          tagIds: values.tags
         },
         refetchQueries: [{ query: bitQuery, variables: { id: this.bitId } }]
       })

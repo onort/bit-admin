@@ -15,6 +15,7 @@ import {
   TableRow
 } from "../../components"
 import { BitData } from "../BitDetails"
+import { TagData } from "../../types"
 
 interface Props {
   data: BitData[]
@@ -26,6 +27,9 @@ const BitsTable: React.SFC<Props> = props => {
   const { data, loading } = props
 
   const handleRowClick = (id: string) => props.onRowClick(id)
+
+  const createTagsString = (tagsData: TagData[]): string =>
+    tagsData.map(tag => tag.name).join(", ")
 
   return (
     <>
@@ -52,7 +56,7 @@ const BitsTable: React.SFC<Props> = props => {
                 )}
               </TableCell>
               <TableCell width={7}>{bit.contentText}</TableCell>
-              <TableCell width={3}>{bit.tags.join(", ")}</TableCell>
+              <TableCell width={3}>{createTagsString(bit.tags)}</TableCell>
               <TableCell width={2}>{bit.createdAt}</TableCell>
               <TableCell width={2}>{bit.updatedAt}</TableCell>
             </TableRow>

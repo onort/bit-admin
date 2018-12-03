@@ -9,7 +9,7 @@ import {
   TableRow
 } from "../../components"
 import { ColumnType as Column } from "../../components/Table"
-import { TagData } from "../TagDetails"
+import { TagData } from "../../types"
 
 interface Props {
   columns: Column[]

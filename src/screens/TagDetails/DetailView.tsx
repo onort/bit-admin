@@ -5,7 +5,7 @@ import cx from "classnames"
 import styles from "./TagDetails.scss"
 import { convertISODate } from "../../utils/format"
 import { Button, Container, Paper } from "../../components"
-import { TagData } from "./"
+import { TagData } from "../../types"
 
 interface Props {
   tag: TagData
