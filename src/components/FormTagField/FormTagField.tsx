@@ -5,14 +5,14 @@ import cx from "classnames"
 import styles from "./FormTagField.scss"
 import { Tag } from "./"
 import { ErrorMessage } from "../"
-import { Tag as TagType } from "../../types"
+import { TagData } from "../../types"
 
 // Custom component props are untyped as of formik v1.3.1
 interface Props extends FieldProps {
   label?: string
   required?: boolean
   tagsarrayname: string
-  tags: TagType[]
+  tags: TagData[]
 }
 
 const FormTagField: React.SFC<Props> = ({
@@ -34,7 +34,7 @@ const FormTagField: React.SFC<Props> = ({
     }
   }
   const handleRemove = (tagId: string) => {
-    const newArr = values[tagsarrayname].filter((t: TagType) => t.id !== tagId)
+    const newArr = values[tagsarrayname].filter((t: TagData) => t.id !== tagId)
     setFieldValue(tagsarrayname, newArr)
   }
   const labelClassName = cx(styles.label, { [styles.required]: props.required })
@@ -53,7 +53,7 @@ const FormTagField: React.SFC<Props> = ({
       />
       {values[tagsarrayname].length > 0 && (
         <div className={styles.tags}>
-          {values[tagsarrayname].map((tag: TagType) => (
+          {values[tagsarrayname].map((tag: TagData) => (
             <Tag key={tag.id} tag={tag} onRemove={handleRemove} />
           ))}
         </div>

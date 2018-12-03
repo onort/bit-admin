@@ -2,10 +2,10 @@ import React from "react"
 import { MdClose as CloseIcon } from "react-icons/md"
 
 import styles from "./FormTagField.scss"
-import { Tag as TagType } from "../../types"
+import { TagData } from "../../types"
 
 interface Props {
-  tag: TagType
+  tag: TagData
   onRemove: (id: string) => void
 }
 

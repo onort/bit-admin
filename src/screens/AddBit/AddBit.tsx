@@ -11,16 +11,11 @@ import {
   Paper,
   Shell
 } from "../../components"
-import {
-  BitForm,
-  CreateBitForm,
-  CreateBitMutation,
-  initialValues,
-  validationSchema
-} from "./"
+import { BitForm, initialValues, validationSchema } from "./"
 import { NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
-import { format } from "../../utils"
+import { editorStateToString } from "../../utils/format"
+import { CreateBitForm, CreateBitMutation } from "../../types"
 
 const addBitMutation = gql`
   mutation addBit(
@@ -54,7 +49,7 @@ interface State {
   message: string
 }
 
-// TODO: Tag Type &  AutoComplete
+// TODO: Tag AutoComplete
 // TODO: resetForm is not enough to reset values.tags?
 class AddBit extends Component<any, State> {
   public state = {
@@ -73,7 +68,7 @@ class AddBit extends Component<any, State> {
     try {
       await mutation({
         variables: {
-          content: format.editorStateToString(values.editorState),
+          content: editorStateToString(values.editorState),
           imageCredit: values.imageCredit,
           imageURL: values.imageURL,
           metaDescription: values.metaDescription,

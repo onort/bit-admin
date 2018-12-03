@@ -11,12 +11,12 @@ import {
   FormTextEditor,
   FormTitle
 } from "../../components"
-import { Bit } from "./"
+import { CreateBitForm } from "../../types"
 
 interface Props {
   buttonText?: string
   error?: any
-  form: FormikProps<Bit>
+  form: FormikProps<CreateBitForm>
 }
 
 const TagForm: React.SFC<Props> = props => {

@@ -1,6 +1,6 @@
-import FormTagField, { TagType } from "./FormTagField"
+import FormTagField from "./FormTagField"
 import Tag from "./Tag"
 
 export default FormTagField
 
-export { TagType, Tag }
+export { Tag }

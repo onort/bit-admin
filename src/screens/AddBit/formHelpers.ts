@@ -1,30 +1,7 @@
 import { EditorState } from "draft-js"
 import * as yup from "yup"
 
-// import { TagType } from "../../components/FormTagField"
-
-// Change to tags: TagType[]
-// TagType needs rewamp
-export interface Bit {
-  imageCredit?: string
-  imageURL?: string
-  metaDescription?: string
-  metaTitle?: string
-  sourceCredit?: string
-  sourceURL?: string
-  // tags: string[]
-}
-
-export interface CreateBitForm extends Bit {
-  editorState: EditorState
-  tags: string[]
-  tagToAdd: string
-}
-
-export interface CreateBitMutation extends Bit {
-  content: string
-  tagIds: string[]
-}
+import { CreateBitForm } from "../../types"
 
 export const initialValues: CreateBitForm = {
   editorState: EditorState.createEmpty(),

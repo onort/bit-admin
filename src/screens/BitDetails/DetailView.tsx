@@ -8,8 +8,8 @@ import cx from "classnames"
 
 import styles from "./BitDetails.scss"
 import { Button, Container, Paper } from "../../components"
-import { BitData } from "./"
 import { convertISODate } from "../../utils/format"
+import { BitData } from "../../types"
 
 interface Props {
   bit: BitData

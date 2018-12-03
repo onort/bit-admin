@@ -14,8 +14,7 @@ import {
   TableHead,
   TableRow
 } from "../../components"
-import { BitData } from "../BitDetails"
-import { TagData } from "../../types"
+import { BitData, TagData } from "../../types"
 
 interface Props {
   data: BitData[]

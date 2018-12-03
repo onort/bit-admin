@@ -7,7 +7,7 @@ import cx from "classnames"
 import styles from "./BitDetails.scss"
 import { Button, Container, Paper } from "../../components"
 import { BitForm, validationSchema } from "../AddBit"
-import { UpdateBitForm, UpdateBitMutation } from "./"
+import { UpdateBitForm, UpdateBitMutation } from "../../types"
 
 interface Props {
   error?: { message: string }

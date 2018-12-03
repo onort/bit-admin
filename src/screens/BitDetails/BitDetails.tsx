@@ -15,11 +15,12 @@ import {
 import { ModalPortal, NotificationPortal } from "../../portals"
 import { NotificationTypes } from "../../components/Notification"
 import { ViewBitsState } from "../ViewBits"
-import { DetailEdit, DetailView, UpdateBitForm, UpdateBitMutation } from "./"
+import { DetailEdit, DetailView } from "./"
 import {
   covnertBitDataToInitialValues,
   editorStateToString
 } from "../../utils/format"
+import { UpdateBitForm, UpdateBitMutation } from "../../types"
 
 const bitQuery = gql`
   query bit($id: ID!) {
@@ -92,7 +93,7 @@ interface State {
   showNotification: boolean
 }
 
-// TO CONSIDER: Move types and query & mutations to a seperate file?
+// TO CONSIDER: Move query & mutations to a seperate file?
 class BitDetails extends Component<Props, State> {
   public bitId = this.props.match.params.bitId
 
