@@ -1,6 +1,7 @@
 import AppBar from "./AppBar"
 import AppMain from "./AppMain"
 import AuthRoute from "./AuthRoute"
+import AutoComplete from "./AutoComplete"
 import Button from "./Button"
 import ConfirmationModal from "./ConfirmationModal"
 import Container from "./Container"
@@ -30,6 +31,7 @@ export {
   AppBar,
   AppMain,
   AuthRoute,
+  AutoComplete,
   Button,
   ConfirmationModal,
   Container,

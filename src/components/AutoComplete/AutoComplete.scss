@@ -1,0 +1,11 @@
+@import "../../styles/main.scss";
+
+.input {
+  display: block;
+  width: 100%;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  background-color: $white;
+  border-radius: px-to-rem(4px);
+  padding: $spacer-sm;
+  margin-bottom: $spacer-xxsm;
+}

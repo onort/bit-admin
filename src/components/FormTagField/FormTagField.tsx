@@ -4,7 +4,7 @@ import cx from "classnames"
 
 import styles from "./FormTagField.scss"
 import { Tag } from "./"
-import { ErrorMessage } from "../"
+import { AutoComplete, ErrorMessage } from "../"
 import { TagData } from "../../types"
 
 // Custom component props are untyped as of formik v1.3.1
@@ -37,6 +37,14 @@ const FormTagField: React.SFC<Props> = ({
     const newArr = values[tagsarrayname].filter((t: TagData) => t.id !== tagId)
     setFieldValue(tagsarrayname, newArr)
   }
+  const handleSelect = (suggestion: any) => {
+    const { id, name: tagName } = suggestion
+    // Check if in array
+    values[tagsarrayname].push({ id, name: tagName })
+    setFieldValue(tagsarrayname, values[tagsarrayname])
+    setFieldValue(name, "")
+  }
+  console.log(values[tagsarrayname])
   const labelClassName = cx(styles.label, { [styles.required]: props.required })
   return (
     <div className={styles.container}>
@@ -51,6 +59,7 @@ const FormTagField: React.SFC<Props> = ({
         {...props}
         onKeyPress={handleTagAdd}
       />
+      <AutoComplete onSelect={handleSelect} />
       {values[tagsarrayname].length > 0 && (
         <div className={styles.tags}>
           {values[tagsarrayname].map((tag: TagData) => (
