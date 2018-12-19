@@ -1,6 +1,6 @@
 import { EditorState } from "draft-js"
 
-import { TagData } from "./"
+import { TagData, TagMutation } from "./"
 
 export interface Bit {
   imageCredit?: string
@@ -23,7 +23,7 @@ export interface BitData extends Bit {
 
 export interface CreateBitForm extends Bit {
   editorState: EditorState
-  tags: string[]
+  tags: TagMutation[]
   tagToAdd: string
 }
 

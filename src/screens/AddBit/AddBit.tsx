@@ -49,7 +49,6 @@ interface State {
   message: string
 }
 
-// TODO: Tag AutoComplete
 // TODO: resetForm is not enough to reset values.tags?
 class AddBit extends Component<any, State> {
   public state = {
@@ -75,7 +74,7 @@ class AddBit extends Component<any, State> {
           metaTitle: values.metaTitle,
           sourceCredit: values.sourceCredit,
           sourceURL: values.sourceURL,
-          tagIds: values.tags
+          tagIds: values.tags.map(tag => tag.id)
         }
       })
       resetForm()
