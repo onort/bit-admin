@@ -3,8 +3,8 @@ import { FieldProps } from "formik"
 import cx from "classnames"
 
 import styles from "./FormTagField.scss"
-import { Tag } from "./"
-import { AutoComplete, ErrorMessage } from "../"
+import { AutoComplete, Tag } from "./"
+import { ErrorMessage } from "../"
 import { TagData } from "../../types"
 
 // Custom component props are untyped as of formik v1.3.1
@@ -22,30 +22,24 @@ const FormTagField: React.SFC<Props> = ({
   ...props
 }) => {
   const { errors, touched, values, setFieldValue } = form
-  const { name, value } = field
-  const handleTagAdd: React.KeyboardEventHandler = (
-    e: React.KeyboardEvent<HTMLInputElement>
-  ) => {
-    if (e.key === "Enter") {
-      e.preventDefault()
-      values[tagsarrayname].push({ id: value.trim(), name: value.trim() })
-      setFieldValue(tagsarrayname, values[tagsarrayname])
-      setFieldValue(name, "")
-    }
-  }
+  const { name } = field
+
   const handleRemove = (tagId: string) => {
     const newArr = values[tagsarrayname].filter((t: TagData) => t.id !== tagId)
     setFieldValue(tagsarrayname, newArr)
   }
-  const handleSelect = (suggestion: any) => {
-    const { id, name: tagName } = suggestion
-    // Check if in array
-    values[tagsarrayname].push({ id, name: tagName })
+
+  const handleSelect = (suggestion: TagData) => {
+    const exists = values[tagsarrayname].find(
+      (item: TagData) => item.id === suggestion.id
+    )
+    if (exists) return
+    values[tagsarrayname].push(suggestion)
     setFieldValue(tagsarrayname, values[tagsarrayname])
-    setFieldValue(name, "")
   }
-  console.log(values[tagsarrayname])
+
   const labelClassName = cx(styles.label, { [styles.required]: props.required })
+
   return (
     <div className={styles.container}>
       {props.label && (
@@ -53,12 +47,6 @@ const FormTagField: React.SFC<Props> = ({
           {props.label}
         </label>
       )}
-      <input
-        className={styles.input}
-        {...field}
-        {...props}
-        onKeyPress={handleTagAdd}
-      />
       <AutoComplete onSelect={handleSelect} />
       {values[tagsarrayname].length > 0 && (
         <div className={styles.tags}>

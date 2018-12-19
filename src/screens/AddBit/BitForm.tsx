@@ -29,7 +29,6 @@ const TagForm: React.SFC<Props> = props => {
       <Field
         type="text"
         name="tagToAdd"
-        placeholder=""
         label="Tags"
         tagsarrayname="tags"
         component={FormTagField}
