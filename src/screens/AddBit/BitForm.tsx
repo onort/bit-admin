@@ -9,7 +9,8 @@ import {
   FormInput,
   FormTagField,
   FormTextEditor,
-  FormTitle
+  FormTitle,
+  FormToggle
 } from "../../components"
 import { CreateBitForm } from "../../types"
 
@@ -46,6 +47,12 @@ const TagForm: React.SFC<Props> = props => {
         placeholder="Description"
         label="Description (Meta)"
         component={FormInput}
+      />
+      <Field
+        type="checkbox"
+        name="isPublished"
+        label="Published"
+        component={FormToggle}
       />
       <Field
         type="text"

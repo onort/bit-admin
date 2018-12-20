@@ -127,7 +127,7 @@ class BitDetails extends Component<Props, State> {
           metaTitle: values.metaTitle,
           sourceCredit: values.sourceCredit,
           sourceURL: values.sourceURL,
-          tagIds: values.tags
+          tagIds: values.tags.map(tag => tag.id)
         },
         refetchQueries: [{ query: bitQuery, variables: { id: this.bitId } }]
       })

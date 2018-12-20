@@ -1,7 +1,6 @@
 import React from "react"
 import { mount, shallow } from "enzyme"
 import { Formik, Form, Field } from "formik"
-import * as yup from "yup"
 
 import FormInput from "../"
 

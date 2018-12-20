@@ -7,6 +7,7 @@ export const initialValues: CreateBitForm = {
   editorState: EditorState.createEmpty(),
   imageCredit: "",
   imageURL: "",
+  isPublished: false,
   metaDescription: "",
   metaTitle: "",
   sourceCredit: "",

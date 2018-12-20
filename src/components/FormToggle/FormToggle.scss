@@ -1,0 +1,66 @@
+@import "../../styles/main.scss";
+
+$height: px-to-rem(28px);
+
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: px-to-rem(48px);
+  height: $height;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  border-radius: $height;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: darken($light-bg, 20);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  height: px-to-rem(20px);
+  width: px-to-rem(20px);
+  left: px-to-rem(4px);
+  bottom: px-to-rem(4px);
+  background-color: $white;
+  transition: 0.4s;
+}
+
+input:checked {
+  & + .slider {
+    background-color: $green;
+  }
+}
+
+input:checked {
+  & + .slider:before {
+    transform: translateX(20px);
+  }
+}
+
+.label {
+  display: inline-block;
+  font-size: $font-size-md;
+  font-weight: 600;
+  letter-spacing: 0.66px;
+  margin-bottom: $spacer-xxsm;
+  padding-right: $spacer-md;
+}

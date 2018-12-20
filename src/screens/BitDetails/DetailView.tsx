@@ -40,13 +40,13 @@ const DetailView: React.SFC<Props> = props => {
         <Button
           className={styles.edit}
           icon={<EditIcon />}
-          text="Edit Tag"
+          text="Edit Bit"
           onClick={props.onEditClick}
         />
         <Button
           className={styles.delete}
           icon={<DeleteIcon />}
-          text="Delete Tag"
+          text="Delete Bit"
           onClick={props.onDeleteClick}
         />
       </Container>

@@ -35,7 +35,7 @@ const BitsTable: React.SFC<Props> = props => {
       <Table loading={loading}>
         <TableHead>
           <TableRow>
-            <TableCell className={styles.icon} align="center" width={1}>
+            <TableCell className={styles.icon} width={1}>
               <Public />
             </TableCell>
             <TableCell width={7}>Content</TableCell>
@@ -47,11 +47,11 @@ const BitsTable: React.SFC<Props> = props => {
         <TableBody>
           {data.map((bit: BitData) => (
             <TableRow key={bit.id} onClick={() => handleRowClick(bit.id)}>
-              <TableCell className={styles.icon} align="center" width={1}>
+              <TableCell className={styles.icon} width={1}>
                 {bit.isPublished ? (
-                  <Published className={styles.published} />
+                  <span className={styles.published} />
                 ) : (
-                  <NotPublished className={styles.notPublished} />
+                  <span className={styles.notPublished} />
                 )}
               </TableCell>
               <TableCell width={7}>{bit.contentText}</TableCell>

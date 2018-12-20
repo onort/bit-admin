@@ -7,14 +7,23 @@
 
 .icon {
   line-height: px-to-rem(16px);
+  padding-left: $spacer-sm !important;
+}
+
+.published,
+.notPublished {
+  display: block;
+  width: $font-size-md;
+  height: $font-size-md;
+  border-radius: 50%;
 }
 
 .published {
-  stroke: $success;
-  stroke-width: px-to-rem(4px);
+  border: 3px solid $green;
+  background-color: $green;
 }
 
 .notPublished {
-  stroke: $danger;
-  stroke-width: px-to-rem(4px);
+  opacity: 0.6;
+  border: 3px solid $light-grey;
 }

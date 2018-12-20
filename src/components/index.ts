@@ -9,6 +9,7 @@ import FormInput from "./FormInput"
 import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
+import FormToggle from "./FormToggle"
 import Loading from "./Loading"
 import Modal from "./Modal"
 import NoData from "./NoData"
@@ -38,6 +39,7 @@ export {
   FormTagField,
   FormTextEditor,
   FormTitle,
+  FormToggle,
   Loading,
   Modal,
   NoData,

@@ -22,6 +22,7 @@ const addBitMutation = gql`
     $content: String!
     $imageCredit: String
     $imageURL: String
+    $isPublished: Boolean
     $metaDescription: String
     $metaTitle: String
     $sourceCredit: String
@@ -32,6 +33,7 @@ const addBitMutation = gql`
       content: $content
       imageCredit: $imageCredit
       imageURL: $imageURL
+      isPublished: $isPublished
       metaDescription: $metaDescription
       metaTitle: $metaTitle
       sourceCredit: $sourceCredit
@@ -70,6 +72,7 @@ class AddBit extends Component<any, State> {
           content: editorStateToString(values.editorState),
           imageCredit: values.imageCredit,
           imageURL: values.imageURL,
+          isPublished: values.isPublished,
           metaDescription: values.metaDescription,
           metaTitle: values.metaTitle,
           sourceCredit: values.sourceCredit,

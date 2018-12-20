@@ -23,12 +23,14 @@ export interface BitData extends Bit {
 
 export interface CreateBitForm extends Bit {
   editorState: EditorState
+  isPublished: boolean
   tags: TagMutation[]
   tagToAdd: string
 }
 
 export interface CreateBitMutation extends Bit {
   content: string
+  isPublished: boolean
   tagIds: string[]
 }
 
