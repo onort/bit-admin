@@ -14,7 +14,10 @@ const Tag: React.SFC<Props> = props => {
   const handleRemove = () => props.onRemove(id)
   return (
     <div className={styles.tagContainer}>
-      <span className={styles.name}>{name}</span>
+      <span className={styles.name}>
+        &#35;
+        {name}
+      </span>
       <span className={styles.remove} onClick={handleRemove}>
         <CloseIcon className={styles.removeIcon} />
       </span>

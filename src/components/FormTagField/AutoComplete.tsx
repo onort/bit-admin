@@ -20,7 +20,9 @@ const tagQuery = gql`
 `
 
 interface Props {
+  fieldName: string
   onSelect: (suggestion: TagData) => void
+  setTouched: (field: string) => void
 }
 
 interface State {
@@ -35,6 +37,10 @@ class AutoComplete extends PureComponent<Props, State> {
     this.setState({
       value: newValue
     })
+  }
+
+  public onBlur = (e: React.FormEvent<any>) => {
+    this.props.setTouched(this.props.fieldName)
   }
 
   public onSuggestionsFetchRequested = (client: ApolloClient<any>) => ({
@@ -79,6 +85,7 @@ class AutoComplete extends PureComponent<Props, State> {
     const inputProps = {
       placeholder: "Select at least a tag",
       value,
+      onBlur: this.onBlur,
       onChange: this.onChange,
       autoCorrect: "off",
       autoCapitalize: "off",

@@ -12,11 +12,9 @@ export const initialValues: CreateBitForm = {
   metaTitle: "",
   sourceCredit: "",
   sourceURL: "",
-  tagToAdd: "",
   tags: []
 }
 
 export const validationSchema = yup.object().shape({
-  tags: yup.array().min(1, "At least one tag must be added."),
-  tagToAdd: yup.string().min(2, "Tag should be at least 2 characters long.")
+  tags: yup.array().min(1, "At least one tag must be added.")
 })

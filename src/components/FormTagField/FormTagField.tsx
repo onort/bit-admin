@@ -21,7 +21,7 @@ const FormTagField: React.SFC<Props> = ({
   tagsarrayname,
   ...props
 }) => {
-  const { errors, touched, values, setFieldValue } = form
+  const { errors, touched, values, setFieldValue, setFieldTouched } = form
   const { name } = field
 
   const handleRemove = (tagId: string) => {
@@ -47,7 +47,11 @@ const FormTagField: React.SFC<Props> = ({
           {props.label}
         </label>
       )}
-      <AutoComplete onSelect={handleSelect} />
+      <AutoComplete
+        setTouched={setFieldTouched}
+        fieldName={name}
+        onSelect={handleSelect}
+      />
       {values[tagsarrayname].length > 0 && (
         <div className={styles.tags}>
           {values[tagsarrayname].map((tag: TagData) => (
