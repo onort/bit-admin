@@ -1,6 +1,6 @@
 import { EditorState } from "draft-js"
 
-import { TagData, TagMutation } from "./"
+import { TagData, TagMutation, User } from "./"
 
 export interface Bit {
   imageCredit?: string
@@ -15,6 +15,7 @@ export interface BitData extends Bit {
   id: string
   createdAt: string
   updatedAt: string
+  author: User
   contentHTML: string
   contentText: string
   isPublished: boolean

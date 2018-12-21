@@ -1,0 +1,7 @@
+@import "../../styles/main.scss";
+
+// negative margin needed to replace form element margins collapsing
+.row {
+  display: flex;
+  margin: (-$spacer-sm) 0;
+}

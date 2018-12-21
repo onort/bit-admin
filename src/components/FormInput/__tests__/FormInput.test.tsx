@@ -37,6 +37,26 @@ describe("<FormInput />", () => {
     wrapper.unmount()
   })
 
+  it("should render correctly if half prop is passed", () => {
+    const fakeSubmit = jest.fn()
+    const wrapper = mount(
+      <Formik initialValues={{ test: "" }} onSubmit={fakeSubmit}>
+        <Form>
+          <Field
+            type="text"
+            name="test"
+            label="Test"
+            half={1}
+            component={FormInput}
+          />
+        </Form>
+      </Formik>
+    )
+    console.log(wrapper.html())
+    expect(wrapper.find(".container.half").exists()).toBe(true)
+    wrapper.unmount()
+  })
+
   it.skip("should error text when there's an error", () => {
     // Test fails, need to handle async validation?
     const fakeSubmit = jest.fn()

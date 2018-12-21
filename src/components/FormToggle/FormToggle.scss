@@ -5,6 +5,7 @@ $height: px-to-rem(28px);
 .container {
   display: flex;
   align-items: center;
+  margin: $spacer-sm 0;
 }
 
 .switch {

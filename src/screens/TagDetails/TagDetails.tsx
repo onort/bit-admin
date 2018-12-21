@@ -24,6 +24,9 @@ const tagQuery = gql`
       id
       createdAt
       updatedAt
+      createdBy {
+        name
+      }
       metaDescription
       metaTitle
       name

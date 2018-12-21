@@ -6,6 +6,7 @@ import ConfirmationModal from "./ConfirmationModal"
 import Container from "./Container"
 import ErrorMessage from "./ErrorMessage"
 import FormInput from "./FormInput"
+import FormRow from "./FormRow"
 import FormTagField from "./FormTagField"
 import FormTextEditor from "./FormTextEditor"
 import FormTitle from "./FormTitle"
@@ -36,6 +37,7 @@ export {
   Container,
   ErrorMessage,
   FormInput,
+  FormRow,
   FormTagField,
   FormTextEditor,
   FormTitle,

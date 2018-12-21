@@ -5,6 +5,17 @@
   margin: $spacer-sm 0;
 }
 
+.half {
+  display: flex;
+  flex-direction: column;
+  max-width: 50%;
+  flex: 1;
+
+  &:first-of-type {
+    margin-right: $spacer-md;
+  }
+}
+
 .label {
   display: block;
   font-size: $font-size-md;

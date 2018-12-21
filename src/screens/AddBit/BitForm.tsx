@@ -7,6 +7,7 @@ import {
   Button,
   ErrorMessage,
   FormInput,
+  FormRow,
   FormTagField,
   FormTextEditor,
   FormTitle,
@@ -54,34 +55,42 @@ const TagForm: React.SFC<Props> = props => {
         label="Published"
         component={FormToggle}
       />
-      <Field
-        type="text"
-        name="imageURL"
-        placeholder="Image URL"
-        label="Image URL"
-        component={FormInput}
-      />
-      <Field
-        type="text"
-        name="imageCredit"
-        placeholder="Image Source"
-        label="Image Source"
-        component={FormInput}
-      />
-      <Field
-        type="text"
-        name="sourceCredit"
-        placeholder="Source"
-        label="Source"
-        component={FormInput}
-      />
-      <Field
-        type="text"
-        name="sourceURL"
-        placeholder="Source URL"
-        label="Source URL"
-        component={FormInput}
-      />
+      <FormRow>
+        <Field
+          type="text"
+          name="imageCredit"
+          placeholder="Image Source"
+          label="Image Source"
+          half={1}
+          component={FormInput}
+        />
+        <Field
+          type="text"
+          name="imageURL"
+          placeholder="Image URL"
+          label="Image URL"
+          half={1}
+          component={FormInput}
+        />
+      </FormRow>
+      <FormRow>
+        <Field
+          type="text"
+          name="sourceCredit"
+          placeholder="Source"
+          label="Source"
+          half={1}
+          component={FormInput}
+        />
+        <Field
+          type="text"
+          name="sourceURL"
+          placeholder="Source URL"
+          label="Source URL"
+          half={1}
+          component={FormInput}
+        />
+      </FormRow>
       <Button
         className={styles.submit}
         text={buttonText}

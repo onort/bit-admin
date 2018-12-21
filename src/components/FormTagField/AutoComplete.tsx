@@ -60,6 +60,7 @@ class AutoComplete extends PureComponent<Props, State> {
     e: React.FormEvent<any>,
     { suggestion }: SuggestionSelectedEventData<any>
   ) => {
+    e.preventDefault()
     this.props.onSelect(suggestion)
   }
 

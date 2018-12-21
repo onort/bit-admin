@@ -15,9 +15,9 @@ interface Props {
 
 const DetailView: React.SFC<Props> = props => {
   const {
-    id,
     createdAt,
     updatedAt,
+    createdBy,
     metaDescription,
     metaTitle,
     name
@@ -51,8 +51,8 @@ const DetailView: React.SFC<Props> = props => {
         <Paper className={styles.half} elevation={2}>
           <h2 className={styles.label}>Info</h2>
           <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Id</span>
-            <span className={styles.data}>{id}</span>
+            <span className={styles.dataLabel}>Author</span>
+            <span className={styles.data}>{createdBy.name}</span>
           </div>
           <div className={styles.dataRow}>
             <span className={styles.dataLabel}>Last Update</span>

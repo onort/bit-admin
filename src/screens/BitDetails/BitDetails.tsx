@@ -28,6 +28,9 @@ const bitQuery = gql`
       id
       createdAt
       updatedAt
+      author {
+        name
+      }
       contentHTML
       contentText
       imageCredit
