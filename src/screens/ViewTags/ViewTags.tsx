@@ -28,14 +28,16 @@ const tagsQuery = gql`
       metaDescription
       metaTitle
       name
+      slug
     }
   }
 `
 
 const columns: ColumnType[] = [
-  { dataIndex: "name", title: "Name", width: 4 },
-  { dataIndex: "metaTitle", title: "Title (Meta)", width: 4 },
-  { dataIndex: "metaDescription", title: "Description (Meta)", width: 4 },
+  { dataIndex: "name", title: "Name", width: 3 },
+  { dataIndex: "slug", title: "Slug", width: 3 },
+  { dataIndex: "metaTitle", title: "Title (Meta)", width: 3 },
+  { dataIndex: "metaDescription", title: "Description (Meta)", width: 3 },
   { dataIndex: "createdAt", title: "Created", width: 2, align: "center" },
   { dataIndex: "updatedAt", title: "Last Update", width: 2, align: "center" }
 ]

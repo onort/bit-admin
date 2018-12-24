@@ -6,12 +6,12 @@ import styles from "./FormInput.scss"
 import { ErrorMessage } from "../"
 
 // Custom component props are untyped as of formik v1.3.1
-// half uses 0 and 1 instead of a boolean
+// half & required uses 0 and 1 instead of a boolean
 // reason being prop passed through Formik Field component
 interface Props extends FieldProps {
   half?: 0 | 1
   label?: string
-  required?: boolean
+  required?: 0 | 1
 }
 
 const FormInput: React.SFC<Props> = ({ form, field, ...props }) => {
@@ -20,7 +20,9 @@ const FormInput: React.SFC<Props> = ({ form, field, ...props }) => {
   const containerClassName = cx(styles.container, {
     [styles.half]: !!props.half
   })
-  const labelClassName = cx(styles.label, { [styles.required]: props.required })
+  const labelClassName = cx(styles.label, {
+    [styles.required]: !!props.required
+  })
   return (
     <div className={containerClassName}>
       {props.label && (
@@ -28,7 +30,12 @@ const FormInput: React.SFC<Props> = ({ form, field, ...props }) => {
           {props.label}
         </label>
       )}
-      <input className={styles.input} {...field} {...props} />
+      <input
+        {...field}
+        {...props}
+        className={styles.input}
+        required={!!props.required}
+      />
       {touched[name] &&
         errors[name] && <ErrorMessage small={true} message={errors[name]} />}
     </div>
@@ -37,7 +44,7 @@ const FormInput: React.SFC<Props> = ({ form, field, ...props }) => {
 
 FormInput.defaultProps = {
   half: 0,
-  required: false
+  required: 0
 }
 
 export default FormInput

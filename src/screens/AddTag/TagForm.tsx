@@ -28,6 +28,14 @@ const TagForm: React.SFC<Props> = props => {
       />
       <Field
         type="text"
+        name="slug"
+        placeholder="Slug"
+        label="Slug"
+        required={true}
+        component={FormInput}
+      />
+      <Field
+        type="text"
         name="metaTitle"
         placeholder="Title"
         label="Title (Meta)"

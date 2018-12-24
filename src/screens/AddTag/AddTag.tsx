@@ -55,7 +55,8 @@ class AddTag extends Component<any, State> {
         variables: {
           name: values.name.toLowerCase(),
           metaDescription: values.metaDescription,
-          metaTitle: values.metaDescription
+          metaTitle: values.metaDescription,
+          slug: values.slug.toLowerCase()
         }
       })
       resetForm()

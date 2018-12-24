@@ -20,7 +20,8 @@ const DetailView: React.SFC<Props> = props => {
     createdBy,
     metaDescription,
     metaTitle,
-    name
+    name,
+    slug
   } = props.tag
   const created = convertISODate(createdAt, "DD.MM.YYYY HH:mm")
   const updated = convertISODate(updatedAt, "DD.MM.YYYY HH:mm")
@@ -50,6 +51,13 @@ const DetailView: React.SFC<Props> = props => {
         </Paper>
         <Paper className={styles.half} elevation={2}>
           <h2 className={styles.label}>Info</h2>
+          <div className={styles.dataRow}>
+            <span className={styles.dataLabel}>Slug</span>
+            <span className={styles.data}>
+              &#47;
+              {slug}
+            </span>
+          </div>
           <div className={styles.dataRow}>
             <span className={styles.dataLabel}>Author</span>
             <span className={styles.data}>{createdBy.name}</span>

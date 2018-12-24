@@ -2,6 +2,7 @@ export interface Tag {
   metaDescription?: string
   metaTitle?: string
   name: string
+  slug: string
 }
 
 export interface TagData extends Tag {

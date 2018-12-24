@@ -30,6 +30,7 @@ const tagQuery = gql`
       metaDescription
       metaTitle
       name
+      slug
     }
   }
 `
@@ -40,12 +41,14 @@ const tagUpdateMutation = gql`
     $metaDescription: String
     $metaTitle: String
     $name: String
+    $slug: String
   ) {
     updateTag(
       id: $id
       metaDescription: $metaDescription
       metaTitle: $metaTitle
       name: $name
+      slug: $slug
     ) {
       message
     }
