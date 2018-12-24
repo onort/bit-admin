@@ -21,11 +21,13 @@ const addTagMuatation = gql`
     $name: String!
     $metaTitle: String
     $metaDescription: String
+    $slug: String!
   ) {
     createTag(
       name: $name
       metaTitle: $metaTitle
       metaDescription: $metaDescription
+      slug: $slug
     ) {
       message
     }
