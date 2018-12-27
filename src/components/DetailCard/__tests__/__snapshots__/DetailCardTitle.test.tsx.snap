@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DetailCardTitle /> should match snapshot 1`] = `
+<h2
+  className="title"
+>
+  TestCardTitle
+</h2>
+`;
+
+exports[`<DetailCardTitle /> should match snapshot 2`] = `"<h2 class=\\"title\\">TestCardTitle</h2>"`;

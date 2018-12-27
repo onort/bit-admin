@@ -52,7 +52,6 @@ describe("<FormInput />", () => {
         </Form>
       </Formik>
     )
-    console.log(wrapper.html())
     expect(wrapper.find(".container.half").exists()).toBe(true)
     wrapper.unmount()
   })

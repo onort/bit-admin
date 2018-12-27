@@ -1,13 +1,16 @@
 import React from "react"
-import {
-  MdDelete as DeleteIcon,
-  MdEdit as EditIcon,
-  MdOpenInNew as LinkIcon
-} from "react-icons/md"
+import { MdDelete as DeleteIcon, MdEdit as EditIcon } from "react-icons/md"
 import cx from "classnames"
 
 import styles from "./BitDetails.scss"
-import { Button, Container, Paper } from "../../components"
+import {
+  Button,
+  Container,
+  DetailCard,
+  DetailCardItem,
+  DetailCardTitle,
+  Paper
+} from "../../components"
 import { convertISODate } from "../../utils/format"
 import { BitData } from "../../types"
 
@@ -22,7 +25,6 @@ const DetailView: React.SFC<Props> = props => {
     author,
     contentHTML,
     createdAt,
-    id,
     imageCredit,
     imageURL,
     metaDescription,
@@ -81,44 +83,29 @@ const DetailView: React.SFC<Props> = props => {
       </Container>
       <Container className={styles.row}>
         <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Info</h2>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Author</span>
-            <span className={styles.data}>{author.name}</span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Last Update</span>
-            <span className={styles.data}>{updated}</span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Creation Date</span>
-            <span className={styles.data}>{created}</span>
-          </div>
+          <DetailCard>
+            <DetailCardTitle content="Info" />
+            <DetailCardItem content={author.name} title="Author" />
+            <DetailCardItem content={created} title="Date Created" />
+            <DetailCardItem content={updated} title="Last Updated" />
+          </DetailCard>
         </Paper>
         <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Sources</h2>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Image</span>
-            <span className={styles.data}>
-              {imageCredit ? imageCredit : "-"}
-              {imageURL && (
-                <a className={styles.dataLink} href={imageURL} target="_blank">
-                  <LinkIcon />
-                </a>
-              )}
-            </span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Source</span>
-            <span className={styles.data}>
-              {sourceCredit ? sourceCredit : "-"}
-              {sourceURL && (
-                <a className={styles.dataLink} href={sourceURL} target="_blank">
-                  <LinkIcon />
-                </a>
-              )}
-            </span>
-          </div>
+          <DetailCard>
+            <DetailCardTitle content="Sources" />
+            <DetailCardItem
+              content={imageCredit}
+              title="Image"
+              linked={!!imageURL}
+              url={imageURL}
+            />
+            <DetailCardItem
+              content={sourceCredit}
+              title="Source"
+              linked={!!sourceURL}
+              url={sourceURL}
+            />
+          </DetailCard>
         </Paper>
       </Container>
     </>

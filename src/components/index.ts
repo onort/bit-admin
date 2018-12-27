@@ -4,6 +4,7 @@ import AuthRoute from "./AuthRoute"
 import Button from "./Button"
 import ConfirmationModal from "./ConfirmationModal"
 import Container from "./Container"
+import DetailCard, { DetailCardItem, DetailCardTitle } from "./DetailCard"
 import ErrorMessage from "./ErrorMessage"
 import FormInput from "./FormInput"
 import FormRow from "./FormRow"
@@ -35,6 +36,9 @@ export {
   Button,
   ConfirmationModal,
   Container,
+  DetailCard,
+  DetailCardItem,
+  DetailCardTitle,
   ErrorMessage,
   FormInput,
   FormRow,

@@ -4,7 +4,14 @@ import cx from "classnames"
 
 import styles from "./TagDetails.scss"
 import { convertISODate } from "../../utils/format"
-import { Button, Container, Paper } from "../../components"
+import {
+  Button,
+  Container,
+  DetailCard,
+  DetailCardItem,
+  DetailCardTitle,
+  Paper
+} from "../../components"
 import { TagData } from "../../types"
 
 interface Props {
@@ -50,26 +57,13 @@ const DetailView: React.SFC<Props> = props => {
           </h1>
         </Paper>
         <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Info</h2>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Slug</span>
-            <span className={styles.data}>
-              &#47;
-              {slug}
-            </span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Author</span>
-            <span className={styles.data}>{createdBy.name}</span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Last Update</span>
-            <span className={styles.data}>{updated}</span>
-          </div>
-          <div className={styles.dataRow}>
-            <span className={styles.dataLabel}>Creation Date</span>
-            <span className={styles.data}>{created}</span>
-          </div>
+          <DetailCard>
+            <DetailCardTitle content="Info" />
+            <DetailCardItem content={`/${slug}`} title="Slug" />
+            <DetailCardItem content={createdBy.name} title="Author" />
+            <DetailCardItem content={created} title="Date Created" />
+            <DetailCardItem content={updated} title="Last Updated" />
+          </DetailCard>
         </Paper>
       </Container>
       <Container className={styles.row}>
