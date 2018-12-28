@@ -17,3 +17,5 @@ export const validationSchema = yup.object().shape({
   name: yup.string().required("Please enter a tag name."),
   slug: yup.string().required("Please add a slug for this tag.")
 })
+
+export { Tag }

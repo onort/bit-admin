@@ -16,7 +16,7 @@ const TagForm: React.SFC<Props> = props => {
   const { buttonText, error, form } = props
   return (
     <Form method="post">
-      <FormTitle title="Add New Tag" icon={<TagIcon />} />
+      <FormTitle title="Add Tag" icon={<TagIcon />} />
       {error && <ErrorMessage message={error.message} />}
       <Field
         type="text"
@@ -38,14 +38,14 @@ const TagForm: React.SFC<Props> = props => {
         type="text"
         name="metaTitle"
         placeholder="Title"
-        label="Title (Meta)"
+        label="Meta Title"
         component={FormInput}
       />
       <Field
         type="text"
         name="metaDescription"
         placeholder="Description"
-        label="Description (Meta)"
+        label="Meta Description"
         component={FormInput}
       />
       <Button

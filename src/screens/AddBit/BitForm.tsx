@@ -25,7 +25,7 @@ const TagForm: React.SFC<Props> = props => {
   const { buttonText, error, form } = props
   return (
     <Form>
-      <FormTitle title="Add New Bit" />
+      <FormTitle title="Add Bit" />
       {error && <ErrorMessage message={error.message} />}
       <FastField name="editorState" component={FormTextEditor} />
       <Field
@@ -39,21 +39,15 @@ const TagForm: React.SFC<Props> = props => {
         type="text"
         name="metaTitle"
         placeholder="Title"
-        label="Title (Meta)"
+        label="Meta Title"
         component={FormInput}
       />
       <Field
         type="text"
         name="metaDescription"
         placeholder="Description"
-        label="Description (Meta)"
+        label="Meta Description"
         component={FormInput}
-      />
-      <Field
-        type="checkbox"
-        name="isPublished"
-        label="Published"
-        component={FormToggle}
       />
       <FormRow>
         <Field
@@ -91,6 +85,12 @@ const TagForm: React.SFC<Props> = props => {
           component={FormInput}
         />
       </FormRow>
+      <Field
+        type="checkbox"
+        name="isPublished"
+        label="Published"
+        component={FormToggle}
+      />
       <Button
         className={styles.submit}
         text={buttonText}
