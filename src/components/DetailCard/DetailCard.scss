@@ -1,5 +1,22 @@
 @import "../../styles/main.scss";
 
+.container {
+  width: 100%;
+  padding: $spacer-md $spacer-lg;
+}
+
+.half {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  padding: $spacer-md $spacer-lg;
+
+  &:first-of-type {
+    margin-right: 2%;
+  }
+}
+
 .title {
   font-family: $font-family-secondary;
   font-size: $font-size-xlg;

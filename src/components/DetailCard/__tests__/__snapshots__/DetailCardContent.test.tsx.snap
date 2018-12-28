@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DetailCardContent /> should match snapshot 1`] = `
+<div
+  className="contentContainer"
+>
+  <span>
+    Test content.
+  </span>
+</div>
+`;
+
+exports[`<DetailCardContent /> should match snapshot 2`] = `"<div class=\\"contentContainer\\"><span>Test content.</span></div>"`;

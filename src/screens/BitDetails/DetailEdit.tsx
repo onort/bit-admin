@@ -31,7 +31,7 @@ const DetailsEdit: React.SFC<Props> = props => {
         <Button
           className={styles.view}
           icon={<ViewIcon />}
-          text="View Tag"
+          text="View Bit"
           onClick={onViewClick}
         />
       </Container>
@@ -41,7 +41,7 @@ const DetailsEdit: React.SFC<Props> = props => {
             initialValues={initialValues}
             validationSchema={validationSchema}
             onSubmit={onSubmit(mutation)}
-            render={(form: any) => (
+            render={(form: FormikProps<UpdateBitForm>) => (
               <BitForm form={form} error={error} buttonText="Update Bit" />
             )}
           />

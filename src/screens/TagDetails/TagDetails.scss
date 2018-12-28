@@ -10,7 +10,6 @@
 }
 
 .edit {
-  margin-left: 1%;
   background-color: $blue;
   color: $white;
 
@@ -20,7 +19,7 @@
 }
 
 .delete {
-  margin-left: 1%;
+  margin-left: $spacer-sm;
   background-color: $danger;
   color: $white;
 
@@ -30,7 +29,6 @@
 }
 
 .view {
-  margin-left: 1%;
   background-color: $green;
   color: $white;
 
@@ -39,49 +37,9 @@
   }
 }
 
-.full {
-  width: 98%;
-  margin: 0 auto;
-  padding: $spacer-md $spacer-lg;
-}
-
-.half {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 48%;
-  padding: $spacer-md $spacer-lg;
-}
-
 .name {
   font-family: $font-family-secondary;
   font-size: $font-size-giant;
   font-weight: 700;
   line-height: 1;
-}
-
-.dataRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.dataLabel {
-  font-family: $font-family-secondary;
-  font-size: $font-size-lg;
-  font-weight: 700;
-}
-
-.data {
-  display: flex;
-  align-items: center;
-  color: $text-color-muted;
-}
-
-.label {
-  font-family: $font-family-secondary;
-  font-size: $font-size-xlg;
-  font-weight: 700;
-  border-bottom: 1px solid $light-border;
-  margin-bottom: $spacer-sm;
 }

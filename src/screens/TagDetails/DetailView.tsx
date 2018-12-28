@@ -8,9 +8,9 @@ import {
   Button,
   Container,
   DetailCard,
+  DetailCardContent,
   DetailCardItem,
-  DetailCardTitle,
-  Paper
+  DetailCardTitle
 } from "../../components"
 import { TagData } from "../../types"
 
@@ -50,33 +50,31 @@ const DetailView: React.SFC<Props> = props => {
         />
       </Container>
       <Container className={styles.row}>
-        <Paper className={styles.half} elevation={2}>
-          <h1 className={styles.name}>
-            &#35;
-            {name}
-          </h1>
-        </Paper>
-        <Paper className={styles.half} elevation={2}>
-          <DetailCard>
-            <DetailCardTitle content="Info" />
-            <DetailCardItem content={`/${slug}`} title="Slug" />
-            <DetailCardItem content={createdBy.name} title="Author" />
-            <DetailCardItem content={created} title="Date Created" />
-            <DetailCardItem content={updated} title="Last Updated" />
-          </DetailCard>
-        </Paper>
+        <DetailCard width="half">
+          <DetailCardContent>
+            <h1 className={styles.name}>
+              &#35;
+              {name}
+            </h1>
+          </DetailCardContent>
+        </DetailCard>
+        <DetailCard width="half">
+          <DetailCardTitle content="Info" />
+          <DetailCardItem content={`/${slug}`} title="Slug" />
+          <DetailCardItem content={createdBy.name} title="Author" />
+          <DetailCardItem content={created} title="Date Created" />
+          <DetailCardItem content={updated} title="Last Updated" />
+        </DetailCard>
       </Container>
       <Container className={styles.row}>
-        <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Meta Title</h2>
-          <p className={styles.text}>{metaTitle ? metaTitle : "-"}</p>
-        </Paper>
-        <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Meta Description</h2>
-          <p className={styles.text}>
-            {metaDescription ? metaDescription : "-"}
-          </p>
-        </Paper>
+        <DetailCard width="half">
+          <DetailCardTitle content="Meta Title" />
+          <DetailCardItem content={metaTitle} />
+        </DetailCard>
+        <DetailCard width="half">
+          <DetailCardTitle content="Meta Description" />
+          <DetailCardItem content={metaDescription} />
+        </DetailCard>
       </Container>
     </>
   )

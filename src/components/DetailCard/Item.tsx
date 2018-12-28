@@ -8,7 +8,7 @@ interface Props {
   className?: string
   content: string | undefined
   linked?: boolean
-  title: string
+  title?: string
   url?: string
 }
 
@@ -17,7 +17,7 @@ const Item: React.SFC<Props> = props => {
   const textContent = props.content ? props.content : "-"
   return (
     <div className={className}>
-      <span className={styles.itemTitle}>{props.title}</span>
+      {props.title && <span className={styles.itemTitle}>{props.title}</span>}
       <span className={styles.itemContent}>
         {props.linked ? (
           <a className={styles.itemLink} href={props.url} target="_blank">

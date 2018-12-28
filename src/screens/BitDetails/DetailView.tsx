@@ -7,9 +7,9 @@ import {
   Button,
   Container,
   DetailCard,
+  DetailCardContent,
   DetailCardItem,
-  DetailCardTitle,
-  Paper
+  DetailCardTitle
 } from "../../components"
 import { convertISODate } from "../../utils/format"
 import { BitData } from "../../types"
@@ -54,59 +54,55 @@ const DetailView: React.SFC<Props> = props => {
         />
       </Container>
       <Container className={styles.row}>
-        <Paper className={styles.full} elevation={2}>
-          <h2 className={styles.label}>Bit content</h2>
-          <div
-            className={styles.content}
-            dangerouslySetInnerHTML={{ __html: contentHTML }}
+        <DetailCard width="full">
+          <DetailCardTitle content="Bit Content" />
+          <DetailCardContent>
+            <div
+              className={styles.content}
+              dangerouslySetInnerHTML={{ __html: contentHTML }}
+            />
+            <div className={styles.tagsContainer}>
+              {tags.map(tag => (
+                <span key={tag.id} className={styles.tag}>
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          </DetailCardContent>
+        </DetailCard>
+      </Container>
+      <Container className={styles.row}>
+        <DetailCard width="half">
+          <DetailCardTitle content="Meta Title" />
+          <DetailCardItem content={metaTitle} />
+        </DetailCard>
+        <DetailCard width="half">
+          <DetailCardTitle content="Meta Description" />
+          <DetailCardItem content={metaDescription} />
+        </DetailCard>
+      </Container>
+      <Container className={styles.row}>
+        <DetailCard width="half">
+          <DetailCardTitle content="Info" />
+          <DetailCardItem content={author.name} title="Author" />
+          <DetailCardItem content={created} title="Date Created" />
+          <DetailCardItem content={updated} title="Last Updated" />
+        </DetailCard>
+        <DetailCard width="half">
+          <DetailCardTitle content="Sources" />
+          <DetailCardItem
+            content={imageCredit}
+            title="Image"
+            linked={!!imageURL}
+            url={imageURL}
           />
-          <div className={styles.tagsContainer}>
-            {tags.map(tag => (
-              <span key={tag.id} className={styles.tag}>
-                {tag.name}
-              </span>
-            ))}
-          </div>
-        </Paper>
-      </Container>
-      <Container className={styles.row}>
-        <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Meta Title</h2>
-          <p className={styles.text}>{metaTitle ? metaTitle : "-"}</p>
-        </Paper>
-        <Paper className={styles.half} elevation={2}>
-          <h2 className={styles.label}>Meta Description</h2>
-          <p className={styles.text}>
-            {metaDescription ? metaDescription : "-"}
-          </p>
-        </Paper>
-      </Container>
-      <Container className={styles.row}>
-        <Paper className={styles.half} elevation={2}>
-          <DetailCard>
-            <DetailCardTitle content="Info" />
-            <DetailCardItem content={author.name} title="Author" />
-            <DetailCardItem content={created} title="Date Created" />
-            <DetailCardItem content={updated} title="Last Updated" />
-          </DetailCard>
-        </Paper>
-        <Paper className={styles.half} elevation={2}>
-          <DetailCard>
-            <DetailCardTitle content="Sources" />
-            <DetailCardItem
-              content={imageCredit}
-              title="Image"
-              linked={!!imageURL}
-              url={imageURL}
-            />
-            <DetailCardItem
-              content={sourceCredit}
-              title="Source"
-              linked={!!sourceURL}
-              url={sourceURL}
-            />
-          </DetailCard>
-        </Paper>
+          <DetailCardItem
+            content={sourceCredit}
+            title="Source"
+            linked={!!sourceURL}
+            url={sourceURL}
+          />
+        </DetailCard>
       </Container>
     </>
   )
